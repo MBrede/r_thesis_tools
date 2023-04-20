@@ -18,11 +18,11 @@ book:
   downloads: pdf
   chapters:
     - index.qmd
-    - _quarto/intro.qmd
-    - _quarto/wrangling.qmd
-    - _quarto/graphics.qmd
-    - _quarto/tables.qmd
-    - _quarto/quarto.qmd
+    - quarto/intro.qmd
+    - quarto/wrangling.qmd
+    - quarto/graphics.qmd
+    - quarto/tables.qmd
+    - quarto/quarto.qmd
 
 bibliography: references.bib
 csl: apa.csl
