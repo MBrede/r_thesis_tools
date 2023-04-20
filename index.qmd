@@ -1,0 +1,39 @@
+# Vorwort {.unnumbered}
+
+```{r setup}
+#| include: false
+
+library(tidyverse)
+```
+
+
+Dieses mit `quarto` erstellte Dokument wurde als Crashkurs zur Nutzung von R zur Auswertung in Abschlussarbeiten im Rahmen des Betreuungskolloquiums der Abteilung für Psychologische Methodenlehre der CAU zu Kiel erstellt.
+
+
+### Abschnitt 1: Import und Aufbereitung von Psychopy-Daten
+
+Dieser Abschnitt beschäftigt sich ausschließlich mit dem Stapel-Import eines Haufens an Dateien einzelner Proband:innen. Die Beispiele beziehen sich auch Psychopy/Pavlovia-typische Datensammlungen, können aber auch auf andere Beispiele angewandt werden.
+
+Das Lesen des Abschnittes sollte Leser:innen dazu befähigen, `purrr`- und `readr`-Funktionalitäten zu nutzen, um alle in einem Ordner vorliegenden Dateien zu importieren. 
+Außerdem können Leser:innen Funktionen aus dem `tidyr`-Paket nutzen, um Daten in das long-Format zu überführen.
+
+### Abschnitt 2: Grafiken mit `ggplot2`
+
+In diesem Abschnitt wird ein kurzer Abriss zur Auffrischung der Logik hinter der grammar of graphics präsentiert.
+Anschließend werden Beispiele für die Erstellung einiger der häufigsten Grafik-Typen gezeigt. Abschließend wird ein Überblick für potentiell interessante andere Stellen zur Referenz eingeführt.
+
+Nach diesem Abschnitt sollten Leser die grundlegenden Prinzipien zur Erstellung von Grafiken mit ggplot2 kennen und auf häufig genutzte Grafikformate anwenden können.
+Außerdem sollte ein Überblick an möglichen anderen Stellen zur weiteren Information gewonnen sein.
+
+
+### Abschnitt 3: Erstellung von APA-konformen Tabellen
+
+Dieser Abschnitt beschäftigt sich mit der Erstellung APA-konformer Tabellen in R. Dazu wird zum Einen auf den spezifischen Export mit `apaTables`, zum Anderen auf den flexibleren Ansatz mit `flextable` eingegangen.
+
+Nach diesem Abschnitt sollten Leser in der Lage sein, Tabellen gängiger Analysen aus R im APA-Format zu exportieren. Außerdem soll die Fähigkeit vermittelt werden, die Erstellung von APA-konformen Tabellen mit `flextable` durchzuführen.
+
+### Abschnitt 4: Methodenteil in `quarto`
+
+Dieser Abschnitt beschäftigt sich mit der Erstellung von Textabschnitten oder ganzer Arbeiten mit `quarto`, dem Texterstellungs-Framework, das von Posit zur direkten Erstellung von Texten in RStudio unterstützt wird. 
+
+Am Ende dieses Abschnittes sollten Leser in der Lage sein quarto-Dokumente zu erstellen, ihre Auswertung in Code-chunks durchführen können und die Ergebnisse in pdf und word exportieren können.

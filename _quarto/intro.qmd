@@ -1,0 +1,7 @@
+# Warum dieses Skript?
+
+1. Weil händisches kopieren doof ist.
+
+2. Weil dieselbe Formatierung 20x anzuwenden doof ist.
+
+3. Weil Psychologie-Studis der CAU *natürlich* ihre Auswertung eh schon in R machen^[weil SPSS doof ist.]. 

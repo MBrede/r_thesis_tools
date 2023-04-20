@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Thesis-Analysen in R - 2&nbsp; Import und Aufbereitung von Psychopy-Daten</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../_quarto/graphics.html" rel="next">
+<link href="../_quarto/intro.html" rel="prev">
+<link href="../cover.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Thesis-Analysen in R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/MBrede/r_thesis_tools" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="../Thesis-Analysen-in-R.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Vorwort</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../_quarto/intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Warum dieses Skript?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../_quarto/wrangling.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../_quarto/graphics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../_quarto/tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../_quarto/quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Methodenteil in <code>quarto</code></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#batch-import" id="toc-batch-import" class="nav-link active" data-scroll-target="#batch-import"><span class="toc-section-number">2.1</span>  Batch-Import</a></li>
+  <li><a href="#zusammenfügen" id="toc-zusammenfügen" class="nav-link" data-scroll-target="#zusammenfügen"><span class="toc-section-number">2.2</span>  Zusammenfügen</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MBrede/r_thesis_tools/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/penguin_wrestling_files.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Pinguin im Kampf mit vielen Ordnern</figcaption><p></p>
+</figure>
+</div>
+<section id="batch-import" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="batch-import"><span class="header-section-number">2.1</span> Batch-Import</h2>
+<p>Psychopy und Pavlovia schreiben Ihre Daten im long-Format raus, die dem kommenden Beispiel ähneln:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">'../data/1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+Rows: 47 Columns: 20
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: "," chr
+(9): Bild, weiter_Willkommen.keys, Ergebnisse, Sicherheit, key_resp.key... dbl
+(10): Ergebnisse_Loop.thisRepN, Ergebnisse_Loop.thisTrialN, Ergebnisse_L... lgl
+(1): ...20
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...20`</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 20
+  Bild   Ergeb…¹ Ergeb…² Ergeb…³ Ergeb…⁴ weite…⁵ weite…⁶ Entsc…⁷ Ergeb…⁸ Siche…⁹
+  &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+1 &lt;NA&gt;        NA      NA      NA      NA space      5.49      NA &lt;NA&gt;         NA
+2 Tabel…       0       0       0      44 &lt;NA&gt;      NA          1 andere…       1
+3 Tabel…       0       1       1      10 &lt;NA&gt;      NA          1 andere…       3
+4 Tabel…       0       2       2      32 &lt;NA&gt;      NA          1 andere…       4
+5 Tabel…       0       3       3      40 &lt;NA&gt;      NA          1 andere…       1
+6 Tabel…       0       4       4      16 &lt;NA&gt;      NA          1 andere…       3
+# … with 10 more variables: Sicherheit &lt;chr&gt;, key_resp.keys &lt;chr&gt;,
+#   key_resp.rt &lt;dbl&gt;, participant &lt;dbl&gt;, session &lt;chr&gt;, date &lt;chr&gt;,
+#   expName &lt;chr&gt;, psychopyVersion &lt;chr&gt;, frameRate &lt;dbl&gt;, ...20 &lt;lgl&gt;, and
+#   abbreviated variable names ¹​Ergebnisse_Loop.thisRepN,
+#   ²​Ergebnisse_Loop.thisTrialN, ³​Ergebnisse_Loop.thisN,
+#   ⁴​Ergebnisse_Loop.thisIndex, ⁵​weiter_Willkommen.keys, ⁶​weiter_Willkommen.rt,
+#   ⁷​Entscheidung.response, ⁸​Ergebnisse, ⁹​Sicherheit_Entscheidung.response</code></pre>
+</div>
+</div>
+<p>Die Daten oben kommen aus einer FOV-Studie aus dem WS21 in der untersucht wurde, wie sicher sich Proband:innen bei der Entscheidung für einen t-Test oder einen anderen Test basierend auf Levene- und KS-Test-<em>p</em>-Werten sind und wie sehr sie sich in ihrer Entscheidung sicher sind..</p>
+<p>Für jeden Probanden wird dabei eine Datei erstellt, so dass der data-folder gerne mal wie in Abb. <a href="#fig-folder">Figure&nbsp;<span>2.1</span></a> aussehen kann.</p>
+<div id="fig-folder" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/folder.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: Ansicht des Daten-Ordners</figcaption><p></p>
+</figure>
+</div>
+<p>Um Auswertungen vorzubereiten müssen diese einzelnen Dateien erstmal zusammengefügt werden.</p>
+<p>Dazu brauchen wir erstmal einen Vektor mit allen csv-files im Ordner:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># bei mir liegt der data-Ordner im Verzeichnis über dem in dem sich das Skript befindet</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">'../data/'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">'csv'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> chr [1:50] "1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv" ...</code></pre>
+</div>
+</div>
+<p>Da bei mir ein relativer Pfad nötig ist würden die files so nicht gefunden werden, deswegen müssen wir noch das <code>full.names</code>-Argument auf <code>TRUE</code> setzen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">'../data/'</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">'csv'</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">full.names =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> chr [1:50] "../data//1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv" ...</code></pre>
+</div>
+</div>
+<p>Die so erstellten Pfade können wir dann im batch öffnen und einlesen. Dazu kann der wrapper <code>map_dfr</code> um <code>map</code> und <code>bind_rows</code> aus dem <code>purrr</code>-Paket helfen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>all_vpn <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">'../data/'</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">'csv'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">full.names =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="sc">~</span><span class="fu">read_csv</span>(.))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `dplyr::bind_rows()`:
+! Can't combine `..26$Ergebnisse_Loop.thisRepN` &lt;double&gt; and `..27$Ergebnisse_Loop.thisRepN` &lt;character&gt;.</code></pre>
+</div>
+</div>
+<p>Der Fehler kommt daher, dass einzelne Dokumente zu kurz sind und die Spaltentypen deswegen nicht erkannt werden. Hier gibt es drei Möglichkeiten mit dem Problem umzugehen:</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Der automatische Weg</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Der manuelle Weg</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Der hässliche Weg</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>Bei Psychopy kann der Fehler oben nur auftreten wenn</p>
+<ol type="1">
+<li>etwas am Skript geändert wurde wodurch ein Datentyp in einer Datei nicht mehr stimmt.</li>
+<li>ein:e Proband:in vor dem ersten Trial eines Blocks abgebrochen hat.</li>
+</ol>
+<p>Im ersten Fall habt Ihr ganz andere Probleme und solltet im Detail darüber nachdenken wie ihr das löst - oder den manuellen Weg wählen. Im zweiten Fall könnt Ihr alle zu kleinen files einfach filtern:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">list.files</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> <span class="st">'../data/'</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">'csv'</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">full.names =</span> T</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fu">file.size</span>(path)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>files <span class="sc">%&gt;%</span> </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  path                                                         size
+  &lt;chr&gt;                                                       &lt;dbl&gt;
+1 ../data//1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv   6597
+2 ../data//10_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv  6617
+3 ../data//11_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv  6609
+4 ../data//12_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv  6598
+5 ../data//13_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv  6599
+6 ../data//14_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv  6594</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>all_vpn <span class="ot">&lt;-</span> files <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(size <span class="sc">&gt;</span> <span class="fu">mean</span>(size)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(path) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="sc">~</span><span class="fu">read_csv</span>(.))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Die zweite Möglichkeit ist es, in read_csv die erwarteten Spalten-Typen anzugeben.</p>
+<p>In meinem Fall sieht das so aus:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>all_vpn <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">'../data/'</span>,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">'csv'</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">full.names =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="sc">~</span><span class="fu">read_csv</span>(.,<span class="at">col_types =</span> <span class="st">'cnnnncnncnccnnccccnl'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>Der uneleganteste Weg ist es erstmal alle Spalten als <code>character</code> zu importieren und dann die nötigen Spalten umzuwandeln:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>all_vpn <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">'../data/'</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">'csv'</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">full.names =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="sc">~</span><span class="fu">read_csv</span>(.,<span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="st">'c'</span>)))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>all_vpn <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,303
+Columns: 20
+$ Bild                             &lt;chr&gt; NA, "Tabellen/45.png", "Tabellen/11.p…
+$ Ergebnisse_Loop.thisRepN         &lt;chr&gt; NA, "0", "0", "0", "0", "0", "0", "0"…
+$ Ergebnisse_Loop.thisTrialN       &lt;chr&gt; NA, "0", "1", "2", "3", "4", "5", "6"…
+$ Ergebnisse_Loop.thisN            &lt;chr&gt; NA, "0", "1", "2", "3", "4", "5", "6"…
+$ Ergebnisse_Loop.thisIndex        &lt;chr&gt; NA, "44", "10", "32", "40", "16", "27…
+$ weiter_Willkommen.keys           &lt;chr&gt; "space", NA, NA, NA, NA, NA, NA, NA, …
+$ weiter_Willkommen.rt             &lt;chr&gt; "5.486211061477661", NA, NA, NA, NA, …
+$ Entscheidung.response            &lt;chr&gt; NA, "1", "1", "1", "1", "1", "1", "1"…
+$ Ergebnisse                       &lt;chr&gt; NA, "anderer Test", "anderer Test", "…
+$ Sicherheit_Entscheidung.response &lt;chr&gt; NA, "1", "3", "4", "1", "3", "3", "1"…
+$ Sicherheit                       &lt;chr&gt; NA, "sehr sicher", "unsicher", "gar n…
+$ key_resp.keys                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ key_resp.rt                      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ participant                      &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1…
+$ session                          &lt;chr&gt; "001", "001", "001", "001", "001", "0…
+$ date                             &lt;chr&gt; "2022_Feb_14_1853", "2022_Feb_14_1853…
+$ expName                          &lt;chr&gt; "Experiment_Vorüberlegungen", "Experi…
+$ psychopyVersion                  &lt;chr&gt; "2021.2.3", "2021.2.3", "2021.2.3", "…
+$ frameRate                        &lt;chr&gt; "59.783176973314745", "59.78317697331…
+$ ...20                            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
+</div>
+</div>
+<p>Aus diesem Datensatz brauchen wählen wir dann die Spalten aus, die wir brauchen und wandeln die Reaktionszeiten um (und filtern leere Zeilen).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> all_vpn <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, Entscheidung.response, Ergebnisse, Sicherheit_Entscheidung.response, Sicherheit)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,303
+Columns: 5
+$ participant                      &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1…
+$ Entscheidung.response            &lt;chr&gt; NA, "1", "1", "1", "1", "1", "1", "1"…
+$ Ergebnisse                       &lt;chr&gt; NA, "anderer Test", "anderer Test", "…
+$ Sicherheit_Entscheidung.response &lt;chr&gt; NA, "1", "3", "4", "1", "3", "3", "1"…
+$ Sicherheit                       &lt;chr&gt; NA, "sehr sicher", "unsicher", "gar n…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">matches</span>(<span class="st">'response'</span>), <span class="sc">~</span><span class="fu">as.numeric</span>(.)),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">participant =</span> <span class="fu">as.numeric</span>(participant))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ergebnisse))</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,205
+Columns: 5
+$ participant                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ Entscheidung.response            &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2…
+$ Ergebnisse                       &lt;chr&gt; "anderer Test", "anderer Test", "ande…
+$ Sicherheit_Entscheidung.response &lt;dbl&gt; 1, 3, 4, 1, 3, 3, 1, 3, 1, 2, 2, 3, 1…
+$ Sicherheit                       &lt;chr&gt; "sehr sicher", "unsicher", "gar nicht…</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Mit dem so umgewandelten Datensatz können wir dann wie gewohnt weiterarbeiten.</p>
+<p>Zum Beispiel können wir uns die durchschnittliche Sicherheit pro Proband:in und Entscheidung ausgeben lassen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>response_summary <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant, Ergebnisse) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Sicherheit =</span> <span class="fu">mean</span>(Sicherheit_Entscheidung.response))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'participant'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>response_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   participant [3]
+  participant Ergebnisse   Sicherheit
+        &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
+1           1 anderer Test       2.65
+2           1 t-Test             2.57
+3           2 anderer Test       2.33
+4           2 t-Test             2.52
+5           3 anderer Test       2.18
+6           3 t-Test             2.54</code></pre>
+</div>
+</div>
+</section>
+<section id="zusammenfügen" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="zusammenfügen"><span class="header-section-number">2.2</span> Zusammenfügen</h2>
+<p>In den meisten Fällen werdet Ihr neben Psychopy-Daten noch wo anders Fragebogen dargeboten haben, die Ihr mit den Daten zusammenfügen müsst.</p>
+<p>In unserem Beispiel existiert eine <code>.xlsx</code>-Datei, die die Limesurvey-Ergebnisse beinhaltet.</p>
+<p>Um die zusammengefassten Ergebnisse an diese anzufügen müssen wir sie zuerst importieren:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>limesurvey_results <span class="ot">&lt;-</span> openxlsx<span class="sc">::</span><span class="fu">read.xlsx</span>(<span class="st">'../data/LimeSurvey Daten.xlsx'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>limesurvey_results <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 50
+Columns: 4
+$ Bitte.geben.Sie.Ihr.Geschlecht.an. &lt;chr&gt; "weiblich", "weiblich", "männlich",…
+$ Bitte.geben.Sie.Ihr.Alter.an.      &lt;dbl&gt; 26, 18, 21, 21, 32, 32, 29, 29, 24,…
+$ `Was.machen.Sie.beruflich?`        &lt;chr&gt; "Studium", "Studium", "Psychotherap…
+$ `VP-Nr`                            &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, …</code></pre>
+</div>
+</div>
+<p>Die Zusammenfassungen sind noch im long-Format, können also nicht so einfach mit den LS-Daten im wide-Format zusammengeführt werden. Also erst einmal pivotieren:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>response_summary <span class="ot">&lt;-</span> response_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">'Ergebnisse'</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">'Sicherheit'</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>response_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   participant [6]
+  participant `anderer Test` `t-Test`
+        &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;
+1           1           2.65     2.57
+2           2           2.33     2.52
+3           3           2.18     2.54
+4           4           2.29     2.57
+5           5           2.24     2.54
+6           6           1.94     2.48</code></pre>
+</div>
+</div>
+<p>Die beiden Ergebnisse können wir jetzt kombinieren:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>vp_level_data <span class="ot">&lt;-</span> response_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(limesurvey_results,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">'participant'</span> <span class="ot">=</span> <span class="st">'VP-Nr'</span>))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>vp_level_data <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 49
+Columns: 6
+Groups: participant [49]
+$ participant                        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, …
+$ `anderer Test`                     &lt;dbl&gt; 2.647059, 2.333333, 2.176471, 2.294…
+$ `t-Test`                           &lt;dbl&gt; 2.571429, 2.518519, 2.535714, 2.571…
+$ Bitte.geben.Sie.Ihr.Geschlecht.an. &lt;chr&gt; "weiblich", "weiblich", "männlich",…
+$ Bitte.geben.Sie.Ihr.Alter.an.      &lt;dbl&gt; 26, 18, 21, 21, 32, 32, 29, 29, 24,…
+$ `Was.machen.Sie.beruflich?`        &lt;chr&gt; "Studium", "Studium", "Psychotherap…</code></pre>
+</div>
+</div>
+<p>Auf den Daten können wir dann arbeiten:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>vp_level_data <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                              participant anderer Test      t-Test
+participant                    1.00000000  -0.29763927 -0.01798315
+anderer Test                  -0.29763927   1.00000000 -0.35251805
+t-Test                        -0.01798315  -0.35251805  1.00000000
+Bitte.geben.Sie.Ihr.Alter.an. -0.09077279  -0.07051619  0.08474383
+                              Bitte.geben.Sie.Ihr.Alter.an.
+participant                                     -0.09077279
+anderer Test                                    -0.07051619
+t-Test                                           0.08474383
+Bitte.geben.Sie.Ihr.Alter.an.                    1.00000000</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../_quarto/intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Warum dieses Skript?</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../_quarto/graphics.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-right: 10px;"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a></div>   
+  </div>
+</footer>
+
+
+
+</body></html>

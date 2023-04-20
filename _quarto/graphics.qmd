@@ -1,0 +1,503 @@
+# Die *Grammar of graphics* und `ggplot2`
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+
+## Grammar of graphics
+Hadley Wickhams Paket `ggplot2` versucht, die Erstellung von Grafiken in einer einheitlichen Grammatik, der "grammar of graphics", auszudrücken. Das Ziel hier ist es, nicht mehr in "Scatterplot" und "Boxplot" als einzelne Kategorien zu denken und diese einzeln erstellen lernen zu müssen, sondern alle Abbildungen mit derselben Logik erstellen zu können.
+
+In Seinem Paper [@wickhamLayeredGrammarGraphics2010] werden die folgenden Komponenten als grundlegende Bausteine einer Grafik eingeführt:
+
+>* a default dataset and set of mappings from variables to aesthetics,
+* one or more layers, with each layer having one geometric object, one statistical trans-
+formation, one position adjustment, and optionally, one dataset and set of aesthetic
+mappings,
+* one scale for each aesthetic mapping used,
+* a coordinate system,
+* the facet specification. *[@wickhamLayeredGrammarGraphics2010, p.8]*
+
+
+### Komponenten eines Plots
+Wir müssen für einen Plot also überlegen:
+
+1. welche *Daten* wir auf welche *Aesthetics* mappen
+2. welche *geometrischen Objekte* wir in welcher Reihenfolge auf die Grafik layer wollen und ob diese optionale andere Daten benötigen
+3. welche *Skala* wir für die Mappings nutzen wollen
+4. welches *Koordinatensystem* wir nutzen wollen
+5. in welchen *Facetten* wir die Daten darstellen wollen
+
+
+## Komponenten in `ggplot2`
+
+#### Beispieldaten
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![Pinguine im Eis](../imgs/palmer_penguins.png){width=80%}
+:::
+
+::: {.column width="60%"}
+Im `palmerpenguins`-Paket werden Pinguin-Beobachtungen der [Palmer-Station in der Antarktis](https://pallter.marine.rutgers.edu/) zur Verfügung gestellt:
+
+```{r}
+palmerpenguins::penguins %>% 
+  head()
+```
+
+:::
+
+::::
+
+
+:::{.panel-tabset}
+
+### 1. Daten und Aesthetics - `ggplot()` + `aes()`
+
+
+Wir wollen den Zusammenhang zwischen Körpergewicht und Schnabellänge über die Spezien betrachten. 
+Dafür legen wir die "Leinwand" des Plots mit den zentralen mappings an:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species))
+```
+
+
+### 2. Geometrische Objekte - `geom_*`
+
+Diesem Plot fügen wir Punkte als geometrische Objekte hinzu, die uns zu einem Scatterplot führen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point()
+```
+
+
+Wir als weiteres geometrisches Objekt könnten wir uns zum Beispiel wünschen, die Mittelwerte pro Gruppe mit den Abweichungen auf x- und y-Achse darzustellen.
+Dazu müssen wir zuerst diesen neuen Datensatz berechnen:
+
+```{r}
+penguin_means <- palmerpenguins::penguins %>% 
+  group_by(species) %>% 
+  summarise(across(c(bill_length_mm, body_mass_g), ~mean(., na.rm=T)))
+```
+
+...und auf den Plot in einem neuen Layer hinzufügen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point() +
+  geom_point(data=penguin_means)
+```
+
+Für den Layer können wir auch speifische geometrische Eigenschaften einfügen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point() +
+  geom_point(data=penguin_means, shape = 3)
+```
+
+Oder direkt ein neues Mapping einführen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original')) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'))
+```
+
+Und auch beide Varianten kombinieren:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3)
+```
+
+
+### 3. Skalen - `scale_*`
+
+
+Die Symbole und Farben haben genau wie x- und y- Koordinaten als ästhetische Mappings eigene Skalen. Wenn uns also die Farben nicht passen, können wir einfach eine andere Skala setzen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3) +
+  scale_color_viridis_d()
+```
+
+Genauso können wir einfach die Skala der Symbole an unsere Wünsche anpassen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(original = 20, mean = 3))
+```
+
+### 4. Koordinatensystem `coord_*`
+
+Das Koordinatensystem passt von der Auflösung erstmal, aber wir wollen eine direkte Zuordnung von 10 mm Schnabellänge zu 1000 g Körpermasse. Dazu fügen wir eine `coord_*`-Spezifikation an:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(original = 20, mean = 3))+
+  coord_fixed(ratio = 10/1000)
+```
+
+
+### 5. Facetten - `facet_*`
+
+Als letzte Komponente überlegen wir uns, dass die verschiedenen Beobachtungspunkte als Einteilung interessant sein könnten und wir diese getrennt betrachten wollen. Um diese Facettierung umzusetzen ergänzen wir zuerst den Mittelwerts-Datensatz um den Beobachtungsort:
+
+
+```{r}
+penguin_means <- palmerpenguins::penguins %>% 
+  group_by(species, island) %>% 
+  summarise(across(c(bill_length_mm, body_mass_g), ~mean(., na.rm=T)))
+```
+
+
+Um dem Graphen anschließend die Facettierung anzufügen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(original = 20, mean = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island)
+```
+
+:::
+
+## APA-Styling
+
+Aus Julias Folien^[Danke [Julia](https://www.methoden.psychologie.uni-kiel.de/de/team/julia-liss)!] kommt folgende Checkliste für APA-Grafiken:
+
+![Screenshot der APA-Checkliste](../imgs/apa_graphs.png)
+
+Wir müssen also noch
+
+* die Elemente klar labeln
+* sicherstellen dass der Font passt
+* die Legende unter dem Bild anordnen
+* die Beschriftung der Legende überprüfen
+
+Daneben habe ich noch ein persönliches Problem mit dem grauen Hintergrund, damit fangen wir an:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(original = 20, mean = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island) +
+  theme_light()
+```
+
+In diesem Zusammenhang können wir auch gleich Base-Font und Schriftgröße setzen. `theme_light` setzt die kleinste Schriftgröße auf .8 * die `base_size`, wenn wir minimal 8pt große Schrift haben wollen.
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(original = 20, mean = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island) +
+  theme_light(base_family = 'Helvetical',
+              base_size = 10)
+```
+
+Als nächstes die Anpassung der Achsen- und Legenden-Labels:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'mean'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(original = 20, mean = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island) +
+  theme_light(base_family = 'Helvetical',
+              base_size = 10) +
+  labs(x = 'Schnabellänge (mm)',
+       y = 'Körpergewicht (g)',
+       color = 'Pinguin-Spezies',
+       shape = 'Aggregations-Niveau')
+```
+
+Die Namen der Formen sind noch nicht title-cased, das können wir am einfachsten in der Definition ändern:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'Original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'Mittelwert'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(Original = 20, Mittelwert = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island) +
+  theme_light(base_family = 'Helvetical',
+              base_size = 10) +
+  labs(x = 'Schnabellänge (mm)',
+       y = 'Körpergewicht (g)',
+       color = 'Pinguin-Spezies',
+       shape = 'Aggregations-Niveau')
+```
+
+Die Legende muss dann noch an die Unterseite des Graphen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'Original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'Mittelwert'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(Original = 20, Mittelwert = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island) +
+  theme_light(base_family = 'Helvetical',
+              base_size = 10) +
+  labs(x = 'Schnabellänge (mm)',
+       y = 'Körpergewicht (g)',
+       color = 'Pinguin-Spezies',
+       shape = 'Aggregations-Niveau') +
+  theme(legend.position = 'bottom')
+```
+
+:::
+
+Und damit ist die Formatierung fertig.
+
+
+## Convenient Standards
+
+Die beiden `theme`-Funktionen müssten wir so an jede Grafik anfügen. Solche Wiederholungen sind schlechter Stil und stören beim Lesen des Skripts, deswegen bietet `ggplot2` convenience-Funktionen um allgemeine Einstellungen zu setzen. Mit dem folgenden Snippet am Anfang des Skripts werden die Standards für alle Grafiken genutzt:
+
+```{r}
+my_theme <-  theme_light(base_family = 'Helvetical',
+              base_size = 10) +
+  theme(legend.position = 'bottom')
+
+theme_set(my_theme)
+```
+
+So kann ich jetzt einfach Beispielsweise ein eingefärbtes Histogramm für die Flossen-Länge mit den gesetzten Standards erstellen:
+
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = flipper_length_mm,
+             fill = sex)) +
+  geom_histogram(binwidth = 5)
+```
+
+## Export
+
+Zum Abschluss können wir die Grafiken exportieren.
+
+Die Textgröße ist in pt gesetzt, deswegen sollten wir nach dem Export die Größe im besten Fall nicht mehr viel ändern.
+
+Eine Din A4-Seite ist 8.2 x 11.6 Zoll groß. Wenn wir eine Grafik auf 80% der Seitenbreite haben wollen, brauchen wir also eine `r 8.2 * .8` Zoll breite Grafik.
+
+Zum Speichern setzen wir unsere Grafik und die Maße in ggsave ein:
+
+```{r}
+p <- palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'Original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'Mittelwert'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(Original = 20, Mittelwert = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island) +
+  labs(x = 'Schnabellänge (mm)',
+       y = 'Körpergewicht (g)',
+       color = 'Pinguin-Spezies',
+       shape = 'Aggregations-Niveau')
+
+ggsave(plot = p,
+       filename = '../imgs/penguin_scatter.png',
+       width = 6.56,units = 'in')
+```
+
+
+Der Export sieht so aus:
+
+![Exportierte Grafik](../imgs/penguin_scatter.png)
+Erstens können wir schonmal feststellen dass die Grafik ruhig schmaler werden kann. Die Export-Funktion hat uns eine Höhe von 6.74 Inches mitgeteilt, das können wir ruhig auf 4 inches reduzieren.
+
+Zweitens ist die Legende ein bisschen kaputt gegangen.
+
+Dazu gibt es vier Möglichkeiten zur Anpassung:
+
+::: {.panel-tabset}
+
+### Legende mit Zeilenumbrüchen
+
+```{r}
+p_linebreaks <- p +
+  guides(color = guide_legend(nrow = 3),
+         shape = guide_legend(nrow = 2))
+
+ggsave(plot = p_linebreaks,
+       filename = '../imgs/penguin_scatter_linebreaks.png',
+       width = 6.56, height = 4, units = 'in')
+```
+
+![Grafik mit Legende mit Linebreaks](../imgs/penguin_scatter_linebreaks.png)
+
+
+### Legende mit kleinerem Text
+
+```{r}
+p_smaller_text <- p +
+  theme(legend.title = element_text(size = 10,
+                                    colour = 'darkgrey'))
+
+ggsave(plot = p_smaller_text,
+       filename = '../imgs/penguin_scatter_smaller_text.png',
+       width = 6.56, height = 4,units = 'in')
+```
+
+![Grafik mit kleineren Legenden-Überschriften](../imgs/penguin_scatter_smaller_text.png)
+
+### Legende im Graphen
+
+```{r}
+p_legend_in_plot <- p + 
+  theme(
+    # Legende an oberer rechter Ecke orientieren
+    legend.justification=c(1,1),
+    # Legende an obere rechte Ecke schieben
+    legend.position=c(1,0.98), 
+    # Legenden-Hintergrund fast transparent machen
+    legend.background = element_rect(fill = rgb(1,1,1,.5)),
+    # Hintergrund der Legenden-Felder fast transparent machen
+    legend.key = element_rect(fill = rgb(1,1,1,.5)))
+
+ggsave(plot = p_legend_in_plot,
+       filename = '../imgs/penguin_scatter_legend_in_plot.png',
+       width = 6.56, height = 4,units = 'in')
+```
+
+![Grafik mit Legende in plot-Region](../imgs/penguin_scatter_legend_in_plot.png)
+
+:::
+
+## Hilfreiche Links
+
+* für einen Überblick über alle möglichen Kompenenten empfiehlt sich [das von posit herausgegebene cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization.pdf)
+
+* [das Kapitel zu Datenvisualisierungen](https://r4ds.hadley.nz/data-visualize.html) in @grolemundDataScience2016 ist sehr gut und geht weiter ins Detail als hier möglich ist
+
+* Im Paket [ggpubr](https://rpkgs.datanovia.com/ggpubr/) wird `ggplot2` genutzt um eine Reihe von "publication ready plots" zu erstelllen
+
+* Unter [diesem Link](https://shiny.gmw.rug.nl/ggplotgui/) ist eine shiny-App zur interaktiven Erstellung von ggplot-Graphen zu finden
+
+* Unter [diesem Link](http://www.cookbook-r.com/Graphs/) findet sich eine Sammlung von Farben, Formen, usw., die mit ggplot nutzbar sind.
+
+## Aufgabe
+
+1. Lese den [im Repo zu diesem Skript](https://github.com/MBrede/r_thesis_tools/data) zur Verfügung gestellten Datensatz `all_data.csv` ein.
+
+2. Stelle die Reaktionszeiten und Accuracies in einem Scatterplot dar.
+
+3. Färbe den Graphen nach Gruppen ein
+
+4. Füge Mittelwerte und Standardabweichungen hinzu. Füge die Standardabweichungen dabei mit `geom_linerange` in zwei layern hinzu (einem für die x- und einem für die y-Richtung)
+
+5. Passe die Grafik so an, dass sie APA-konform ist
+
+6. Mache die Grafik so unästhetisch, wie es die APA-Richtlinien zulassen. [Hier](http://www.cookbook-r.com/Graphs/) sind Fonts, Farben und Formen zu finden.
+
+
+
