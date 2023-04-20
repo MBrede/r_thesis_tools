@@ -487,13 +487,25 @@ ggsave(plot = p_legend_in_plot,
 
 ## Aufgabe
 
-1. Lese den [im Repo zu diesem Skript](https://github.com/MBrede/r_thesis_tools/data) zur Verfügung gestellten Datensatz `all_data.csv` ein.
+```{r}
+#| include: false
+
+read_csv('../data/example.csv') %>% 
+  filter(seq_along(x) %% 10 == 0) %>% 
+  transmute(RT = y + 300,
+            Accuracy = x/max(x),
+            group = as.numeric(as.factor(color))) %>% 
+  write_csv('../data/example.csv')
+```
+
+
+1. Lese den [im Repo zu diesem Skript](https://raw.githubusercontent.com/MBrede/r_thesis_tools/main/data/example.csv) zur Verfügung gestellten Datensatz `example.csv` ein.
 
 2. Stelle die Reaktionszeiten und Accuracies in einem Scatterplot dar.
 
 3. Färbe den Graphen nach Gruppen ein
 
-4. Füge Mittelwerte und Standardabweichungen hinzu. Füge die Standardabweichungen dabei mit `geom_linerange` in zwei layern hinzu (einem für die x- und einem für die y-Richtung)
+4. Füge Mittelwerte und Standardabweichungen pro Gruppe hinzu. Füge die Standardabweichungen dabei mit `geom_linerange` in zwei layern hinzu (einem für die x- und einem für die y-Richtung)
 
 5. Passe die Grafik so an, dass sie APA-konform ist
 
