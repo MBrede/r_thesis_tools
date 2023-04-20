@@ -288,7 +288,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="st">'csv'</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> chr [1:50] "1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv" ...</code></pre>
+<pre><code> chr [1:51] "1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv" ...</code></pre>
 </div>
 </div>
 <p>Da bei mir ein relativer Pfad nötig ist würden die files so nicht gefunden werden, deswegen müssen wir noch das <code>full.names</code>-Argument auf <code>TRUE</code> setzen.</p>
@@ -298,7 +298,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">full.names =</span> T) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> chr [1:50] "../data//1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv" ...</code></pre>
+<pre><code> chr [1:51] "../data//1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv" ...</code></pre>
 </div>
 </div>
 <p>Die so erstellten Pfade können wir dann im batch öffnen und einlesen. Dazu kann der wrapper <code>map_dfr</code> um <code>map</code> und <code>bind_rows</code> aus dem <code>purrr</code>-Paket helfen:</p>
@@ -373,8 +373,8 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>all_vpn <span class="sc">%&gt;%</span> </span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 2,303
-Columns: 20
+<pre><code>Rows: 20,629
+Columns: 23
 $ Bild                             &lt;chr&gt; NA, "Tabellen/45.png", "Tabellen/11.p…
 $ Ergebnisse_Loop.thisRepN         &lt;chr&gt; NA, "0", "0", "0", "0", "0", "0", "0"…
 $ Ergebnisse_Loop.thisTrialN       &lt;chr&gt; NA, "0", "1", "2", "3", "4", "5", "6"…
@@ -394,7 +394,10 @@ $ date                             &lt;chr&gt; "2022_Feb_14_1853", "2022_Feb_14_
 $ expName                          &lt;chr&gt; "Experiment_Vorüberlegungen", "Experi…
 $ psychopyVersion                  &lt;chr&gt; "2021.2.3", "2021.2.3", "2021.2.3", "…
 $ frameRate                        &lt;chr&gt; "59.783176973314745", "59.78317697331…
-$ ...20                            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
+$ ...20                            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ RT                               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ Accuracy                         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ group                            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
 </div>
 </div>
 <p>Aus diesem Datensatz brauchen wählen wir dann die Spalten aus, die wir brauchen und wandeln die Reaktionszeiten um (und filtern leere Zeilen).</p>
@@ -403,7 +406,7 @@ $ ...20                            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, N
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, Entscheidung.response, Ergebnisse, Sicherheit_Entscheidung.response, Sicherheit)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 2,303
+<pre><code>Rows: 20,629
 Columns: 5
 $ participant                      &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1…
 $ Entscheidung.response            &lt;chr&gt; NA, "1", "1", "1", "1", "1", "1", "1"…

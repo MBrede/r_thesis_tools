@@ -816,10 +816,15 @@ div.csl-indent {
 <section id="aufgabe" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">3.7</span> Aufgabe</h2>
 <ol type="1">
-<li><p>Lese den <a href="https://github.com/MBrede/r_thesis_tools/data">im Repo zu diesem Skript</a> zur Verfügung gestellten Datensatz <code>all_data.csv</code> ein.</p></li>
+<li>Lese den <a href="https://raw.githubusercontent.com/MBrede/r_thesis_tools/main/data/example.csv">im Repo zu diesem Skript</a> zur Verfügung gestellten Datensatz <code>example.csv</code> ein. Dazu kann einfach der folgende Chunk genutzt werden:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/MBrede/r_thesis_tools/main/data/example.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
 <li><p>Stelle die Reaktionszeiten und Accuracies in einem Scatterplot dar.</p></li>
 <li><p>Färbe den Graphen nach Gruppen ein</p></li>
-<li><p>Füge Mittelwerte und Standardabweichungen hinzu. Füge die Standardabweichungen dabei mit <code>geom_linerange</code> in zwei layern hinzu (einem für die x- und einem für die y-Richtung)</p></li>
+<li><p>Füge Mittelwerte und Standardabweichungen pro Gruppe hinzu. Füge die Standardabweichungen dabei mit <code>geom_linerange</code> in zwei layern hinzu (einem für die x- und einem für die y-Richtung)</p></li>
 <li><p>Passe die Grafik so an, dass sie APA-konform ist</p></li>
 <li><p>Mache die Grafik so unästhetisch, wie es die APA-Richtlinien zulassen. <a href="http://www.cookbook-r.com/Graphs/">Hier</a> sind Fonts, Farben und Formen zu finden.</p></li>
 </ol>
