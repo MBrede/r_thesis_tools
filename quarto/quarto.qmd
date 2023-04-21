@@ -149,3 +149,5 @@ Die Ergebnisse im docx können in @fig-inlineRes gesehen werden.
 
 ![Gerendertes Ergebnis der Inline-Chunks](../imgs/inline_results.png){#fig-inlineRes}
 
+
+Das hier gezeigte Beispiel ist auch im [Repo des Skripts](https://github.com/MBrede/r_thesis_tools/blob/main/example.qmd) zugänglich.

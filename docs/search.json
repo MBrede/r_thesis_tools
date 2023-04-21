@@ -116,6 +116,6 @@
     "href": "quarto/quarto.html#sec-inline",
     "title": "5  Methodenteil in quarto",
     "section": "5.4 Inline Code-Chunks",
-    "text": "5.4 Inline Code-Chunks\nIm Fließtext kann mit der folgenden Syntax auf R zugegriffen und Output generiert werden:\n`r <some code>`\nWozu ist das nützlich? Wir können so einfach statistische Kennwerte ohne sie kopieren zu müssen in den Text einflißen lassen! Und jedes mal wenn das Ergebnis erstellt wird, werden die Werte neu berechnet. So kann keine Aktualisierung vergessen werden.\nWir könnten unserem Beispiel-File so beispielsweise eine Stichprobenbeschreibung hinzufügen, wie in Abbildung 5.10 zu sehen ist.\n\n\n\nAbb 5.10: Inline Chunk\n\n\nDie Ergebnisse im docx können in Abbildung 5.11 gesehen werden.\n\n\n\nAbb 5.11: Gerendertes Ergebnis der Inline-Chunks"
+    "text": "5.4 Inline Code-Chunks\nIm Fließtext kann mit der folgenden Syntax auf R zugegriffen und Output generiert werden:\n`r <some code>`\nWozu ist das nützlich? Wir können so einfach statistische Kennwerte ohne sie kopieren zu müssen in den Text einflißen lassen! Und jedes mal wenn das Ergebnis erstellt wird, werden die Werte neu berechnet. So kann keine Aktualisierung vergessen werden.\nWir könnten unserem Beispiel-File so beispielsweise eine Stichprobenbeschreibung hinzufügen, wie in Abbildung 5.10 zu sehen ist.\n\n\n\nAbb 5.10: Inline Chunk\n\n\nDie Ergebnisse im docx können in Abbildung 5.11 gesehen werden.\n\n\n\nAbb 5.11: Gerendertes Ergebnis der Inline-Chunks\n\n\nDas hier gezeigte Beispiel ist auch im Repo des Skripts zugänglich."
   }
 ]
