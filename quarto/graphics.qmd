@@ -1,3 +1,7 @@
+---
+toc-title: '![](../imgs/grid_penguin.png){width=80%}<br> ggplot2'
+---
+
 # Die *Grammar of graphics* und `ggplot2` {#sec-ggplot}
 
 ```{r}

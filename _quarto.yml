@@ -35,7 +35,6 @@ csl: apa.csl
 number-sections: true
 number-depth: 2
 toc-depth: 2
-toc-title: 'In diesem Abschnitt...'
 toc-expand: false
 freeze: auto
 

@@ -1,3 +1,7 @@
+---
+toc-title: '![](../imgs/penguin_drawing_table.png){width=80%}<br> Tabellen'
+---
+
 # Erstellung von APA-konformen Tabellen {#sec-tables}
 
 ```{r}
@@ -6,8 +10,6 @@
 library(tidyverse)
 ```
 
-
-![](../imgs/penguin_drawing_table.png)
 
 ## Export mit `apaTables`
 

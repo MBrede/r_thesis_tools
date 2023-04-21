@@ -1,6 +1,8 @@
-# Import und Aufbereitung von Psychopy-Daten
+---
+toc-title: '![](../imgs/penguin_wrestling_files.png){width=80%}<br> File-Wrangling'
+---
 
-![Pinguin im Kampf mit vielen Ordnern](../imgs/penguin_wrestling_files.png)
+# Import und Aufbereitung von Psychopy-Daten
 
 ## Batch-Import
 

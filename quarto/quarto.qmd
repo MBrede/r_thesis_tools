@@ -1,3 +1,7 @@
+---
+toc-title: '![](../imgs/hacker_penguin.png){width=80%}<br> Quarto'
+---
+
 # Methodenteil in `quarto`{#sec-quarto}
 
 `quarto` ist ein Markdown-basiertes Dokumenten-Format, mit dem Dokumente direkt in RStudio erstellt werden und Ergebnisse, Tabellen und Abbildungen eingebunden werden können. Dieses Skript hier wurde auch in `quarto` erstellt.
