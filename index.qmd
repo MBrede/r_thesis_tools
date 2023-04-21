@@ -15,7 +15,6 @@ Dieses mit `quarto` erstellte Dokument wurde als Crashkurs zur Nutzung von R zur
 Dieser Abschnitt beschäftigt sich ausschließlich mit dem Stapel-Import eines Haufens an Dateien einzelner Proband:innen. Die Beispiele beziehen sich auch Psychopy/Pavlovia-typische Datensammlungen, können aber auch auf andere Beispiele angewandt werden.
 
 Das Lesen des Abschnittes sollte Leser:innen dazu befähigen, `purrr`- und `readr`-Funktionalitäten zu nutzen, um alle in einem Ordner vorliegenden Dateien zu importieren. 
-Außerdem können Leser:innen Funktionen aus dem `tidyr`-Paket nutzen, um Daten in das long-Format zu überführen.
 
 ### Abschnitt 2: Grafiken mit `ggplot2`
 
