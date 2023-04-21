@@ -25,9 +25,9 @@ Für jeden Probanden wird dabei eine Datei erstellt, so dass der data-folder ger
 
 ![Ansicht des Daten-Ordners](../imgs/folder.png){#fig-folder}
 
-Um Auswertungen vorzubereiten müssen diese einzelnen Dateien erstmal zusammengefügt werden.
+Um Auswertungen vorzubereiten müssen diese einzelnen Dateien erst mal zusammengefügt werden.
 
-Dazu brauchen wir erstmal einen Vektor mit allen csv-files im Ordner:
+Dazu brauchen wir erst mal einen Vektor mit allen csv-files im Ordner:
 
 ```{r}
  # bei mir liegt der data-Ordner im Verzeichnis über dem in dem sich das Skript befindet

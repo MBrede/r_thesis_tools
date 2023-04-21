@@ -62,7 +62,7 @@ palmerpenguins::penguins %>%
 ### 1. Daten und Aesthetics - `ggplot()` + `aes()`
 
 
-Wir wollen den Zusammenhang zwischen Körpergewicht und Schnabellänge über die Spezien betrachten. 
+Wir wollen den Zusammenhang zwischen Körpergewicht und Schnabellänge über die Spezies betrachten. 
 Dafür legen wir die "Leinwand" des Plots mit den zentralen mappings an:
 
 ```{r}
@@ -354,7 +354,6 @@ palmerpenguins::penguins %>%
   theme(legend.position = 'bottom')
 ```
 
-:::
 
 Und damit ist die Formatierung fertig.
 

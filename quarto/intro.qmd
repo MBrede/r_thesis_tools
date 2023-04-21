@@ -1,6 +1,6 @@
 # Warum dieses Skript?
 
-1. Weil händisches kopieren doof ist.
+1. Weil händisches Kopieren doof ist.
 
 2. Weil dieselbe Formatierung 20x anzuwenden doof ist.
 
