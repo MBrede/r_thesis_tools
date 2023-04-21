@@ -1,6 +1,8 @@
 project:
   output-dir: docs
   type: book
+  # render: 
+  #   - _praesi.qmd
 
 book:
   title: "Thesis-Analysen in R"
@@ -13,6 +15,7 @@ book:
   favicon: happy_cover.png
   page-footer: 
     left: '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-right: 10px;"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>'
+    center: 'All images are generated using R or Midjourney if not indicated otherwise.'
   repo-url: https://github.com/MBrede/r_thesis_tools
   repo-actions: [issue]
   chapters:
@@ -24,8 +27,8 @@ book:
     - quarto/quarto.qmd
     
 crossref:
-  fig-title: Abb     # (default is "Figure")
-  tbl-title: Tab     # (default is "Table")
+  fig-title: Abb
+  tbl-title: Tab
   fig-prefix: Abbildung
   tbl-prefix: Tabelle
   
