@@ -1,4 +1,5 @@
-# Die *Grammar of graphics* und `ggplot2`
+# Die *Grammar of graphics* und `ggplot2` {#sec-ggplot}
+
 ```{r}
 #| include: false
 library(tidyverse)

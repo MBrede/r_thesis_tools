@@ -173,7 +173,6 @@ div.csl-indent {
       <a href="../">Thesis-Analysen in R</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/MBrede/r_thesis_tools" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="../Thesis-Analysen-in-R.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
       </div>
@@ -211,7 +210,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Methodenteil in <code>quarto</code></span></a>
+  <a href="../quarto/quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></a>
   </div>
 </li>
     </ul>
@@ -220,13 +219,10 @@ div.csl-indent {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">In diesem Abschnitt…</h2>
    
-  <ul>
-  <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link active" data-scroll-target="#grammar-of-graphics"><span class="toc-section-number">3.1</span>  Grammar of graphics</a>
   <ul class="collapse">
-  <li><a href="#komponenten-eines-plots" id="toc-komponenten-eines-plots" class="nav-link" data-scroll-target="#komponenten-eines-plots"><span class="toc-section-number">3.1.1</span>  Komponenten eines Plots</a></li>
-  </ul></li>
+  <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link active" data-scroll-target="#grammar-of-graphics"><span class="toc-section-number">3.1</span>  Grammar of graphics</a></li>
   <li><a href="#komponenten-in-ggplot2" id="toc-komponenten-in-ggplot2" class="nav-link" data-scroll-target="#komponenten-in-ggplot2"><span class="toc-section-number">3.2</span>  Komponenten in <code>ggplot2</code></a></li>
   <li><a href="#apa-styling" id="toc-apa-styling" class="nav-link" data-scroll-target="#apa-styling"><span class="toc-section-number">3.3</span>  APA-Styling</a></li>
   <li><a href="#convenient-standards" id="toc-convenient-standards" class="nav-link" data-scroll-target="#convenient-standards"><span class="toc-section-number">3.4</span>  Convenient Standards</a></li>
@@ -241,7 +237,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></h1>
+<h1 class="title"><span id="sec-ggplot" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></span></h1>
 </div>
 
 
@@ -269,8 +265,8 @@ div.csl-indent {
 <li>the facet specification. <em><span class="citation" data-cites="wickhamLayeredGrammarGraphics2010">(<a href="#ref-wickhamLayeredGrammarGraphics2010" role="doc-biblioref">Wickham, 2010, p. 8</a>)</span></em></li>
 </ul>
 </blockquote>
-<section id="komponenten-eines-plots" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="komponenten-eines-plots"><span class="header-section-number">3.1.1</span> Komponenten eines Plots</h3>
+<section id="komponenten-eines-plots" class="level3">
+<h3 class="anchored" data-anchor-id="komponenten-eines-plots">Komponenten eines Plots</h3>
 <p>Wir müssen für einen Plot also überlegen:</p>
 <ol type="1">
 <li>welche <em>Daten</em> wir auf welche <em>Aesthetics</em> mappen</li>
@@ -283,8 +279,8 @@ div.csl-indent {
 </section>
 <section id="komponenten-in-ggplot2" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="komponenten-in-ggplot2"><span class="header-section-number">3.2</span> Komponenten in <code>ggplot2</code></h2>
-<section id="beispieldaten" class="level4" data-number="3.2.0.1">
-<h4 data-number="3.2.0.1" class="anchored" data-anchor-id="beispieldaten"><span class="header-section-number">3.2.0.1</span> Beispieldaten</h4>
+<section id="beispieldaten" class="level4">
+<h4 class="anchored" data-anchor-id="beispieldaten">Beispieldaten</h4>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">

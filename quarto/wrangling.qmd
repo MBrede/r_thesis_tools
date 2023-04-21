@@ -19,7 +19,7 @@ read_csv('../data/1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv') %>%
 
 Die Daten oben kommen aus einer FOV-Studie aus dem WS21 in der untersucht wurde, wie sicher sich Proband:innen bei der Entscheidung für einen t-Test oder einen anderen Test basierend auf Levene- und KS-Test-*p*-Werten sind und wie sehr sie sich in ihrer Entscheidung sicher sind..
 
-Für jeden Probanden wird dabei eine Datei erstellt, so dass der data-folder gerne mal wie in Abb. @fig-folder aussehen kann.
+Für jeden Probanden wird dabei eine Datei erstellt, so dass der data-folder gerne mal wie in @fig-folder aussehen kann.
 
 ![Ansicht des Daten-Ordners](../imgs/folder.png){#fig-folder}
 
@@ -56,15 +56,18 @@ all_vpn <- list.files(path = '../data/',
 
 Der Fehler kommt daher, dass einzelne Dokumente zu kurz sind und die Spaltentypen deswegen nicht erkannt werden. Hier gibt es drei Möglichkeiten mit dem Problem umzugehen:
 
-:::{.panel-tabset}
-### Der automatische Weg
 Bei Psychopy kann der Fehler oben nur auftreten wenn
 
 1. etwas am Skript geändert wurde wodurch ein Datentyp in einer Datei nicht mehr stimmt. 
 2. ein:e Proband:in vor dem ersten Trial eines Blocks abgebrochen hat.
 
-Im ersten Fall habt Ihr ganz andere Probleme und solltet im Detail darüber nachdenken wie ihr das löst - oder den manuellen Weg wählen.
-Im zweiten Fall könnt Ihr alle zu kleinen files einfach filtern:
+Im ersten Fall habt Ihr ganz andere Probleme und solltet im Detail darüber nachdenken wie ihr das löst - oder den unschönen Weg ("The ugly") wählen.
+
+Im zweiten Fall könnt Ihr alle zu kleinen files filtern ("The good") oder manuell ("The bad") die Spalten definieren.
+
+:::{.panel-tabset}
+### The good{#sec-good}
+
 
 ```{r}
 #| error: true
@@ -87,7 +90,7 @@ all_vpn <- files %>%
   map_dfr(~read_csv(.))
 ```
 
-### Der manuelle Weg
+### The bad{#sec-bad}
 
 Die zweite Möglichkeit ist es, in read_csv die erwarteten Spalten-Typen anzugeben.
 
@@ -103,7 +106,7 @@ all_vpn <- list.files(path = '../data/',
 ```
 
 
-### Der hässliche Weg
+### The ugly{#sec-ugly}
 
 Der uneleganteste Weg ist es erstmal alle Spalten als `character` zu importieren und dann die nötigen Spalten umzuwandeln:
 
