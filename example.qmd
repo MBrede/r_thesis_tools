@@ -1,0 +1,86 @@
+---
+title: "Methoden"
+editor: visual
+format: docx
+fig-width: 6.56
+fig-dpi: 300
+execute:
+  warning: false
+  message: false
+  echo: false
+---
+
+```{r setup}
+library(tidyverse)
+library(flextable)
+
+df <- palmerpenguins::penguins
+
+penguin_means <- palmerpenguins::penguins %>% 
+  group_by(species, island) %>% 
+  summarise(across(c(bill_length_mm, body_mass_g), ~mean(., na.rm=T)))
+
+my_theme <-  theme_light(base_family = 'Helvetical',
+              base_size = 10) +
+  theme(legend.position = 'bottom')
+
+theme_set(my_theme)
+```
+
+Meine beeindruckend schöne Grafik in in @fig-scatter zu sehen.
+
+```{r fig-scatter}
+#| label: fig-scatter
+#| fig-cap: Verteilungen der Schnabellänge und Körpergewichte der beobachteten Pinguine, aufgeteilt nach der Insel auf der die Pinguine beobachtet wurden und der Spezies der Pinguine.
+#| tbl-cap: ''
+
+df %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'Original'),
+             alpha = .5) +
+  geom_point(data=penguin_means,
+             aes(shape = 'Mittelwert'),
+             size = 3) +
+  scale_color_viridis_d(end = 0.7) +
+  scale_shape_manual(values = c(Original = 20, Mittelwert = 3))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island) +
+  labs(x = 'Schnabellänge (mm)',
+       y = 'Körpergewicht (g)',
+       color = 'Pinguin-Spezies',
+       shape = 'Aggregations-Niveau')+
+  theme(legend.title = element_text(size = 10,
+                                    colour = 'darkgrey'))
+```
+
+Meine sehr sehr gute Tabelle ist die Tabelle `r officer::run_reference(id = "#tbl-summaries")`.
+
+```{r tbl-summaries}
+#| label: tbl-summaries
+#| tbl-cap: "Die dargestellten Mittelwerte und Standardabweichungen sind die der Schnabellänge der beobachteten Pinguine, aufgeteilt nach der Insel auf der die Pinguine beobachtet wurden und der Spezies der Pinguine."
+
+df %>%
+  group_by(species, island) %>%
+  summarise(across(matches("bill_length_mm"),
+                   .fns = list(
+                     M = \(x) mean(x, na.rm = T),
+                     SD = \(x) sd(x, na.rm = T)
+                   ),
+                   .names = "{.col}_{.fn}")) %>% # Damit Funktion hinten steht
+  pivot_wider(names_from = 'island',
+              values_from = 3:4,
+              names_glue = "{island}_{.value}") %>%  # Damit Insel vorne steht
+  select(Spezies = species, matches('Bis'), matches('Dre'), matches('Tor')) %>% 
+  mutate(across(where(is.numeric), ~round(., 1))) %>% 
+  rename_with(.fn = ~str_remove(.,'_bill_length_mm')) %>% 
+  flextable() %>% 
+  separate_header() %>%
+  italic(part ="header", i= 2) %>% 
+  theme_apa() %>% 
+  hline(i = 1, j = -1,part = 'header', 
+        border= list(width = 0.1, color = "black", style = "solid"))
+```
+
+In dem Datensatz wurden *N*=`r sum(!is.na(palmerpenguins::penguins$sex))` Pinguine untersucht, davon `r sum(palmerpenguins::penguins$sex == 'male', na.rm = T)` männliche und `r sum(palmerpenguins::penguins$sex == 'female', na.rm = T)` weibliche Exemplare.
