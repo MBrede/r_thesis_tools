@@ -155,3 +155,12 @@ Die Ergebnisse im docx können in @fig-inlineRes gesehen werden.
 
 
 Das hier gezeigte Beispiel ist auch im [Repo des Skripts](https://github.com/MBrede/r_thesis_tools/blob/main/example.qmd) zugänglich.
+
+
+## Aufgabe
+
+1. Übertrage Deine Ergebnisse aus den anderen Aufgaben in ein `quarto`-Dokument
+
+2. Beschrifte alle Grafiken und Tabellen.
+
+3. Render das Dokument als `docx`.

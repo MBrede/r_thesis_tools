@@ -1,4 +1,4 @@
-# Warum dieses Skript?
+# Warum dieses Skript? {.unnumbered}
 
 1. Weil händisches Kopieren doof ist.
 

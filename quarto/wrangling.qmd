@@ -205,5 +205,71 @@ vp_level_data %>%
 ```
 
 
+## Aufgabe
+
+```{r}
+#| include: false
+#| eval: false
+
+import_and_modify <- function(path, id){
+  read_table(path, col_names = F) %>% 
+    set_names(nm = c('correct', 'RT')) %>% 
+    mutate(participant = id,
+           group = sample(1:4, 1)) %>% 
+    write_csv(glue::glue('../data/sim_data{id}.csv'))
+  file.remove(path)
+}
+
+list.files(path = '../data/sim_data/',
+           pattern = 'sim',
+           full.names = T) %>%
+  map2(map_chr(1:100,
+               ~ paste0(
+                 sample(LETTERS, 2),
+                 sample(0:9, 2),
+                 sample(LETTERS, 2),
+                 collapse = '',
+                 sep = ''
+               )), 
+       ~import_and_modify(.x,.y))
+
+list.files(path = '../data/sim_data/',
+           pattern = 'sim',
+           full.names = T) %>% 
+  sapply(\(x){file.copy(x, str_remove(x, '(?<=sim_data//)sim_data'));file.remove(x)})
+
+read_csv('/home/brede/Nextcloud/Diss/2_exps/1_d2/src/results-survey356376.csv') %>%
+  select(student, psychology, age)
+  tibble(
+    id = seq_along(list.files(path = '../data/sim_data/')),
+    submitdate = as.POSIXct('2023-04-22 10:00:00') + rnorm(length(id), 0, 432000),
+    lastpage = 6,
+    startlanguage = 'de',
+    seed = 1,
+    startdate = submitdate - runif(length(id), 5, 15),
+    datestamp = submitdate,
+    pp = list.files(
+      path = '../data/sim_data/',
+      pattern = 'csv',
+      full.names = T
+    ) %>%
+      str_extract('(?<=//).+(?=.csv)'),
+    gender = sample(c('männlich', 'weiblich', NA), length(id), T, prob = c(.45,.45,.1)),
+    student = sample(c('ja', 'nein', NA), length(id), T, prob = c(.3,.3,.4)),
+    psychology = ifelse(student == 'ja', 
+                        sample(c('ja', 'nein'), length(id), T, prob = c(.5,.5)),
+                        NA),
+    age = round(rnorm(length(id), 18, 99))
+  ) %>% 
+    openxlsx::write.xlsx('../data/sim_data/results-survey666517.xlsx')
+  
+```
 
 
+1. Im Repo zu diesem Skript ist eine zip-Datei mit simulierten Daten eines fiktiven Reaktionszeit-Experiments zu finden. Lade [die Zip](https://raw.githubusercontent.com/MBrede/r_thesis_tools/main/data/data.zip) herunter und entpacke sie.
+
+2. Importiere die csv-Dateien in einen Datensatz
+
+3. Berechne Accuracy, mittlere Reaktionszeit und Standardabweichung der Reaktionszeit pro Proband:in
+
+4. Füge die Ergebnisse mit der LimeSurvey-`xlsx` zusammen und erstelle eine Zusammenfassung der Reaktionszeiten und Accuracy pro angegebenem Geschlecht

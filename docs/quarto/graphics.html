@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thesis-Analysen in R - 3&nbsp; Die Grammar of graphics und ggplot2</title>
+<title>Thesis-Analysen in R - 2&nbsp; Die Grammar of graphics und ggplot2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,7 +154,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -190,27 +190,27 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Warum dieses Skript?</span></a>
+  <a href="../quarto/intro.html" class="sidebar-item-text sidebar-link">Warum dieses Skript?</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/wrangling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></a>
+  <a href="../quarto/wrangling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/graphics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></a>
+  <a href="../quarto/graphics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a>
+  <a href="../quarto/tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></a>
+  <a href="../quarto/quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></a>
   </div>
 </li>
     </ul>
@@ -222,13 +222,13 @@ div.csl-indent {
     <h2 id="toc-title"><img src="../imgs/grid_penguin.png" class="img-fluid" style="width:80.0%"><br> ggplot2</h2>
    
   <ul class="collapse">
-  <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link active" data-scroll-target="#grammar-of-graphics"><span class="toc-section-number">3.1</span>  Grammar of graphics</a></li>
-  <li><a href="#komponenten-in-ggplot2" id="toc-komponenten-in-ggplot2" class="nav-link" data-scroll-target="#komponenten-in-ggplot2"><span class="toc-section-number">3.2</span>  Komponenten in <code>ggplot2</code></a></li>
-  <li><a href="#apa-styling" id="toc-apa-styling" class="nav-link" data-scroll-target="#apa-styling"><span class="toc-section-number">3.3</span>  APA-Styling</a></li>
-  <li><a href="#convenient-standards" id="toc-convenient-standards" class="nav-link" data-scroll-target="#convenient-standards"><span class="toc-section-number">3.4</span>  Convenient Standards</a></li>
-  <li><a href="#export" id="toc-export" class="nav-link" data-scroll-target="#export"><span class="toc-section-number">3.5</span>  Export</a></li>
-  <li><a href="#hilfreiche-links" id="toc-hilfreiche-links" class="nav-link" data-scroll-target="#hilfreiche-links"><span class="toc-section-number">3.6</span>  Hilfreiche Links</a></li>
-  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe"><span class="toc-section-number">3.7</span>  Aufgabe</a></li>
+  <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link active" data-scroll-target="#grammar-of-graphics"><span class="toc-section-number">2.1</span>  Grammar of graphics</a></li>
+  <li><a href="#komponenten-in-ggplot2" id="toc-komponenten-in-ggplot2" class="nav-link" data-scroll-target="#komponenten-in-ggplot2"><span class="toc-section-number">2.2</span>  Komponenten in <code>ggplot2</code></a></li>
+  <li><a href="#apa-styling" id="toc-apa-styling" class="nav-link" data-scroll-target="#apa-styling"><span class="toc-section-number">2.3</span>  APA-Styling</a></li>
+  <li><a href="#convenient-standards" id="toc-convenient-standards" class="nav-link" data-scroll-target="#convenient-standards"><span class="toc-section-number">2.4</span>  Convenient Standards</a></li>
+  <li><a href="#export" id="toc-export" class="nav-link" data-scroll-target="#export"><span class="toc-section-number">2.5</span>  Export</a></li>
+  <li><a href="#hilfreiche-links" id="toc-hilfreiche-links" class="nav-link" data-scroll-target="#hilfreiche-links"><span class="toc-section-number">2.6</span>  Hilfreiche Links</a></li>
+  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe"><span class="toc-section-number">2.7</span>  Aufgabe</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MBrede/r_thesis_tools/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -237,7 +237,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ggplot" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></span></h1>
+<h1 class="title"><span id="sec-ggplot" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></span></h1>
 </div>
 
 
@@ -252,8 +252,8 @@ div.csl-indent {
 
 </header>
 
-<section id="grammar-of-graphics" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="grammar-of-graphics"><span class="header-section-number">3.1</span> Grammar of graphics</h2>
+<section id="grammar-of-graphics" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="grammar-of-graphics"><span class="header-section-number">2.1</span> Grammar of graphics</h2>
 <p>Hadley Wickhams Paket <code>ggplot2</code> versucht, die Erstellung von Grafiken in einer einheitlichen Grammatik, der “grammar of graphics”, auszudrücken. Das Ziel hier ist es, nicht mehr in “Scatterplot” und “Boxplot” als einzelne Kategorien zu denken und diese einzeln erstellen lernen zu müssen, sondern alle Abbildungen mit derselben Logik erstellen zu können.</p>
 <p>In Seinem Paper <span class="citation" data-cites="wickhamLayeredGrammarGraphics2010">(<a href="#ref-wickhamLayeredGrammarGraphics2010" role="doc-biblioref">Wickham, 2010</a>)</span> werden die folgenden Komponenten als grundlegende Bausteine einer Grafik eingeführt:</p>
 <blockquote class="blockquote">
@@ -277,8 +277,8 @@ div.csl-indent {
 </ol>
 </section>
 </section>
-<section id="komponenten-in-ggplot2" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="komponenten-in-ggplot2"><span class="header-section-number">3.2</span> Komponenten in <code>ggplot2</code></h2>
+<section id="komponenten-in-ggplot2" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="komponenten-in-ggplot2"><span class="header-section-number">2.2</span> Komponenten in <code>ggplot2</code></h2>
 <section id="beispieldaten" class="level4">
 <h4 class="anchored" data-anchor-id="beispieldaten">Beispieldaten</h4>
 <div class="columns">
@@ -512,8 +512,8 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="apa-styling" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="apa-styling"><span class="header-section-number">3.3</span> APA-Styling</h2>
+<section id="apa-styling" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="apa-styling"><span class="header-section-number">2.3</span> APA-Styling</h2>
 <p>Aus Julias Folien<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> kommt folgende Checkliste für APA-Grafiken:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -662,8 +662,8 @@ div.csl-indent {
 </div>
 <p>Und damit ist die Formatierung fertig.</p>
 </section>
-<section id="convenient-standards" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="convenient-standards"><span class="header-section-number">3.4</span> Convenient Standards</h2>
+<section id="convenient-standards" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="convenient-standards"><span class="header-section-number">2.4</span> Convenient Standards</h2>
 <p>Die beiden <code>theme</code>-Funktionen müssten wir so an jede Grafik anfügen. Solche Wiederholungen sind schlechter Stil und stören beim Lesen des Skripts, deswegen bietet <code>ggplot2</code> convenience-Funktionen um allgemeine Einstellungen zu setzen. Mit dem folgenden Snippet am Anfang des Skripts werden die Standards für alle Grafiken genutzt:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>my_theme <span class="ot">&lt;-</span>  <span class="fu">theme_light</span>(<span class="at">base_family =</span> <span class="st">'Helvetical'</span>,</span>
@@ -686,8 +686,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="export" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="export"><span class="header-section-number">3.5</span> Export</h2>
+<section id="export" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="export"><span class="header-section-number">2.5</span> Export</h2>
 <p>Zum Abschluss können wir die Grafiken exportieren.</p>
 <p>Die Textgröße ist in pt gesetzt, deswegen sollten wir nach dem Export die Größe im besten Fall nicht mehr viel ändern.</p>
 <p>Eine Din A4-Seite ist 8.2 x 11.6 Zoll groß. Wenn wir eine Grafik auf 80% der Seitenbreite haben wollen, brauchen wir also eine 6.56 Zoll breite Grafik.</p>
@@ -798,8 +798,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="hilfreiche-links" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="hilfreiche-links"><span class="header-section-number">3.6</span> Hilfreiche Links</h2>
+<section id="hilfreiche-links" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="hilfreiche-links"><span class="header-section-number">2.6</span> Hilfreiche Links</h2>
 <ul>
 <li><p>für einen Überblick über alle möglichen Kompenenten empfiehlt sich <a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization.pdf">das von posit herausgegebene cheatsheet</a></p></li>
 <li><p><a href="https://r4ds.hadley.nz/data-visualize.html">das Kapitel zu Datenvisualisierungen</a> in <span class="citation" data-cites="grolemundDataScience2016">Grolemund &amp; Wickham (<a href="#ref-grolemundDataScience2016" role="doc-biblioref">2016</a>)</span> ist sehr gut und geht weiter ins Detail als hier möglich ist</p></li>
@@ -808,8 +808,8 @@ div.csl-indent {
 <li><p>Unter <a href="http://www.cookbook-r.com/Graphs/">diesem Link</a> findet sich eine Sammlung von Farben, Formen, usw., die mit ggplot nutzbar sind.</p></li>
 </ul>
 </section>
-<section id="aufgabe" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">3.7</span> Aufgabe</h2>
+<section id="aufgabe" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">2.7</span> Aufgabe</h2>
 <ol type="1">
 <li>Lese den <a href="https://raw.githubusercontent.com/MBrede/r_thesis_tools/main/data/example.csv">im Repo zu diesem Skript</a> zur Verfügung gestellten Datensatz <code>example.csv</code> ein. Dazu kann einfach der folgende Chunk genutzt werden:</li>
 </ol>
@@ -979,12 +979,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../quarto/wrangling.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../quarto/tables.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

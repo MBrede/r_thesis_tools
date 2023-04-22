@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Thesis-Analysen in R - 2&nbsp; Import und Aufbereitung von Psychopy-Daten</title>
+<title>Thesis-Analysen in R - 1&nbsp; Import und Aufbereitung von Psychopy-Daten</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -171,27 +171,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Warum dieses Skript?</span></a>
+  <a href="../quarto/intro.html" class="sidebar-item-text sidebar-link">Warum dieses Skript?</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/wrangling.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></a>
+  <a href="../quarto/wrangling.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/graphics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></a>
+  <a href="../quarto/graphics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a>
+  <a href="../quarto/tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quarto/quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></a>
+  <a href="../quarto/quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></a>
   </div>
 </li>
     </ul>
@@ -203,8 +203,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title"><img src="../imgs/penguin_wrestling_files.png" class="img-fluid" style="width:80.0%"><br> File-Wrangling</h2>
    
   <ul class="collapse">
-  <li><a href="#batch-import" id="toc-batch-import" class="nav-link active" data-scroll-target="#batch-import"><span class="toc-section-number">2.1</span>  Batch-Import</a></li>
-  <li><a href="#zusammenfügen" id="toc-zusammenfügen" class="nav-link" data-scroll-target="#zusammenfügen"><span class="toc-section-number">2.2</span>  Zusammenfügen</a></li>
+  <li><a href="#batch-import" id="toc-batch-import" class="nav-link active" data-scroll-target="#batch-import"><span class="toc-section-number">1.1</span>  Batch-Import</a></li>
+  <li><a href="#zusammenfügen" id="toc-zusammenfügen" class="nav-link" data-scroll-target="#zusammenfügen"><span class="toc-section-number">1.2</span>  Zusammenfügen</a></li>
+  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe"><span class="toc-section-number">1.3</span>  Aufgabe</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MBrede/r_thesis_tools/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -213,7 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Import und Aufbereitung von Psychopy-Daten</span></h1>
 </div>
 
 
@@ -228,8 +229,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="batch-import" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="batch-import"><span class="header-section-number">2.1</span> Batch-Import</h2>
+<section id="batch-import" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="batch-import"><span class="header-section-number">1.1</span> Batch-Import</h2>
 <p>Psychopy und Pavlovia schreiben Ihre Daten im long-Format raus, die dem kommenden Beispiel ähneln:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">'../data/1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv'</span>) <span class="sc">%&gt;%</span> </span>
@@ -266,11 +267,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 </div>
 <p>Die Daten oben kommen aus einer FOV-Studie aus dem WS21 in der untersucht wurde, wie sicher sich Proband:innen bei der Entscheidung für einen t-Test oder einen anderen Test basierend auf Levene- und KS-Test-<em>p</em>-Werten sind und wie sehr sie sich in ihrer Entscheidung sicher sind..</p>
-<p>Für jeden Probanden wird dabei eine Datei erstellt, so dass der data-folder gerne mal wie in <a href="#fig-folder">Abbildung&nbsp;<span>2.1</span></a> aussehen kann.</p>
+<p>Für jeden Probanden wird dabei eine Datei erstellt, so dass der data-folder gerne mal wie in <a href="#fig-folder">Abbildung&nbsp;<span>1.1</span></a> aussehen kann.</p>
 <div id="fig-folder" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="../imgs/folder.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Abb&nbsp;2.1: Ansicht des Daten-Ordners</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Abb&nbsp;1.1: Ansicht des Daten-Ordners</figcaption><p></p>
 </figure>
 </div>
 <p>Um Auswertungen vorzubereiten müssen diese einzelnen Dateien erst mal zusammengefügt werden.</p>
@@ -456,8 +457,8 @@ $ Sicherheit                       &lt;chr&gt; "sehr sicher", "unsicher", "gar n
 </div>
 </div>
 </section>
-<section id="zusammenfügen" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="zusammenfügen"><span class="header-section-number">2.2</span> Zusammenfügen</h2>
+<section id="zusammenfügen" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="zusammenfügen"><span class="header-section-number">1.2</span> Zusammenfügen</h2>
 <p>In den meisten Fällen werdet Ihr neben Psychopy-Daten noch wo anders Fragebogen dargeboten haben, die Ihr mit den Daten zusammenfügen müsst.</p>
 <p>In unserem Beispiel existiert eine <code>.xlsx</code>-Datei, die die Limesurvey-Ergebnisse beinhaltet.</p>
 <p>Um die zusammengefassten Ergebnisse an diese anzufügen müssen wir sie zuerst importieren:</p>
@@ -534,6 +535,15 @@ t-Test                                           0.08474383
 Bitte.geben.Sie.Ihr.Alter.an.                    1.00000000</code></pre>
 </div>
 </div>
+</section>
+<section id="aufgabe" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">1.3</span> Aufgabe</h2>
+<ol type="1">
+<li><p>Im Repo zu diesem Skript ist eine zip-Datei mit simulierten Daten eines fiktiven Reaktionszeit-Experiments zu finden. Lade <a href="https://raw.githubusercontent.com/MBrede/r_thesis_tools/main/data/data.zip">die Zip</a> herunter und entpacke sie.</p></li>
+<li><p>Importiere die csv-Dateien in einen Datensatz</p></li>
+<li><p>Berechne Accuracy, mittlere Reaktionszeit und Standardabweichung der Reaktionszeit pro Proband:in</p></li>
+<li><p>Füge die Ergebnisse mit der LimeSurvey-<code>xlsx</code> zusammen und erstelle eine Zusammenfassung der Reaktionszeiten und Accuracy pro angegebenem Geschlecht</p></li>
+</ol>
 
 
 </section>
@@ -675,12 +685,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../quarto/intro.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Warum dieses Skript?</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Warum dieses Skript?</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../quarto/graphics.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

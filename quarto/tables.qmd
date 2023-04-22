@@ -260,3 +260,9 @@ Der Export ist in @fig-flextableOut zu sehen.
 
 
 Natürlich gibt es da auch eine Lösung! Auftritt [`quarto`](quarto.html).
+
+## Aufgabe
+
+1. Erstelle eine Tabelle mit den deskriptiven Kennwerten der Blütenblatt-Länge im `iris`-Datensatz mit `apaTables`. Guck Dir dafür [die Dokumentation der `apa.1way.table`-Funktion](https://dstanley4.github.io/apaTables/reference/apa.1way.table.html) an.
+
+2. Baue dieselbe Tabelle mit `flextable` nach.
