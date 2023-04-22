@@ -266,7 +266,7 @@ read_csv('/home/brede/Nextcloud/Diss/2_exps/1_d2/src/results-survey356376.csv') 
 ```
 
 
-1. Im Repo zu diesem Skript ist eine zip-Datei mit simulierten Daten eines fiktiven Reaktionszeit-Experiments zu finden. Lade [die Zip](https://raw.githubusercontent.com/MBrede/r_thesis_tools/main/data/data.zip) herunter und entpacke sie.
+1. Im Repo zu diesem Skript ist eine zip-Datei mit simulierten Daten eines fiktiven Reaktionszeit-Experiments zu finden. Lade [die Zip](https://github.com/MBrede/r_thesis_tools/raw/main/data/data.zip) herunter und entpacke sie.
 
 2. Importiere die csv-Dateien in einen Datensatz
 
