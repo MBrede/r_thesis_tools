@@ -1,3 +1,6 @@
+---
+toc-title: '![](../imgs/penguin_data_presentation.png){width=80%}<br> Quarto'
+---
 # Vorwort {.unnumbered}
 
 ```{r setup}
@@ -9,6 +12,7 @@ library(tidyverse)
 
 Dieses mit `quarto` erstellte Dokument wurde als Crashkurs zur Nutzung von R zur Auswertung in Abschlussarbeiten im Rahmen des Betreuungskolloquiums der Abteilung für Psychologische Methodenlehre der CAU zu Kiel erstellt.
 
+## Lernziele {.unnumbered}
 
 ### Abschnitt 1: Import und Aufbereitung von Psychopy-Daten
 

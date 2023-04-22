@@ -20,6 +20,7 @@ book:
   repo-actions: [issue]
   chapters:
     - index.qmd
+    - quarto/prep.qmd
     - quarto/intro.qmd
     - quarto/wrangling.qmd
     - quarto/graphics.qmd
