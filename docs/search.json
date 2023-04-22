@@ -18,7 +18,7 @@
     "href": "quarto/prep.html",
     "title": "Voraussetzungen",
     "section": "",
-    "text": "Um die Übungen um Skript ausführen zu können, braucht es einen Rechener mit aktuellen Versionen von R und RStudio. Die Installationsdateien für R für Windows findet man hier und für Mac hier, die Installationsdateien für RStudio für Windows hier und für Mac hier.\nAußerdem werden im Skript die folgenden Pakete genutzt:\n\ntidyverse\napaTables\nflextable\nezANOVA\n\nUm alle Pakete zu installieren, die im Skript genutzt werden, bitte die folgende Zeile ausführen:\n\ninstall.packages(c('tidyverse', 'apaTables', 'flextable', 'ezANOVA'), dependencies = TRUE)"
+    "text": "Um die Übungen um Skript ausführen zu können, braucht es einen Rechener mit aktuellen Versionen von R und RStudio. Die Installationsdateien für R für Windows findet man hier und für Mac hier, die Installationsdateien für RStudio für Windows hier und für Mac hier.\nWir brauchen mindestens RStudio 1.4 und eine entsprechende R-Version.\nZum Updaten können einfach die aktuellen installer heruntergeladen und ausgeführt werden, sonst gibt es hier auch noch eine Anleitung.\nAußerdem werden im Skript die folgenden Pakete genutzt:\n\ntidyverse\napaTables\nflextable\nezANOVA\n\nUm alle Pakete zu installieren, die im Skript genutzt werden, bitte die folgende Zeile ausführen:\n\ninstall.packages(c('tidyverse', 'apaTables', 'flextable', 'ezANOVA'), dependencies = TRUE)"
   },
   {
     "objectID": "quarto/intro.html",
