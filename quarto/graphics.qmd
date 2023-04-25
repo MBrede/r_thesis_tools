@@ -277,7 +277,7 @@ palmerpenguins::penguins %>%
   scale_shape_manual(values = c(original = 20, mean = 3))+
   coord_fixed(ratio = 10/1000) +
   facet_wrap(~island) +
-  theme_light(base_family = 'Helvetical',
+  theme_light(base_family = 'Helvetica',
               base_size = 10)
 ```
 
@@ -297,7 +297,7 @@ palmerpenguins::penguins %>%
   scale_shape_manual(values = c(original = 20, mean = 3))+
   coord_fixed(ratio = 10/1000) +
   facet_wrap(~island) +
-  theme_light(base_family = 'Helvetical',
+  theme_light(base_family = 'Helvetica',
               base_size = 10) +
   labs(x = 'Schnabellänge (mm)',
        y = 'Körpergewicht (g)',
@@ -321,7 +321,7 @@ palmerpenguins::penguins %>%
   scale_shape_manual(values = c(Original = 20, Mittelwert = 3))+
   coord_fixed(ratio = 10/1000) +
   facet_wrap(~island) +
-  theme_light(base_family = 'Helvetical',
+  theme_light(base_family = 'Helvetica',
               base_size = 10) +
   labs(x = 'Schnabellänge (mm)',
        y = 'Körpergewicht (g)',
@@ -345,7 +345,7 @@ palmerpenguins::penguins %>%
   scale_shape_manual(values = c(Original = 20, Mittelwert = 3))+
   coord_fixed(ratio = 10/1000) +
   facet_wrap(~island) +
-  theme_light(base_family = 'Helvetical',
+  theme_light(base_family = 'Helvetica',
               base_size = 10) +
   labs(x = 'Schnabellänge (mm)',
        y = 'Körpergewicht (g)',
@@ -363,7 +363,7 @@ Und damit ist die Formatierung fertig.
 Die beiden `theme`-Funktionen müssten wir so an jede Grafik anfügen. Solche Wiederholungen sind schlechter Stil und stören beim Lesen des Skripts, deswegen bietet `ggplot2` convenience-Funktionen um allgemeine Einstellungen zu setzen. Mit dem folgenden Snippet am Anfang des Skripts werden die Standards für alle Grafiken genutzt:
 
 ```{r}
-my_theme <-  theme_light(base_family = 'Helvetical',
+my_theme <-  theme_light(base_family = 'Helvetica',
               base_size = 10) +
   theme(legend.position = 'bottom')
 

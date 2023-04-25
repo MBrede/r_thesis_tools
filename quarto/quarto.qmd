@@ -1,5 +1,6 @@
 ---
 toc-title: '![](../imgs/hacker_penguin.png){width=80%}<br> Quarto'
+kernel: knitr
 ---
 
 # Methodenteil in `quarto`{#sec-quarto}
@@ -156,7 +157,6 @@ Die Ergebnisse im docx können in @fig-inlineRes gesehen werden.
 
 Das hier gezeigte Beispiel ist auch im [Repo des Skripts](https://github.com/MBrede/r_thesis_tools/blob/main/example.qmd) zugänglich.
 
-
 ## Aufgabe
 
 1. Übertrage Deine Ergebnisse aus den anderen Aufgaben in ein `quarto`-Dokument
@@ -164,3 +164,11 @@ Das hier gezeigte Beispiel ist auch im [Repo des Skripts](https://github.com/MBr
 2. Beschrifte alle Grafiken und Tabellen.
 
 3. Render das Dokument als `docx`.
+
+## Zusammenarbeit
+
+Der größte Nachteil an Quarto ist der etwas umständlichere Workflow beim Kommentieren und Zusammenarbeiten als das in Word möglich ist.
+
+Die Dokumente können zwar immer in word gerendert und dann ausgetauscht werden, etwaige Anmerkungen können aber nicht direkt in Quarto eingepflegt werden.
+
+Unter [diesem Link](https://mbrede.github.io/blog/academic_collaboration_using_markdown_github/) findet Ihr aber eine Anleitung, wie man die Zusammenarbeit über git ermöglichen kann.
