@@ -1,5 +1,5 @@
 ---
-toc-title: '![](../imgs/penguin_data_presentation.png){width=80%}<br> Quarto'
+toc-title: '![](../imgs/penguin_data_presentation.png){width=80%}<br> Einführung'
 ---
 # Vorwort {.unnumbered}
 
