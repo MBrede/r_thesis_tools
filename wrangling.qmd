@@ -1,5 +1,5 @@
 ---
-toc-title: '![](../imgs/penguin_wrestling_files.png){width=80%}<br> File-Wrangling'
+toc-title: '![](imgs/penguin_wrestling_files.png){width=80%}<br> File-Wrangling'
 ---
 
 # Import und Aufbereitung von Psychopy-Daten
@@ -15,7 +15,7 @@ library(tidyverse)
 Psychopy und Pavlovia schreiben Ihre Daten im long-Format raus, die dem kommenden Beispiel ähneln:
 
 ```{r}
-read_csv('../data/1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv') %>% 
+read_csv('data/1_Experiment_Vorüberlegungen_2022_Feb_14_1902.csv') %>% 
   head()
 ```
 
@@ -23,7 +23,7 @@ Die Daten oben kommen aus einer FOV-Studie aus dem WS21 in der untersucht wurde,
 
 Für jeden Probanden wird dabei eine Datei erstellt, so dass der data-folder gerne mal wie in @fig-folder aussehen kann.
 
-![Ansicht des Daten-Ordners](../imgs/folder.png){#fig-folder}
+![Ansicht des Daten-Ordners](imgs/folder.png){#fig-folder}
 
 Um Auswertungen vorzubereiten müssen diese einzelnen Dateien erst mal zusammengefügt werden.
 
@@ -31,7 +31,7 @@ Dazu brauchen wir erst mal einen Vektor mit allen csv-files im Ordner:
 
 ```{r}
  # bei mir liegt der data-Ordner im Verzeichnis über dem in dem sich das Skript befindet
-list.files(path = '../data/',
+list.files(path = 'data/',
            pattern = 'csv') %>% 
   str()
 ```
@@ -39,7 +39,7 @@ list.files(path = '../data/',
 Da bei mir ein relativer Pfad nötig ist würden die files so nicht gefunden werden, deswegen müssen wir noch das `full.names`-Argument auf `TRUE` setzen.
 
 ```{r}
-list.files(path = '../data/',
+list.files(path = 'data/',
            pattern = 'csv',
            full.names = T) %>% 
   str()
@@ -50,7 +50,7 @@ Die so erstellten Pfade können wir dann im batch öffnen und einlesen. Dazu kan
 ```{r}
 #| message: false
 #| error: true
-all_vpn <- list.files(path = '../data/',
+all_vpn <- list.files(path = 'data/',
            pattern = 'csv',
            full.names = T) %>% 
   map_dfr(~read_csv(.))
@@ -76,7 +76,7 @@ Im zweiten Fall könnt Ihr alle zu kleinen files filtern ("The good") oder manue
 #| message: false
 files <- tibble(
   path = list.files(
-    path = '../data/',
+    path = 'data/',
     pattern = 'csv',
     full.names = T
   ),
@@ -101,7 +101,7 @@ In meinem Fall sieht das so aus:
 ```{r}
 #| error: true
 #| message: false
-all_vpn <- list.files(path = '../data/',
+all_vpn <- list.files(path = 'data/',
            pattern = 'csv',
            full.names = T) %>% 
   map_dfr(~read_csv(.,col_types = 'cnnnncnncnccnnccccnl'))
@@ -114,7 +114,7 @@ Der uneleganteste Weg ist es erstmal alle Spalten als `character` zu importieren
 
 ```{r}
 #| message: false
-all_vpn <- list.files(path = '../data/',
+all_vpn <- list.files(path = 'data/',
            pattern = 'csv',
            full.names = T) %>% 
   map_dfr(~read_csv(.,col_types = cols(.default = 'c')))
@@ -168,7 +168,7 @@ In unserem Beispiel existiert eine `.xlsx`-Datei, die die Limesurvey-Ergebnisse 
 Um die zusammengefassten Ergebnisse an diese anzufügen müssen wir sie zuerst importieren:
 
 ```{r}
-limesurvey_results <- openxlsx::read.xlsx('../data/LimeSurvey Daten.xlsx')
+limesurvey_results <- openxlsx::read.xlsx('data/LimeSurvey Daten.xlsx')
 
 limesurvey_results %>% 
   glimpse()
@@ -216,11 +216,11 @@ import_and_modify <- function(path, id){
     set_names(nm = c('correct', 'RT')) %>% 
     mutate(participant = id,
            group = sample(1:4, 1)) %>% 
-    write_csv(glue::glue('../data/sim_data{id}.csv'))
+    write_csv(glue::glue('data/sim_data{id}.csv'))
   file.remove(path)
 }
 
-list.files(path = '../data/sim_data/',
+list.files(path = 'data/sim_data/',
            pattern = 'sim',
            full.names = T) %>%
   map2(map_chr(1:100,
@@ -233,7 +233,7 @@ list.files(path = '../data/sim_data/',
                )), 
        ~import_and_modify(.x,.y))
 
-list.files(path = '../data/sim_data/',
+list.files(path = 'data/sim_data/',
            pattern = 'sim',
            full.names = T) %>% 
   sapply(\(x){file.copy(x, str_remove(x, '(?<=sim_data//)sim_data'));file.remove(x)})
@@ -241,7 +241,7 @@ list.files(path = '../data/sim_data/',
 read_csv('/home/brede/Nextcloud/Diss/2_exps/1_d2/src/results-survey356376.csv') %>%
   select(student, psychology, age)
   tibble(
-    id = seq_along(list.files(path = '../data/sim_data/')),
+    id = seq_along(list.files(path = 'data/sim_data/')),
     submitdate = as.POSIXct('2023-04-22 10:00:00') + rnorm(length(id), 0, 432000),
     lastpage = 6,
     startlanguage = 'de',
@@ -249,7 +249,7 @@ read_csv('/home/brede/Nextcloud/Diss/2_exps/1_d2/src/results-survey356376.csv') 
     startdate = submitdate - runif(length(id), 5, 15),
     datestamp = submitdate,
     pp = list.files(
-      path = '../data/sim_data/',
+      path = 'data/sim_data/',
       pattern = 'csv',
       full.names = T
     ) %>%
@@ -261,7 +261,7 @@ read_csv('/home/brede/Nextcloud/Diss/2_exps/1_d2/src/results-survey356376.csv') 
                         NA),
     age = round(rnorm(length(id), 18, 99))
   ) %>% 
-    openxlsx::write.xlsx('../data/sim_data/results-survey666517.xlsx')
+    openxlsx::write.xlsx('data/sim_data/results-survey666517.xlsx')
   
 ```
 

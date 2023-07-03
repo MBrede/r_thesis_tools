@@ -139,7 +139,7 @@ In dem Beispiel haben wir aber einen weiteren Vorteil von Quarto gesehen: [Inlin
 
 Im Fließtext kann mit der folgenden Syntax auf R zugegriffen und Output generiert werden:
 
-```{markdown}
+```
 `r <some code>`
 ```
 

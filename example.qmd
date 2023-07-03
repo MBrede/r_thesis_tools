@@ -4,6 +4,7 @@ editor: visual
 format: docx
 fig-width: 6.56
 fig-dpi: 300
+bibliography: references.bib
 execute:
   warning: false
   message: false
@@ -84,3 +85,11 @@ df %>%
 ```
 
 In dem Datensatz wurden *N*=`r sum(!is.na(palmerpenguins::penguins$sex))` Pinguine untersucht, davon `r sum(palmerpenguins::penguins$sex == 'male', na.rm = T)` männliche und `r sum(palmerpenguins::penguins$sex == 'female', na.rm = T)` weibliche Exemplare.
+
+## Meine schöne Überschrift
+
+Hier steht Text
+
+@brunstein2010
+
+<!-- TODO(MBrede): Hier muss noch was anders -->

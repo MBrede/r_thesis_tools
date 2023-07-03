@@ -20,12 +20,12 @@ book:
   repo-actions: [issue]
   chapters:
     - index.qmd
-    - quarto/prep.qmd
-    - quarto/intro.qmd
-    - quarto/wrangling.qmd
-    - quarto/graphics.qmd
-    - quarto/tables.qmd
-    - quarto/quarto.qmd
+    - prep.qmd
+    - intro.qmd
+    - wrangling.qmd
+    - graphics.qmd
+    - tables.qmd
+    - quarto.qmd
     
 crossref:
   fig-title: Abb
