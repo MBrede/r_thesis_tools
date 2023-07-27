@@ -6,4 +6,4 @@
 
 3. Weil Psychologie-Studis der CAU *natürlich* ihre Auswertung eh schon in R machen^[weil SPSS doof ist.]. 
 
-![Logo from [https://logodix.com/logos/1598546](https://logodix.com/logos/1598546)](../imgs/penguin_showing_finger.png)
+![Logo from [https://logodix.com/logos/1598546](https://logodix.com/logos/1598546)](imgs/penguin_showing_finger.png)
