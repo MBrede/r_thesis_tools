@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Max Brede">
-<meta name="dcterms.date" content="2025-01-04">
 
-<title>Thesis-Analysen in R</title>
+<title>Thesis-Analysen in R - 4&nbsp; Methodenteil in quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./prep.html" rel="next">
+<link href="./tables.html" rel="prev">
 <link href="./happy_cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -77,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Vorwort</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Methodenteil in `quarto`{#sec-quarto}</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -110,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vorwort</span></a>
   </div>
 </li>
@@ -146,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></span></a>
   </div>
 </li>
@@ -157,13 +155,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="-1">
-    <h2 id="toc-title"><img src="imgs/penguin_data_presentation.png" class="img-fluid" style="width:80.0%"><br> Einführung</h2>
+    <h2 id="toc-title"><img src="../imgs/hacker_penguin.png" class="img-fluid" style="width:80.0%"><br> Quarto</h2>
    
   <ul class="collapse">
-  <li><a href="#vorwort" id="toc-vorwort" class="nav-link active" data-scroll-target="#vorwort">Vorwort</a>
-  <ul class="collapse">
-  <li><a href="#lernziele" id="toc-lernziele" class="nav-link" data-scroll-target="#lernziele">Lernziele</a></li>
-  </ul></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link active" data-scroll-target="#code-chunks"><span class="header-section-number">4.1</span> Code-chunks</a></li>
+  <li><a href="#yaml-header" id="toc-yaml-header" class="nav-link" data-scroll-target="#yaml-header"><span class="header-section-number">4.2</span> YAML-Header</a></li>
+  <li><a href="#code-chunk-optionen" id="toc-code-chunk-optionen" class="nav-link" data-scroll-target="#code-chunk-optionen"><span class="header-section-number">4.3</span> Code-Chunk-Optionen</a></li>
+  <li><a href="#sec-inline" id="toc-sec-inline" class="nav-link" data-scroll-target="#sec-inline"><span class="header-section-number">4.4</span> Inline Code-Chunks</a></li>
+  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe"><span class="header-section-number">4.5</span> Aufgabe</a></li>
+  <li><a href="#zusammenarbeit" id="toc-zusammenarbeit" class="nav-link" data-scroll-target="#zusammenarbeit"><span class="header-section-number">4.6</span> Zusammenarbeit</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MBrede/r_thesis_tools/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -172,26 +172,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Thesis-Analysen in R</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Max Brede </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 4, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -199,34 +187,166 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="vorwort" class="level1 unnumbered">
-<h1 class="unnumbered">Vorwort</h1>
-<p>Dieses mit <code>quarto</code> erstellte Dokument wurde als Crashkurs zur Nutzung von R zur Auswertung in Abschlussarbeiten im Rahmen des Betreuungskolloquiums der Abteilung für Psychologische Methodenlehre der CAU zu Kiel erstellt.</p>
-<section id="lernziele" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="lernziele">Lernziele</h2>
-<section id="abschnitt-1-import-und-aufbereitung-von-psychopy-daten" class="level3">
-<h3 class="anchored" data-anchor-id="abschnitt-1-import-und-aufbereitung-von-psychopy-daten">Abschnitt 1: Import und Aufbereitung von Psychopy-Daten</h3>
-<p>Dieser Abschnitt beschäftigt sich ausschließlich mit dem Stapel-Import eines Haufens an Dateien einzelner Proband:innen. Die Beispiele beziehen sich auch Psychopy/Pavlovia-typische Datensammlungen, können aber auch auf andere Beispiele angewandt werden.</p>
-<p>Das Lesen des Abschnittes sollte Leser:innen dazu befähigen, <code>purrr</code>- und <code>readr</code>-Funktionalitäten zu nutzen, um alle in einem Ordner vorliegenden Dateien zu importieren.</p>
+<p><code>quarto</code> ist ein Markdown-basiertes Dokumenten-Format, mit dem Dokumente direkt in RStudio erstellt werden und Ergebnisse, Tabellen und Abbildungen eingebunden werden können. Dieses Skript hier wurde auch in <code>quarto</code> erstellt.</p>
+<p>Dabei ist neben der direkten Einbindung von Auswertungen in das Dokument der große Vorteil, dass in verschiedene Ausgabeformate gerendert werden kann. Zum Beispiel können Dokumente parallel in ein Word-Dokument und ein <code>tex</code>-File exportiert werden.</p>
+<p>In RStudio kann über File -&gt; New File -&gt; Quarto Document ein neues Dokument erstellt werden. Daraufhin öffnet sich ein Dialog, in dem Einstellungen für das Dokument getroffen werden.</p>
+<div id="fig-quartoDialogue" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/quarto_dialogue.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.1: Quarto-Dialog</figcaption>
+</figure>
+</div>
+<p>Die Felder können erstmal ruhig so gelassen werden wie sie sind, alle Einstellungen lassen sich auch im Nachhinein anpassen.</p>
+<p>Das neu erstellte Dokument wird (ab RStudio 1.4) als Standard im visuellen Editor geöffnet.</p>
+<div id="fig-newQuarto" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/new_quarto.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.2: Neu erstelltes Quarto-Dokument</figcaption>
+</figure>
+</div>
+<p>Quarto-Dokumente basieren auf zwei Teilen, die in einem file oder getrennt voneinander existieren können. Der erste Teil der der sogenannte YAML-Header(1 in <a href="#fig-newQuarto">Abbildung&nbsp;<span>4.2</span></a>), der die Parameter zum Rendern des Dokuments definiert - der zweite Teil ist das eigentliche Dokument(2).</p>
+<p>Im neu erstellten file erkennen wir des YAML-Header durch die Eingrenzung aus je drei Bindestrichen. Nach der Erstellung sind hier schon der Titel des Dokuments “Untitled” und die Nutzung des visuellen Editors festgelegt.</p>
+<p>Der Rest des Files ist ein Markdown-Dokument in dem mit <a href="https://quarto.org/docs/authoring/markdown-basics.html">markdown-Formatierung</a> Fließtext geschrieben werden kann. Seit Einführung des visuellen Editors ist aber selbst diese Syntax nicht mehr nötig, Text kann wie aus anderen Verarbeitungsprogrammen bekannt mit den Bedienfeldern(3) formatiert werden. Durch Drücken der Source-Schaltfläche (4) kann aber auch immer noch in den Source-Editor zurückgekehrt werden.</p>
+<p>Wie schon angedeutet ist quarto kein WYSIWYG<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>-Editor, sondern erfordert das Rendern von Dokumenten. Dazu kann auf “Render”(5) geklickt oder <code>Strg + Shift + K</code> als Shortcut genutzt werden. Auf diesen Befehl hin wird neben dem qmd-file ein Output generiert in dem die formatierte Version zu finden ist. Beim ersten Rendern öffnet sich ein Dialog, in dem noch ein file-Name und Speicherort angegeben wird.</p>
+<section id="code-chunks" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">4.1</span> Code-chunks</h2>
+<p>Der große Vorteil quartos ist es, dass wir Code-chunks im Dokument anlegen können, deren Output direkt in das gerenderte Ergebnis eingebunden wird.</p>
+<p>Dazu kann mit der “Insert new code chunk”-Schaltfläche (1 in <a href="#fig-insert">Abbildung&nbsp;<span>4.3</span></a>) oben rechts oder <code>Strg + Alt + I</code> ein neuer Chunk eingefügt werden, der an die Cursor-Stelle im Dokument eingefügt wird (2).</p>
+<div id="fig-insert" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/new_chunk.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.3: Neuen Chunk erstellen.</figcaption>
+</figure>
+</div>
+<p>In der ersten Zeile des neuen Chunks steht die Sprache. In den Chunk kann dann wie in ein R-Skript Code eingefügt werden.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="fig-filledAnalysis" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/filled_chunks.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.4: Code Chunks mit bisherigen Analysen.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p>In <a href="#fig-filledAnalysis">Abbildung&nbsp;<span>4.4</span></a> ist das neue file mit dem Code für die letzte Tabelle aus <a href="tables.html"><span>Chapter&nbsp;3</span></a> und der Beispielgrafik aus <a href="graphics.html"><span>Chapter&nbsp;2</span></a> eingefügt.</p>
+<p>Der erste Chunk (1) ist dabei nur dafür da um Pakete und die Daten zu laden. Im zweiten Chunk (2) wird die Tabelle, im dritten Chunk (3) die Grafik erstellt. Der Text hinter dem r in der ersten Zeile der Chunks ist nur ein Titel und hat erstmal keine weitere Bedeutung.</p>
+<p>Wie in (4) und (5) zu sehen ist, kann zwischen den Chunks einfach Text eingefügt werden.</p>
+<p>Die Chunks können dabei wie ein ganz normales R-Skript genutzt werden und der Code an der Zeile des Cursors kann mit <code>Strg + Enter</code> ausgeführt werden. Der Output erscheint dabei unter dem Chunk, kann mit Hilfe der Einstellungen aber auch in die Konsole verschoben werden.</p>
+</div>
+</div>
+<p>Damit haben wir die Basics die wir brauchen.</p>
 </section>
-<section id="abschnitt-2-grafiken-mit-ggplot2" class="level3">
-<h3 class="anchored" data-anchor-id="abschnitt-2-grafiken-mit-ggplot2">Abschnitt 2: Grafiken mit <code>ggplot2</code></h3>
-<p>In diesem Abschnitt wird ein kurzer Abriss zur Auffrischung der Logik hinter der grammar of graphics präsentiert. Anschließend werden Beispiele für die Erstellung einiger der häufigsten Grafik-Typen gezeigt. Abschließend wird ein Überblick für potentiell interessante andere Stellen zur Referenz eingeführt.</p>
-<p>Nach diesem Abschnitt sollten Leser die grundlegenden Prinzipien zur Erstellung von Grafiken mit ggplot2 kennen und auf häufig genutzte Grafikformate anwenden können. Außerdem sollte ein Überblick an möglichen anderen Stellen zur weiteren Information gewonnen sein.</p>
+<section id="yaml-header" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="yaml-header"><span class="header-section-number">4.2</span> YAML-Header</h2>
+<p>Um das Ergebnis des Renderns anzupassen können wir den YAML-Header setzen.</p>
+<p>Für dieses Skript konzentrieren wir uns auf Output im docx-Format, Quarto bietet aber <a href="https://quarto.org/docs/reference/">wesentlich mehr Optionen</a>. Die Doku für alle unterstützten Header-Optionen für docx findet sich <a href="https://quarto.org/docs/reference/formats/docx.html">hier</a>.</p>
+<p>Für uns sind erstmal die folgenden Parameter wichtig:</p>
+<pre><code>format: docx # setzt das Format des Outputs
+fig-width: 6.56 # setzt 6.56 Zoll als Standard-Breite für alle Plot-Outputs
+fig-dpi: 300 # setzt alle plots auf 300 dpi</code></pre>
+<p>Nach Klick auf “Render” kann ich neben dem erstellten qmd-file das in <a href="#fig-firstODT">Abbildung&nbsp;<span>4.5</span></a> abgebildete Dokument finden.</p>
+<div id="fig-firstODT" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/fst_odt_output.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.5: Erstes Render-Ergebnis.</figcaption>
+</figure>
+</div>
+<p>Der Output der Chunks wurde also erfolgreich in das Dokument übergeben, ich brauche aber die ganzen messages nicht.</p>
+<p>Um diese zu unterdrücken kann ich den YAML-Header einfach um den folgenden Teil ergänzen:</p>
+<pre><code>execute:
+  warning: false
+  message: false</code></pre>
+<p>Was zu folgendem Output führt:</p>
+<p><img src="../imgs/snd_odt_output.png" id="fig-secondODT" class="img-fluid" alt="Ergebnis ohne Nachrichten."> Schon viel besser, für einen Methodenteil stört aber noch der Code zwischen den Outputs. Um das rausschreiben der Chunks zu unterdrücken ergänzen wir nur noch <code>echo: false</code> um bei folgendem vollständigen Header zu enden:</p>
+<pre><code>title: "Methoden"
+editor: visual
+format: docx
+fig-width: 6.56
+fig-dpi: 300
+execute:
+  warning: false
+  message: false
+  echo: false</code></pre>
+<p>Und schon ist das Ergebnis nicht mehr allzu schlecht:</p>
+<div id="fig-secondODT" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/thrd_odt_output.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.6: Ergebnis ohne Chunks</figcaption>
+</figure>
+</div>
 </section>
-<section id="abschnitt-3-erstellung-von-apa-konformen-tabellen" class="level3">
-<h3 class="anchored" data-anchor-id="abschnitt-3-erstellung-von-apa-konformen-tabellen">Abschnitt 3: Erstellung von APA-konformen Tabellen</h3>
-<p>Dieser Abschnitt beschäftigt sich mit der Erstellung APA-konformer Tabellen in R. Dazu wird zum Einen auf den spezifischen Export mit <code>apaTables</code>, zum Anderen auf den flexibleren Ansatz mit <code>flextable</code> eingegangen.</p>
-<p>Nach diesem Abschnitt sollten Leser in der Lage sein, Tabellen gängiger Analysen aus R im APA-Format zu exportieren. Außerdem soll die Fähigkeit vermittelt werden, die Erstellung von APA-konformen Tabellen mit <code>flextable</code> durchzuführen.</p>
+<section id="code-chunk-optionen" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="code-chunk-optionen"><span class="header-section-number">4.3</span> Code-Chunk-Optionen</h2>
+<p>Die letzten drei Parameter waren Beispiele für chunk-Optionen, die das Verhalten von Chunks anpassen. Das kann entweder global im YAML-Header unter execute oder lokal pro Chunk gesetzt werden.</p>
+<p>Auf der quarto-Seite gibt es einen Überblick über <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">alle Optionen</a>, wir konzentrieren uns aber erstmal auf einen kleinen Teil zur Beschriftung von Grafiken und Tabellen.</p>
+<p>Um eine Grafik zu beschriften und im Text referenzierbar zu machen,müssen wir zwei Optionen für den Chunk setzten: <code>label</code> und <code>fig-cap</code>. In <a href="#fig-figChunk">Abbildung&nbsp;<span>4.7</span></a> ist ein Beispiel wie das aussehen könnte. Die Chunk-Optionen werden dabei immer durch ein so genanntes “pipe-comment” eingeleitet.</p>
+<div id="fig-figChunk" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/reference_figure.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.7: Chunk-Optionen für Grafiken</figcaption>
+</figure>
+</div>
+<p>Im text können wir die Grafik dann mit @fig-scatter referenzieren. Das label für Grafiken muss dabei durch “fig-” eingeleitet und referenziert werden, sonst schlägt die Formatierung fehl.</p>
+<p>Ähnliche Parameter sind auch für Tabellen implementiert, hier ist der Prefix nur <code>tbl</code>. Leider funktioniert das Crossreferenzieren in den aktuellen Versionen von quarto und flextable noch nicht reibungslos, es gibt aber einen <a href="https://github.com/quarto-dev/quarto-cli/issues/1556">workaround</a>.</p>
+<p>Statt mit @tbl-table müssen wir die Tabelle mit einem Call an das <code>officer</code>-Paket im Text referenzieren. Sonst ist das Format aber ähnlich, wie in <a href="#fig-tabChunk">Abbildung&nbsp;<span>4.8</span></a> zu sehen ist..</p>
+<div id="fig-tabChunk" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/reference_table.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.8: Chunk-Optionen für Tabellen</figcaption>
+</figure>
+</div>
+<p>Der Output des so angepassten Skripts ist in <a href="#fig-forthRender">Abbildung&nbsp;<span>4.9</span></a> zu sehen.</p>
+<div id="fig-forthRender" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/forth_render.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.9: Ergebnis mit Corss-Referenzen</figcaption>
+</figure>
+</div>
+<p>Offensichtlich funktioniert auch der Workaround noch nicht perfekt - das Problem ist aber bekannt.</p>
+<p>In dem Beispiel haben wir aber einen weiteren Vorteil von Quarto gesehen: <a href="@sec-inline">Inline Code-Chunks</a></p>
 </section>
-<section id="abschnitt-4-methodenteil-in-quarto" class="level3">
-<h3 class="anchored" data-anchor-id="abschnitt-4-methodenteil-in-quarto">Abschnitt 4: Methodenteil in <code>quarto</code></h3>
-<p>Dieser Abschnitt beschäftigt sich mit der Erstellung von Textabschnitten oder ganzer Arbeiten mit <code>quarto</code>, dem Texterstellungs-Framework, das von Posit zur direkten Erstellung von Texten in RStudio unterstützt wird.</p>
-<p>Am Ende dieses Abschnittes sollten Leser in der Lage sein quarto-Dokumente zu erstellen, ihre Auswertung in Code-chunks durchführen können und die Ergebnisse in pdf und word exportieren können.</p>
+<section id="sec-inline" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-inline"><span class="header-section-number">4.4</span> Inline Code-Chunks</h2>
+<p>Im Fließtext kann mit der folgenden Syntax auf R zugegriffen und Output generiert werden:</p>
+<pre><code>`r &lt;some code&gt;`</code></pre>
+<p>Wozu ist das nützlich? Wir können so einfach statistische Kennwerte ohne sie kopieren zu müssen in den Text einflißen lassen! Und jedes mal wenn das Ergebnis erstellt wird, werden die Werte neu berechnet. So kann keine Aktualisierung vergessen werden.</p>
+<p>Wir könnten unserem Beispiel-File so beispielsweise eine Stichprobenbeschreibung hinzufügen, wie in <a href="#fig-inlineCode">Abbildung&nbsp;<span>4.10</span></a> zu sehen ist.</p>
+<div id="fig-inlineCode" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/inlineChunks.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.10: Inline Chunk</figcaption>
+</figure>
+</div>
+<p>Die Ergebnisse im docx können in <a href="#fig-inlineRes">Abbildung&nbsp;<span>4.11</span></a> gesehen werden.</p>
+<div id="fig-inlineRes" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../imgs/inline_results.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abb&nbsp;4.11: Gerendertes Ergebnis der Inline-Chunks</figcaption>
+</figure>
+</div>
+<p>Das hier gezeigte Beispiel ist auch im <a href="https://github.com/MBrede/r_thesis_tools/blob/main/example.qmd">Repo des Skripts</a> zugänglich.</p>
+</section>
+<section id="aufgabe" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">4.5</span> Aufgabe</h2>
+<ol type="1">
+<li><p>Übertrage Deine Ergebnisse aus den anderen Aufgaben in ein <code>quarto</code>-Dokument</p></li>
+<li><p>Beschrifte alle Grafiken und Tabellen.</p></li>
+<li><p>Render das Dokument als <code>docx</code>.</p></li>
+</ol>
+</section>
+<section id="zusammenarbeit" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="zusammenarbeit"><span class="header-section-number">4.6</span> Zusammenarbeit</h2>
+<p>Der größte Nachteil an Quarto ist der etwas umständlichere Workflow beim Kommentieren und Zusammenarbeiten als das in Word möglich ist.</p>
+<p>Die Dokumente können zwar immer in word gerendert und dann ausgetauscht werden, etwaige Anmerkungen können aber nicht direkt in Quarto eingepflegt werden.</p>
+<p>Unter <a href="https://mbrede.github.io/blog/academic_collaboration_using_markdown_github/">diesem Link</a> findet Ihr aber eine Anleitung, wie man die Zusammenarbeit über git ermöglichen kann.</p>
 
 
 </section>
-</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>What you see is what you get<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -463,13 +583,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./tables.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prep.html" class="pagination-link">
-        <span class="nav-page-text">Voraussetzungen</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
