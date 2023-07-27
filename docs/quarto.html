@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="-1">
-    <h2 id="toc-title"><img src="../imgs/hacker_penguin.png" class="img-fluid" style="width:80.0%"><br> Quarto</h2>
+    <h2 id="toc-title"><img src="imgs/hacker_penguin.png" class="img-fluid" style="width:80.0%"><br> Quarto</h2>
    
   <ul class="collapse">
   <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link active" data-scroll-target="#code-chunks"><span class="header-section-number">4.1</span> Code-chunks</a></li>
@@ -192,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In RStudio kann über File -&gt; New File -&gt; Quarto Document ein neues Dokument erstellt werden. Daraufhin öffnet sich ein Dialog, in dem Einstellungen für das Dokument getroffen werden.</p>
 <div id="fig-quartoDialogue" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/quarto_dialogue.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/quarto_dialogue.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.1: Quarto-Dialog</figcaption>
 </figure>
 </div>
@@ -200,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Das neu erstellte Dokument wird (ab RStudio 1.4) als Standard im visuellen Editor geöffnet.</p>
 <div id="fig-newQuarto" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/new_quarto.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/new_quarto.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.2: Neu erstelltes Quarto-Dokument</figcaption>
 </figure>
 </div>
@@ -214,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Dazu kann mit der “Insert new code chunk”-Schaltfläche (1 in <a href="#fig-insert">Abbildung&nbsp;<span>4.3</span></a>) oben rechts oder <code>Strg + Alt + I</code> ein neuer Chunk eingefügt werden, der an die Cursor-Stelle im Dokument eingefügt wird (2).</p>
 <div id="fig-insert" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/new_chunk.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/new_chunk.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.3: Neuen Chunk erstellen.</figcaption>
 </figure>
 </div>
@@ -223,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="column" style="width:50%;">
 <div id="fig-filledAnalysis" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/filled_chunks.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/filled_chunks.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.4: Code Chunks mit bisherigen Analysen.</figcaption>
 </figure>
 </div>
@@ -247,7 +247,7 @@ fig-dpi: 300 # setzt alle plots auf 300 dpi</code></pre>
 <p>Nach Klick auf “Render” kann ich neben dem erstellten qmd-file das in <a href="#fig-firstODT">Abbildung&nbsp;<span>4.5</span></a> abgebildete Dokument finden.</p>
 <div id="fig-firstODT" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/fst_odt_output.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/fst_odt_output.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.5: Erstes Render-Ergebnis.</figcaption>
 </figure>
 </div>
@@ -257,7 +257,7 @@ fig-dpi: 300 # setzt alle plots auf 300 dpi</code></pre>
   warning: false
   message: false</code></pre>
 <p>Was zu folgendem Output führt:</p>
-<p><img src="../imgs/snd_odt_output.png" id="fig-secondODT" class="img-fluid" alt="Ergebnis ohne Nachrichten."> Schon viel besser, für einen Methodenteil stört aber noch der Code zwischen den Outputs. Um das rausschreiben der Chunks zu unterdrücken ergänzen wir nur noch <code>echo: false</code> um bei folgendem vollständigen Header zu enden:</p>
+<p><img src="imgs/snd_odt_output.png" id="fig-secondODT" class="img-fluid" alt="Ergebnis ohne Nachrichten."> Schon viel besser, für einen Methodenteil stört aber noch der Code zwischen den Outputs. Um das rausschreiben der Chunks zu unterdrücken ergänzen wir nur noch <code>echo: false</code> um bei folgendem vollständigen Header zu enden:</p>
 <pre><code>title: "Methoden"
 editor: visual
 format: docx
@@ -270,7 +270,7 @@ execute:
 <p>Und schon ist das Ergebnis nicht mehr allzu schlecht:</p>
 <div id="fig-secondODT" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/thrd_odt_output.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/thrd_odt_output.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.6: Ergebnis ohne Chunks</figcaption>
 </figure>
 </div>
@@ -282,7 +282,7 @@ execute:
 <p>Um eine Grafik zu beschriften und im Text referenzierbar zu machen,müssen wir zwei Optionen für den Chunk setzten: <code>label</code> und <code>fig-cap</code>. In <a href="#fig-figChunk">Abbildung&nbsp;<span>4.7</span></a> ist ein Beispiel wie das aussehen könnte. Die Chunk-Optionen werden dabei immer durch ein so genanntes “pipe-comment” eingeleitet.</p>
 <div id="fig-figChunk" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/reference_figure.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/reference_figure.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.7: Chunk-Optionen für Grafiken</figcaption>
 </figure>
 </div>
@@ -291,14 +291,14 @@ execute:
 <p>Statt mit @tbl-table müssen wir die Tabelle mit einem Call an das <code>officer</code>-Paket im Text referenzieren. Sonst ist das Format aber ähnlich, wie in <a href="#fig-tabChunk">Abbildung&nbsp;<span>4.8</span></a> zu sehen ist..</p>
 <div id="fig-tabChunk" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/reference_table.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/reference_table.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.8: Chunk-Optionen für Tabellen</figcaption>
 </figure>
 </div>
 <p>Der Output des so angepassten Skripts ist in <a href="#fig-forthRender">Abbildung&nbsp;<span>4.9</span></a> zu sehen.</p>
 <div id="fig-forthRender" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/forth_render.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/forth_render.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.9: Ergebnis mit Corss-Referenzen</figcaption>
 </figure>
 </div>
@@ -313,14 +313,14 @@ execute:
 <p>Wir könnten unserem Beispiel-File so beispielsweise eine Stichprobenbeschreibung hinzufügen, wie in <a href="#fig-inlineCode">Abbildung&nbsp;<span>4.10</span></a> zu sehen ist.</p>
 <div id="fig-inlineCode" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/inlineChunks.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/inlineChunks.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.10: Inline Chunk</figcaption>
 </figure>
 </div>
 <p>Die Ergebnisse im docx können in <a href="#fig-inlineRes">Abbildung&nbsp;<span>4.11</span></a> gesehen werden.</p>
 <div id="fig-inlineRes" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="../imgs/inline_results.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/inline_results.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Abb&nbsp;4.11: Gerendertes Ergebnis der Inline-Chunks</figcaption>
 </figure>
 </div>

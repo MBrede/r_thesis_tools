@@ -209,7 +209,7 @@ div.csl-indent {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="-1">
-    <h2 id="toc-title"><img src="../imgs/grid_penguin.png" class="img-fluid" style="width:80.0%"><br> ggplot2</h2>
+    <h2 id="toc-title"><img src="imgs/grid_penguin.png" class="img-fluid" style="width:80.0%"><br> ggplot2</h2>
    
   <ul class="collapse">
   <li><a href="#grammar-of-graphics" id="toc-grammar-of-graphics" class="nav-link active" data-scroll-target="#grammar-of-graphics"><span class="header-section-number">2.1</span> Grammar of graphics</a></li>
@@ -275,7 +275,7 @@ div.csl-indent {
 <div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/palmer_penguins.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="imgs/palmer_penguins.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption class="figure-caption">Pinguine im Eis</figcaption>
 </figure>
 </div>
@@ -507,7 +507,7 @@ div.csl-indent {
 <p>Aus Julias Folien<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> kommt folgende Checkliste für APA-Grafiken:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/apa_graphs.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/apa_graphs.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Screenshot der APA-Checkliste</figcaption>
 </figure>
 </div>
@@ -702,7 +702,7 @@ div.csl-indent {
 <span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">shape =</span> <span class="st">'Aggregations-Niveau'</span>)</span>
 <span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p,</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'../imgs/penguin_scatter.png'</span>,</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'imgs/penguin_scatter.png'</span>,</span>
 <span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="fl">6.56</span>,<span class="at">units =</span> <span class="st">'in'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Saving 6.56 x 5 in image</code></pre>
@@ -712,7 +712,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Der Export sieht so aus:</p>
-<p><img src="../imgs/penguin_scatter.png" class="img-fluid" alt="Exportierte Grafik"> Erstens können wir schonmal feststellen dass die Grafik ruhig schmaler werden kann. Die Export-Funktion hat uns eine Höhe von 6.74 Inches mitgeteilt, das können wir ruhig auf 4 inches reduzieren.</p>
+<p><img src="imgs/penguin_scatter.png" class="img-fluid" alt="Exportierte Grafik"> Erstens können wir schonmal feststellen dass die Grafik ruhig schmaler werden kann. Die Export-Funktion hat uns eine Höhe von 6.74 Inches mitgeteilt, das können wir ruhig auf 4 inches reduzieren.</p>
 <p>Zweitens ist die Legende ein bisschen kaputt gegangen.</p>
 <p>Dazu gibt es vier Möglichkeiten zur Anpassung:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -725,7 +725,7 @@ div.csl-indent {
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">shape =</span> <span class="fu">guide_legend</span>(<span class="at">nrow =</span> <span class="dv">2</span>))</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p_linebreaks,</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'../imgs/penguin_scatter_linebreaks.png'</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'imgs/penguin_scatter_linebreaks.png'</span>,</span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="fl">6.56</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">'in'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
@@ -733,7 +733,7 @@ div.csl-indent {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/penguin_scatter_linebreaks.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/penguin_scatter_linebreaks.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Grafik mit Legende mit Linebreaks</figcaption>
 </figure>
 </div>
@@ -745,7 +745,7 @@ div.csl-indent {
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">colour =</span> <span class="st">'darkgrey'</span>))</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p_smaller_text,</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'../imgs/penguin_scatter_smaller_text.png'</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'imgs/penguin_scatter_smaller_text.png'</span>,</span>
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="fl">6.56</span>, <span class="at">height =</span> <span class="dv">4</span>,<span class="at">units =</span> <span class="st">'in'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
@@ -753,7 +753,7 @@ div.csl-indent {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/penguin_scatter_smaller_text.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/penguin_scatter_smaller_text.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Grafik mit kleineren Legenden-Überschriften</figcaption>
 </figure>
 </div>
@@ -772,7 +772,7 @@ div.csl-indent {
 <span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="fu">rgb</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,.<span class="dv">5</span>)))</span>
 <span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> p_legend_in_plot,</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'../imgs/penguin_scatter_legend_in_plot.png'</span>,</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">filename =</span> <span class="st">'imgs/penguin_scatter_legend_in_plot.png'</span>,</span>
 <span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="fl">6.56</span>, <span class="at">height =</span> <span class="dv">4</span>,<span class="at">units =</span> <span class="st">'in'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
@@ -780,7 +780,7 @@ div.csl-indent {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../imgs/penguin_scatter_legend_in_plot.png" class="img-fluid figure-img"></p>
+<p><img src="imgs/penguin_scatter_legend_in_plot.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Grafik mit Legende in plot-Region</figcaption>
 </figure>
 </div>

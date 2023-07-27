@@ -1,5 +1,5 @@
 ---
-toc-title: '![](../imgs/hacker_penguin.png){width=80%}<br> Quarto'
+toc-title: '![](imgs/hacker_penguin.png){width=80%}<br> Quarto'
 kernel: knitr
 ---
 
@@ -12,13 +12,13 @@ Dabei ist neben der direkten Einbindung von Auswertungen in das Dokument der gro
 In RStudio kann über File -> New File -> Quarto Document ein neues Dokument erstellt werden.
 Daraufhin öffnet sich ein Dialog, in dem Einstellungen für das Dokument getroffen werden.
 
-![Quarto-Dialog](../imgs/quarto_dialogue.png){#fig-quartoDialogue}
+![Quarto-Dialog](imgs/quarto_dialogue.png){#fig-quartoDialogue}
 
 Die Felder können erstmal ruhig so gelassen werden wie sie sind, alle Einstellungen lassen sich auch im Nachhinein anpassen.
 
 Das neu erstellte Dokument wird (ab RStudio 1.4) als Standard im visuellen Editor geöffnet.
 
-![Neu erstelltes Quarto-Dokument](../imgs/new_quarto.png){#fig-newQuarto}
+![Neu erstelltes Quarto-Dokument](imgs/new_quarto.png){#fig-newQuarto}
 
 Quarto-Dokumente basieren auf zwei Teilen, die in einem file oder getrennt voneinander existieren können. Der erste Teil der der sogenannte YAML-Header(1 in @fig-newQuarto), der die Parameter zum Rendern des Dokuments definiert - der zweite Teil ist das eigentliche Dokument(2).
 
@@ -36,13 +36,13 @@ Der große Vorteil quartos ist es, dass wir Code-chunks im Dokument anlegen kön
 
 Dazu kann mit der "Insert new code chunk"-Schaltfläche (1 in @fig-insert) oben rechts oder `Strg + Alt + I` ein neuer Chunk eingefügt werden, der an die Cursor-Stelle im Dokument eingefügt wird (2).
 
-![Neuen Chunk erstellen.](../imgs/new_chunk.png){#fig-insert}
+![Neuen Chunk erstellen.](imgs/new_chunk.png){#fig-insert}
 
 In der ersten Zeile des neuen Chunks steht die Sprache. In den Chunk kann dann wie in ein R-Skript Code eingefügt werden.
 
 :::: {.columns}
 :::{.column width="50%"}
-![Code Chunks mit bisherigen Analysen.](../imgs/filled_chunks.png){#fig-filledAnalysis}
+![Code Chunks mit bisherigen Analysen.](imgs/filled_chunks.png){#fig-filledAnalysis}
 :::
 :::{.column width="50%"}
 In @fig-filledAnalysis ist das neue file mit dem Code für die letzte Tabelle aus @sec-tables und der Beispielgrafik aus @sec-ggplot eingefügt.
@@ -75,7 +75,7 @@ fig-dpi: 300 # setzt alle plots auf 300 dpi
 
 Nach Klick auf "Render" kann ich neben dem erstellten qmd-file das in @fig-firstODT abgebildete Dokument finden.
 
-![Erstes Render-Ergebnis.](../imgs/fst_odt_output.png){#fig-firstODT}
+![Erstes Render-Ergebnis.](imgs/fst_odt_output.png){#fig-firstODT}
 
 Der Output der Chunks wurde also erfolgreich in das Dokument übergeben, ich brauche aber die ganzen messages nicht.
 
@@ -89,7 +89,7 @@ execute:
 
 Was zu folgendem Output führt:
 
-![Ergebnis ohne Nachrichten.](../imgs/snd_odt_output.png){#fig-secondODT}
+![Ergebnis ohne Nachrichten.](imgs/snd_odt_output.png){#fig-secondODT}
 Schon viel besser, für einen Methodenteil stört aber noch der Code zwischen den Outputs. Um das rausschreiben der Chunks zu unterdrücken ergänzen wir nur noch `echo: false` um bei folgendem vollständigen Header zu enden:
 ```
 title: "Methoden"
@@ -105,7 +105,7 @@ execute:
 
 Und schon ist das Ergebnis nicht mehr allzu schlecht:
 
-![Ergebnis ohne Chunks](../imgs/thrd_odt_output.png){#fig-secondODT}
+![Ergebnis ohne Chunks](imgs/thrd_odt_output.png){#fig-secondODT}
 
 ## Code-Chunk-Optionen
 
@@ -116,7 +116,7 @@ Auf der quarto-Seite gibt es einen Überblick über [alle Optionen](https://quar
 Um eine Grafik zu beschriften und im Text referenzierbar zu machen,müssen wir zwei Optionen für den Chunk setzten:
 `label` und `fig-cap`. In @fig-figChunk ist ein Beispiel wie das aussehen könnte. Die Chunk-Optionen werden dabei immer durch ein so genanntes "pipe-comment" eingeleitet.
 
-![Chunk-Optionen für Grafiken](../imgs/reference_figure.png){#fig-figChunk}
+![Chunk-Optionen für Grafiken](imgs/reference_figure.png){#fig-figChunk}
 
 Im text können wir die Grafik dann mit \@fig-scatter referenzieren. Das label für Grafiken muss dabei durch "fig-" eingeleitet und referenziert werden, sonst schlägt die Formatierung fehl.
 
@@ -124,11 +124,11 @@ Im text können wir die Grafik dann mit \@fig-scatter referenzieren. Das label f
 
 Statt mit \@tbl-table müssen wir die Tabelle mit einem Call an das `officer`-Paket im Text referenzieren. Sonst ist das Format aber ähnlich, wie in @fig-tabChunk zu sehen ist..
 
-![Chunk-Optionen für Tabellen](../imgs/reference_table.png){#fig-tabChunk}
+![Chunk-Optionen für Tabellen](imgs/reference_table.png){#fig-tabChunk}
 
 Der Output des so angepassten Skripts ist in @fig-forthRender zu sehen.
 
-![Ergebnis mit Corss-Referenzen](../imgs/forth_render.png){#fig-forthRender}
+![Ergebnis mit Corss-Referenzen](imgs/forth_render.png){#fig-forthRender}
 
 Offensichtlich funktioniert auch der Workaround noch nicht perfekt - das Problem ist aber bekannt.
 
@@ -148,11 +148,11 @@ Wozu ist das nützlich? Wir können so einfach statistische Kennwerte ohne sie k
 
 Wir könnten unserem Beispiel-File so beispielsweise eine Stichprobenbeschreibung hinzufügen, wie in @fig-inlineCode zu sehen ist.
 
-![Inline Chunk](../imgs/inlineChunks.png){#fig-inlineCode}
+![Inline Chunk](imgs/inlineChunks.png){#fig-inlineCode}
 
 Die Ergebnisse im docx können in @fig-inlineRes gesehen werden.
 
-![Gerendertes Ergebnis der Inline-Chunks](../imgs/inline_results.png){#fig-inlineRes}
+![Gerendertes Ergebnis der Inline-Chunks](imgs/inline_results.png){#fig-inlineRes}
 
 
 Das hier gezeigte Beispiel ist auch im [Repo des Skripts](https://github.com/MBrede/r_thesis_tools/blob/main/example.qmd) zugänglich.

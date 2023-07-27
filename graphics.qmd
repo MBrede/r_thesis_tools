@@ -1,5 +1,5 @@
 ---
-toc-title: '![](../imgs/grid_penguin.png){width=80%}<br> ggplot2'
+toc-title: '![](imgs/grid_penguin.png){width=80%}<br> ggplot2'
 ---
 
 # Die *Grammar of graphics* und `ggplot2` {#sec-ggplot}
@@ -41,7 +41,7 @@ Wir müssen für einen Plot also überlegen:
 :::: {.columns}
 
 ::: {.column width="40%"}
-![Pinguine im Eis](../imgs/palmer_penguins.png){width=80%}
+![Pinguine im Eis](imgs/palmer_penguins.png){width=80%}
 :::
 
 ::: {.column width="60%"}
@@ -234,7 +234,7 @@ palmerpenguins::penguins %>%
 
 Aus Julias Folien^[Danke [Julia](https://www.methoden.psychologie.uni-kiel.de/de/team/julia-liss)!] kommt folgende Checkliste für APA-Grafiken:
 
-![Screenshot der APA-Checkliste](../imgs/apa_graphs.png)
+![Screenshot der APA-Checkliste](imgs/apa_graphs.png)
 
 Wir müssen also noch
 
@@ -409,14 +409,14 @@ p <- palmerpenguins::penguins %>%
        shape = 'Aggregations-Niveau')
 
 ggsave(plot = p,
-       filename = '../imgs/penguin_scatter.png',
+       filename = 'imgs/penguin_scatter.png',
        width = 6.56,units = 'in')
 ```
 
 
 Der Export sieht so aus:
 
-![Exportierte Grafik](../imgs/penguin_scatter.png)
+![Exportierte Grafik](imgs/penguin_scatter.png)
 Erstens können wir schonmal feststellen dass die Grafik ruhig schmaler werden kann. Die Export-Funktion hat uns eine Höhe von 6.74 Inches mitgeteilt, das können wir ruhig auf 4 inches reduzieren.
 
 Zweitens ist die Legende ein bisschen kaputt gegangen.
@@ -433,11 +433,11 @@ p_linebreaks <- p +
          shape = guide_legend(nrow = 2))
 
 ggsave(plot = p_linebreaks,
-       filename = '../imgs/penguin_scatter_linebreaks.png',
+       filename = 'imgs/penguin_scatter_linebreaks.png',
        width = 6.56, height = 4, units = 'in')
 ```
 
-![Grafik mit Legende mit Linebreaks](../imgs/penguin_scatter_linebreaks.png)
+![Grafik mit Legende mit Linebreaks](imgs/penguin_scatter_linebreaks.png)
 
 
 ### Legende mit kleinerem Text
@@ -448,11 +448,11 @@ p_smaller_text <- p +
                                     colour = 'darkgrey'))
 
 ggsave(plot = p_smaller_text,
-       filename = '../imgs/penguin_scatter_smaller_text.png',
+       filename = 'imgs/penguin_scatter_smaller_text.png',
        width = 6.56, height = 4,units = 'in')
 ```
 
-![Grafik mit kleineren Legenden-Überschriften](../imgs/penguin_scatter_smaller_text.png)
+![Grafik mit kleineren Legenden-Überschriften](imgs/penguin_scatter_smaller_text.png)
 
 ### Legende im Graphen
 
@@ -469,11 +469,11 @@ p_legend_in_plot <- p +
     legend.key = element_rect(fill = rgb(1,1,1,.5)))
 
 ggsave(plot = p_legend_in_plot,
-       filename = '../imgs/penguin_scatter_legend_in_plot.png',
+       filename = 'imgs/penguin_scatter_legend_in_plot.png',
        width = 6.56, height = 4,units = 'in')
 ```
 
-![Grafik mit Legende in plot-Region](../imgs/penguin_scatter_legend_in_plot.png)
+![Grafik mit Legende in plot-Region](imgs/penguin_scatter_legend_in_plot.png)
 
 :::
 
