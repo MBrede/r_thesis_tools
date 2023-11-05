@@ -1,0 +1,274 @@
+---
+toc-title: '![](imgs/penguin_searching.png){width=80%}<br> Literatur finden'
+execute:
+  echo: false
+  warning: false
+---
+
+# Literatur finden {#sec-finding}
+
+## Ohne Startpunkt
+
+Manchmal muss Literatur gesucht werden, ohne dass es ein Paper, einen Autoren oder eine Arbeit gibt, die als Ursprungspunkt für die Suche genutzt werden kann.
+
+Zu dieser Art der Suche wurden in der Umfrage die in @fig-fstQuestion zusehenden groben Antwort-Kategorien angegeben.
+
+```{r}
+#| label: fig-fstQuestion
+#| fig-cap: Grobe Kategorisierung der Antworten auf die erste Frage.
+
+library(ggplot2)
+library(dplyr)
+ggplot(tibble(n = c(6, 2, 3, 2),
+              Strategie = factor(c('Google Scholar', 'Datenbanken', 'Lehr-/Handbücher', 'Übersichtsartikel'), 
+                                 levels = c('Google Scholar', 'Lehr-/Handbücher', 'Datenbanken', 'Übersichtsartikel')))) +
+  geom_col(aes(x = Strategie, y = n, fill = Strategie)) +
+  MetBrewer::scale_fill_met_d(name = 'Veronese') +
+  KITra::theme_KITra() +
+  theme(legend.position = 'none') +
+  coord_flip() +
+  labs(x = '', y = 'Nennungen')
+```
+
+Mit den groben Kategorien sind die folgenden ungefähren Vorgehensweisen gemeint:
+
+1. **Google Scholar**: Die Suche des groben Themas in der [akademischen Version](https://scholar.google.com/) der beliebten Suchmaschine
+
+2. **Lehr-/Handbücher**: Wenn schon aus dem Studium o.ä. bekannt ist, in welchem groben Themenbereich das Objekt der Suche einzuordnen ist, schadet es nicht, in entsprechenden Lehrbüchern nachzuschlagen. Die Infos sind dann aber wahrscheinlich nicht die aktuellsten.
+
+3. **Datenbanken**: Hiermit sind die gängigen Datenbanken zur Suche von Literatur gemeint, in @tbl-dbs findet Ihr eine (nicht vollständige) Übersicht über Datenbanken und andere Quellen. Bei grober Themen-Suche muss aber darauf geachtet werden, dass je nach Datenbank nicht unbedingt Synonyme mit gesucht werden.
+
+4. **Übersichtsartikel**: Dieser Punkt ist nicht ohne 1 und 3 zu denken, beide Such-Möglichkeiten bieten aber die Möglichkeit, Übersichtsartikel als Suchkriterium einzustellen.
+
+```{r}
+#| output: asis
+#| label: tbl-dbs
+#| tbl-cap: Übersicht über Datenquellen. Das große Werbeargument zumindest der komerziellen Datenbanken ist ihr Redaktionsprozess. Quellen werden also auf ihre Tauglichkeit überprüft, bevor sie aufgenommen werden. Bei Crossref und OpenAlex reicht das Vorhandensein eines Identifiers. Google Scholar und Researchgate haben (zumindest nicht transparent) Auswahlprozesse für gelistete Arbeiten.
+
+links = c(
+  "https://dbis.ur.de/dbinfo/warpto.php?bib_id=ubk&color=2&titel_id=149&url=http%3A%2F%2Fovidsp.ovid.com%2Fovidweb.cgi%3FT%3DJS%26MODE%3Dovid%26PAGE%3Dmain%26NEWS%3Dn%26DBC%3Dy%26D%3Dpsyh",
+                "https://dbis.ur.de/dbinfo/warpto.php?bib_id=ubk&color=2&titel_id=7197&url=http%3A%2F%2Fovidsp.ovid.com%2Fovidweb.cgi%3FT%3DJS%26MODE%3Dovid%26PAGE%3Dmain%26NEWS%3Dn%26DBC%3Dy%26D%3Dpsyn",
+                "https://pubmed.ncbi.nlm.nih.gov/",
+                "https://openalex.org/",
+                "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+                "https://www.scopus.com/home.uri",
+                "https://app.dimensions.ai/discover/publication",
+                "https://apps.webofknowledge.com/WOS_GeneralSearch_input.do?product=WOS&search_mode=GeneralSearch&SID=C38mwHQknTLMYtLF4kt&preferencesSaved=",
+  "https://scholar.google.com",
+  "https://researchgate.net"
+)
+tibble(Name = c("APA PsycInfo",
+                "PSYNDEXplus Literature and Audiovisual Media",
+                "Pubmed",
+                "OpenAlex",
+                "Crossref",
+                "Scopus",
+                "Dimensions",
+                "Web of Science",
+                "Google Scholar",
+                "Researchgate"),
+       Scope = c("Datenbank der APA - hauptsächlich psychologische Fachartikel",
+                 "Datenbank des ZPID - deutschsprachig-psychologische Fachliteratur",
+                 "Datenbank des NCBI der US - Biologie, Medizin, für Psychologen vor allem interessant: klinische und Neuropsychologie",
+                 "Offene Sammlung von Forschungsarbeiten - (Fast) alle Forschungsbereiche",
+                 "Offene Sammlung von Forschungsarbeiten - (Fast) alle Forschungsbereiche",
+                 "Datenbank von Elsevier - (Fast) alle Forschungsbereiche",
+                 "Datenbank von Digital Science - (Fast) alle Forschungsbereiche",
+                 "Datenbank von Clarivate - (Fast) alle Forschungsbereiche",
+                 "Suchmaschine von Google - Alle Forschungsbereiche",
+                 "Akademisches soziales Netzwerk - Alle Forschungsbereiche"),
+       "Open Data" = c("Nein","Nein", 'Ja', "Ja", "Ja (über API)", "Nein", "Nein", "Nein", "Nein", "Nein"),
+       "Zugang aus Uninetz/mit Uni-Account" =  c("Ja","Ja", '', "", "", "Ja", "Frei für private Nutzung", "Ja", "Nutzung kostenlos", "Nutzung kostenlos")) |> 
+  mutate(Name = paste0('[', Name, '](', links, ')')) |> 
+  kableExtra::kbl(format = 'markdown')
+```
+
+
+Das genaue Item in der Umfrage war hier "Wenn ich zu einem groben Thema recherchiere, wenn ich also zum Beispiel weiß, dass mich der Zusammenhang von Intelligenz und Schokolade interessiert, gehe ich wie folgt vor:".
+
+Ein paar der Antworten zu den einzelnen Strategien waren über die allgemeine Beschreibung als Tipps sehr hilfreich, zum Beispiel die folgende zu Google Scholar:
+
+> Begriffe (bspw. Schokolade, Intelligenz) auf Englisch und mit möglichst vielen Synonymen in Suchmaschinen eingeben (u.a. Google Scholar, Universitätsbibliothek)
+
+Zu den Datenbanken ist folgendes Beispiel zum Einsatz von logischen Operatoren außerdem sehr hilfreich:
+
+> ich suche in verschiedenen Datenbanken nach: "Zusammenhang" AND "Intelligenz" AND "Schokolade". Bei zu wenigen Ergebnissen mache ich meine Suche offener, z.B. "Intelligenz" AND "Schokolade". 
+
+Je nach Datenbank wird eine Auswahl an logischen Operatoren zugelassen, für eine Anleitung zu effektiven Suchstrategien ist die [Anleitung zu Pubmed von der Johns Hopkins Universität](https://browse.welch.jhmi.edu/searching/pubmed-search-tips) ganz gut. Die Anleitung hat viele PubmMed-spezifische Punkte, die Teile 4,5 und 6 haben aber auch gute Hinweise, die sich auf andere Datenbanken generalisieren lassen.
+
+Außerdem wurde in der Umfrage die etwas engere Frage gestellt, wie vorgegangen wird, wenn schon spezifische Schlagworte, die für das Thema relevant sind, bekannt sind.
+
+Dazu waren die folgenden Hinweise ergänzend zu den bisher genannten Punkten noch sehr hilfreich:
+
+> [...] Falls ich weiß, dass ein bestimmtes Journal häufiger Studien zu diesem Thema veröffentlicht, suche ich gezielt auf den Webseiten (z.B. JSTOR, PubMed, etc.) nach dem Journal und Keywords oder nutze die Wortsuche. Sollte ich auch noch eine Jahresgrenze habe, würde ich danach filtern. 
+
+Und ein Tool genannt, das ich zumindest nicht kannte:
+
+>Ich suche nach den Autoren und Stichpunkten um das Paper zu finden. Zum Teil verwende ich connected papers.
+
+Zu Connected Papers später mehr.
+Zuerst könnt Ihr aber versuchen die Aufgabe aus dem Fragebogen zu beantworten:
+
+### Aufgabe
+
+* Finde einen Übersichtsartikel, der sich mit dem Zusammenhang von Kognitiver Leistungsfähigkeit und Schokoladenkonsum auseinandersetzt.
+
+
+## Mit Startpunkt
+
+Die zumindest im Rahmen der Abschlussarbeit realistischere Situation ist aber ja die, mit einer Auswahl an Ausgangspapern zu starten.
+
+Dazu wurden in der Umfrage die Frage gestellt, wie beim Start mit einer Ausgangsarbeit vorgegangen wird. Die (wieder gruppierten) Ergebnisse sind in @fig-thrdQuestion zu sehen.
+
+```{r}
+#| label: fig-thrdQuestion
+#| fig-cap: Grobe Kategorisierung der Antworten auf die dritte Frage.
+
+ggplot(tibble(n = c(11, 3, 2, 2),
+              Strategie = factor(c('References durchgehen', 
+                                   'Andere Publikationen der Autor:innen durchgucken',
+                                   'Publikationen durchgehen, die das Paper zitiert haben',
+                                   '"Ähnliche Artikel"'), 
+                                 levels = c('References durchgehen', 
+                                   'Andere Publikationen der Autor:innen durchgucken',
+                                   'Publikationen durchgehen, die das Paper zitiert haben',
+                                   '"Ähnliche Artikel"')))) +
+  geom_col(aes(x = Strategie, y = n, fill = Strategie)) +
+  MetBrewer::scale_fill_met_d(name = 'Veronese') +
+  KITra::theme_KITra() +
+  theme(legend.position = 'none') +
+  coord_flip() +
+  labs(x = '', y = 'Nennungen')
+```
+
+
+Mit den Kategorien ist im Einzelnen das folgende gemeint:
+
+1. **References durchgehen**: Entweder beim Lesen des Papers Referenzen an relevanten Teilen raussuchen oder direkt die Literaturliste durchgehen und interessante Titel organisieren.
+
+2. **Andere Publikationen der Autor:innen durchgucken**: In Suchmaschinen oder Datenbanken nach den Autor:innen suchen und in den Publikationslisten nach anderen thematisch relevanten Publikationen suchen. 
+
+3. **Publikationen durchgehen, die das Paper zitiert haben**: Bei z.B. dem Web of Science, Google Scholar und Pubmed gibt es die Möglichkeit, sich Paper anzeigen zu lassen, die ein Ausgangspaper zitiert haben. Diese Strategie ist insbesondere hilfreich um zum Einen aktuellere Studien zum Thema zu finden, zum Anderen um sein eigenes Paper gegen aktuelle Arbeiten abzugrenzen. Beispiele hierfür sind in @fig-related mit roten Pfeilen eingezeichnet.
+
+4. **"Ähnliche Artikel"**: Bei einigen der typischen Datenbanken und Scholar gibt es eine Schaltfläche um sich ähnliche oder verwandte Artikel anzeigen zu lassen. In @fig-related mit den blauen Pfeilen eingezeichnet.
+
+::: {#fig-related layout-nrow=2}
+
+![WOS](imgs/wos_citations_similar.png)
+
+![Google Scholar](imgs/scholar_citations_similar.png)
+
+![Pubmed](imgs/pubmed_citations_similar.png)
+
+Screenshots von den Schaltflächen zu Zitaten und Ähnlichen Artikeln in Web of Science, Google Scholar und Pubmed.
+:::
+
+Zu dem Item in der Umfrage waren besonders die folgende Antwort sehr interessant:
+
+> [...] Es gibt zudem Webseiten, auf denen direkt nach ähnlichen Artikeln gesucht werden kann und zusätzlich „verwandte“ Studien angezeigt werden, die sich mit einem ähnlichen Thema befasst haben.
+
+Beispiele für solche Seiten sind Digital/AI Research Assistants, die mit Hilfe von Sprachmodellen und/oder anderer Algorithmik die Literaturrecherche unterstützen. [Bei der DGI](https://dgi-info.de/artificial-intelligence-ai-research-assistants-und-ihre-bedeutung-fuer-informationsinfrastrukturen/) gibt es einen Einführungsartikel der ganz interessant ist. Der Autorengruppe geschuldet ist er vor allem auf die Implikationen für Informationsinfrastrukturen (also Bibliotheken o.ä.) ausgelegt, die Einführung ist trotzdem ganz brauchbar.
+
+Beispiele die Ihr ausprobieren könnt wären:
+
+* [Researchrabbit](https://www.researchrabbit.ai/) (Anmeldung mit E-Mailadresse erforderlich; kostenlos)
+* [Elicit](https://elicit.org/) (Anmeldung mit E-Mailadresse erforderlich; kostenlos)
+* [Inciteful](https://inciteful.xyz/) (keine Anmeldung notwendig)
+
+::: {style="background-color: #FECCA5;"}
+
+#### Ein Punkt zur Nutzung von KI-Werkzeugen
+
+Für alle KI-Werkzeuge die Ihr beim Erstellen von Arbeiten nutzt gilt immer:
+
+**Ihr seid haftbar für das Ergebnis!**
+
+Es liegt also in Eurer Verantwortung die mit KI generierten Inhalte genau zu überprüfen und anzupassen!
+
+KI-Assistenzen werden nie fehlerfrei arbeiten!
+
+:::
+
+
+Der in einem der Kommentare genannte Service [connected papers](https://www.connectedpapers.com/) ist auch ein digitaler Research Assistent - so weit ich das einsehen kann aber ohne Sprachmodell im Hintergrund.
+
+Der Service nutzt aus, dass sich Publikationen und deren Zitations-Beziehungen als mathematischer Graph darstellen lassen. Das eröffnet die Möglichkeit, zentrale Publikationen für einen Forschungsbereich über ihre Vernetzung mit den restlichen Arbeiten zu entdecken. In @fig-connectedpapers ist ein solcher Graph abgebildet.
+
+![Screenshot von connected papers.](imgs/connected_papers.png){#fig-connectedpapers}
+
+
+Solltet Ihr daran Interesse haben, kann man Zitationsgraphen übrigens auch mit R generieren, dazu gibt es [hier](https://ropensci.org/blog/2019/09/17/citecorp/) ein Beispiel wie man mit openCitations Daten sammelt und [hier](https://igraph.org/r/doc/plot.common.html) ein Beispiel wie man mit igraph einen Graphen erstellt.
+
+
+### Aufgabe
+
+1. Rufe den Übersichtsartikel über Kognitive Leistungsfähigkeit und Schokoladenkonsum noch einmal auf. Suche auf [Pubmed](https://pubmed.ncbi.nlm.nih.gov/) und [Dimensions](https://app.dimensions.ai/discover/publication) nach ähnlichen Artikeln.
+
+2. Suche auf [Open Alex](https://openalex.org/) nach einem anderen Artikel der Erstautor:in, der dich interessiert.
+
+3. Erstelle einen Graphen mit [connected papers](https://www.connectedpapers.com/) zu dem Übersichtsartikel
+
+4. Erstelle einen Graphen zum selben Artikel mit [Inciteful](https://inciteful.xyz/). Vergleiche die Graphen.
+
+
+# Fazit
+
+Es gibt einen Haufen an Datenquellen, die alle etwas andere Ausrichtungen und deutlich andere Pflege- und Listungs-Strategien aufweisen (in @fig-openalexComparison ist eine Übersicht zu sehen). Mit anderen Worten wird man je nach Quelle zu anderen Ergebnissen kommen. Das gilt sowohl für die *Quantität*, als auch für die *Qualität* der Ergebnisse.
+
+![Screenshot vom Datenquellenvergleich auf [https://openalex.org](https://openalex.org).](imgs/open_alex_comparison.png){#fig-openalexComparison}
+
+
+Die Assistenz-Werkzeuge kranken auch an diesem Problem, da sie ihre Daten aus einer der Quellen beziehen müssen. Verlasst Euch also nicht ausschließlich auf eine Anlaufstelle.
+
+In der Umfrage hat sich aber auch so ergeben, dass die meisten von Euch mehrere Quellen in Ihren Suchen mit-einbeziehen (@fig-sources).
+
+```{r}
+#| label: fig-sources
+#| fig-cap: Zusammenfassung der angegebenen genutzten Quellen
+
+library(ggplot2)
+library(dplyr)
+library(stringr)
+
+answers <- ("PsychINFO, scopus, PubMed, Web of Science, Google Scholar, Researchgate
+PsychINFO, Web of Science, Google Scholar
+PsychINFO, Google Scholar
+PsychINFO, Google Scholar, Researchgate
+PubMed, Researchgate, PsychINFO, Google Scholar
+Researchgate, PsychINFO, Google Scholar, PubMed, Publisher-Websites
+Google Scholar
+PsychINFO, Google Scholar
+Google Scholar
+Researchgate, Google Scholar
+Google Scholar, PubMed
+PsychINFO, Researchgate, PubMed, Web of Science, Google Scholar, Publisher-Websites") |> 
+  str_split('\n') |> 
+  unlist() %>%
+  tibble(Quellen = .) |> 
+  mutate(Quellen = str_split(Quellen, ',\\s?'),
+         id = as.character(seq_along(Quellen))) |> 
+  tidyr::unnest_longer(Quellen) |> 
+  mutate(Quellen = forcats::fct_reorder(Quellen, id, .fun=length))
+
+
+p1 <- answers |> 
+  ggplot() +
+    geom_bar(aes(x = Quellen, fill = Quellen)) +
+    MetBrewer::scale_fill_met_d(name = 'Veronese') +
+    KITra::theme_KITra() +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Quellen bei der Suche nach Literatur")
+
+p2 <- answers |> 
+  count(id) |> 
+  ggplot() +
+    geom_bar(aes(x = n, fill = n, group = n)) +
+    MetBrewer::scale_fill_met_c(name = 'Veronese') +
+    KITra::theme_KITra() +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    labs(x = 'Anzahl Quellen', y = 'Nennungen', caption="Anzahl an Nennungen")
+
+ggpubr::ggarrange(p1,p2, nrow=2)
+```

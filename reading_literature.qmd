@@ -1,0 +1,107 @@
+---
+toc-title: '![](imgs/realistic_laptop_penguin.png){width=80%}<br> Literatur lesen'
+execute:
+  echo: false
+  warning: false
+---
+
+# Literatur lesen
+
+Wir haben unsere Quellen jetzt gesucht, gefunden und organisiert. Bleibt nur noch das Eine oder Andere zum effizienten Lesen von Papern zu sagen.
+
+Der zentrale Punkt ist der folgende: Niemand kann alle Paper komplett lesen.
+
+Es braucht also Strategien, um die wichtigsten Teile zu finden und frühzeitig entscheiden zu können, ob das Paper für meine Arbeit relevant ist.
+
+Dazu gab es in der Umfrage folgende interessante Strategien:
+
+> Abstract --> Teil der Einleitung --> Figures/Abbildungen --> Conclusion; je nachdem, wie interessant, das Paper ist, mehr lesen/früher abbrechen
+
+Und auch:
+
+> Zuerst das Abstract, schauen, ob es passend ist, wenn ja, lese ich den für mich relevanten Teil bzw. das gesamte Paper, je nach Fragestellung
+
+Insgesamt hat aus den 12 Rückmeldungen nur eine Person angegeben, direkt das ganze Paper zu lesen.
+
+In Summe lässt sich aus den Rückmeldungen die in @fig-ReadingFlow dargestellte Strategie ableiten.
+Der wichtigste Punkt ist aber das wiederholte Einräumen von Breakpoints. Es ergibt keinen Sinn ein Paper komplett zu lesen wenn es nicht oder nur Teile für mich relevant sind.
+
+![Flowchart zum Lesen von psychologischen Artikeln](imgs/reading_flow.png){#fig-ReadingFlow width=50%}
+
+
+# Notizen machen
+
+Eine zentrales Problem, das zumindest mir in meiner akademischen Arbeit untergekommen ist, ist dass ich ein Paper lese und wenn ich ans Schreiben gehe im besten Fall noch grob weiß, wo was stand.
+
+Deswegen versuche ich inzwischen, mir beim Lesen eines Papers Notizen zu machen, die ich später wiederfinden und mit dem Paper verknüpfen kann.
+
+In der Umfrage ergab sich, dass 83% der Antwortenden auch Notizen machen, das Ausmaß und der Inhalt unterscheiden sich aber sehr deutlich.
+
+Dabei waren sich, wie in @fig-noteTools zu sehen ist, die meisten über das Tool für diesen Zweck aber einig.
+
+```{r}
+#| label: fig-noteTools
+#| fig-cap: Methoden zum Notizen machen.
+
+library(ggplot2)
+library(dplyr)
+library(stringr)
+
+answers <- ('Word
+Word
+Word
+Word
+Goodnotes/Notizapp, Text-Editor
+Zettel und Stift
+Zettel und Stift, Goodnotes/Notizapp
+Excel, Word, Goodnotes/Notizapp
+Word
+Excel') |> 
+  str_split('\n') |> 
+  unlist() %>%
+  tibble(Tool = .) |> 
+  mutate(Tool = str_split(Tool, ',\\s?'),
+         id = as.character(seq_along(Tool))) |> 
+  tidyr::unnest_longer(Tool) |> 
+  mutate(Tool = forcats::fct_reorder(Tool, id, .fun=length))
+
+
+answers |> 
+  ggplot() +
+    geom_bar(aes(x = Tool, fill = Tool)) +
+    MetBrewer::scale_fill_met_d(name = 'Veronese') +
+    KITra::theme_KITra() +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    labs(x = '', y = 'Nennungen')
+
+```
+
+Dazu haben außerdem 75% der Abstimmenden angegeben, dass sie sich Textstellen farblich markieren.
+
+Alle diese Methoden sind gut und die letzten Ergebnisse die ich gesehen habe, deuten darauf hin dass für das Lernen Notizen und Markieren gleich effizient sind [z.B.: @leonardHighlightingTakingNotes2021]
+
+Für mich hat in letzter Zeit aber ganz gut funktioniert, Teile des Zettelkasten-Systems zu übernehmen.
+
+Beim Zettelkasten-System werden (je nach Quelle ist die Beschreibung etwas unterschiedlich) "atomare" Notizen, also maximal ein-zwei Sätze lange Zusammenfassungen erstellt. Dabei ist 1. wichtig, dass eine Referenz auf den Originaltext enthalten ist, 2. dass die Zusammenfassung in eigenen Worten geschieht.
+
+Im eigentlichen Zettelkasten-Prinzip gibt es dann noch Vereinfachungsschritte und Filter-Prozesse für die Notizen, die dazu beitragen sollen den eigenen Gedanken für die eigene Arbeit zu destillieren, diesen Schritt lasse ich zumindest aber oft einfach aus.
+
+Der Vorteil beim Schreiben ist dann aber, dass ich meine Notizen direkt durchsuchen kann und mit dem Link zur Publikation die Referenz für das Argument zur Hand habe.
+
+Für dieses System bietet es sich an entweder direkt Notizen in Zotero anzulegen, die dann auch in Zotero durchsuchbar sind. Alternativ bieten sich Notiz-Apps wie [Joplin](https://joplinapp.org/) und [Obsidian](https://obsidian.md/) an, die auch eine fetzige Graph-Repräsentation der Notizen ermöglichen.
+
+
+::: {style="background-color: #dfe0df;"}
+
+##### Noch ein Hinweis
+
+Zu diesem Kapitel gilt aber noch viel mehr als zu allen Anderen:
+
+Probiert Methoden aus und behaltet die Teile für Euch, die gut funktionieren. 
+
+Notizen zu schreiben zum Beispiel ist erstmal aufwändiger, macht das Schreiben aber weniger mühselig. Sollte Euch das aber nicht stören, ist das natürlich auch gut so. Hier gibt es wirklich keine eine richtige Lösung.
+
+:::
+
+## Literatur

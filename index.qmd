@@ -1,7 +1,7 @@
 ---
 toc-title: '![](imgs/penguin_data_presentation.png){width=80%}<br> Einführung'
 ---
-# Vorwort {.unnumbered}
+# Vorwort
 
 ```{r setup}
 #| include: false
@@ -10,33 +10,55 @@ library(tidyverse)
 ```
 
 
-Dieses mit `quarto` erstellte Dokument wurde als Crashkurs zur Nutzung von R zur Auswertung in Abschlussarbeiten im Rahmen des Betreuungskolloquiums der Abteilung für Psychologische Methodenlehre der CAU zu Kiel erstellt.
+Dieses mit `quarto` erstellte Dokument wurde als Sammlung von Vorschlägen und Tipps zur Erstellung von Abschlussarbeiten im Rahmen des Betreuungskolloquiums der Abteilung für Psychologische Methodenlehre der CAU zu Kiel erstellt.
 
 ## Lernziele {.unnumbered}
 
-### Abschnitt 1: Import und Aufbereitung von Psychopy-Daten
+### Literaturrecherche
+
+#### Literatur finden
+
+In diesem Abschnitt wird ein kurzer Abriss über Strategien zur Suche von Literatur gegeben.
+
+Nach dem Lesen des Abschnitts sollten Leser:innen dazu in der Lage sein, Suchmaschinen und Literatur-Datenbanken zu ihrem Vorteil zu nutzen, um Literatur zu einem Thema zu suchen und weitergehende Literatur zu sammeln.
+
+#### Literatur sammeln
+
+Dieser Abschnitt gibt einen Überblick über die möglichen Quellen für Literatur und eine Einführung in Literaturverwaltungsprogramme anhand von Zotero als Beispiel.
+
+Mit diesem Abschnitt wird versucht, den Leser:innen eine Auswahl an Literaturquellen zugänglich zu machen. Außerdem sollen Leser:innen die Vorteile von Literaturverwaltungsprogrammen verstehen und wissen, warum sie diese einsetzen sollten.
+
+
+#### Literatur lesen
+
+Als Abschluss zur Literaturrecherche wird in diesem Abschnitt auf Strategien zum effizienten Lesen psychologischer Forschungsartikel eingegangen. Außerdem geht das Kapitel auf Strategien zur Erstellung von Notizen ein.
+
+Am Ende dieses Abschnittes sollten Leser:innen in der Lage sein, effizient psychologische Forschungsarbeiten zum Verschaffen eines Überblicks zu lesen.
+
+### Thesis mit R
+#### Import und Aufbereitung von Psychopy-Daten
 
 Dieser Abschnitt beschäftigt sich ausschließlich mit dem Stapel-Import eines Haufens an Dateien einzelner Proband:innen. Die Beispiele beziehen sich auch Psychopy/Pavlovia-typische Datensammlungen, können aber auch auf andere Beispiele angewandt werden.
 
 Das Lesen des Abschnittes sollte Leser:innen dazu befähigen, `purrr`- und `readr`-Funktionalitäten zu nutzen, um alle in einem Ordner vorliegenden Dateien zu importieren. 
 
-### Abschnitt 2: Grafiken mit `ggplot2`
+#### Grafiken mit `ggplot2`
 
 In diesem Abschnitt wird ein kurzer Abriss zur Auffrischung der Logik hinter der grammar of graphics präsentiert.
 Anschließend werden Beispiele für die Erstellung einiger der häufigsten Grafik-Typen gezeigt. Abschließend wird ein Überblick für potentiell interessante andere Stellen zur Referenz eingeführt.
 
-Nach diesem Abschnitt sollten Leser die grundlegenden Prinzipien zur Erstellung von Grafiken mit ggplot2 kennen und auf häufig genutzte Grafikformate anwenden können.
+Nach diesem Abschnitt sollten  die grundlegenden Prinzipien zur Erstellung von Grafiken mit ggplot2 kennen und auf häufig genutzte Grafikformate anwenden können.
 Außerdem sollte ein Überblick an möglichen anderen Stellen zur weiteren Information gewonnen sein.
 
 
-### Abschnitt 3: Erstellung von APA-konformen Tabellen
+#### Erstellung von APA-konformen Tabellen
 
 Dieser Abschnitt beschäftigt sich mit der Erstellung APA-konformer Tabellen in R. Dazu wird zum Einen auf den spezifischen Export mit `apaTables`, zum Anderen auf den flexibleren Ansatz mit `flextable` eingegangen.
 
-Nach diesem Abschnitt sollten Leser in der Lage sein, Tabellen gängiger Analysen aus R im APA-Format zu exportieren. Außerdem soll die Fähigkeit vermittelt werden, die Erstellung von APA-konformen Tabellen mit `flextable` durchzuführen.
+Nach diesem Abschnitt sollten  in der Lage sein, Tabellen gängiger Analysen aus R im APA-Format zu exportieren. Außerdem soll die Fähigkeit vermittelt werden, die Erstellung von APA-konformen Tabellen mit `flextable` durchzuführen.
 
-### Abschnitt 4: Methodenteil in `quarto`
+#### Methodenteil in `quarto`
 
 Dieser Abschnitt beschäftigt sich mit der Erstellung von Textabschnitten oder ganzer Arbeiten mit `quarto`, dem Texterstellungs-Framework, das von Posit zur direkten Erstellung von Texten in RStudio unterstützt wird. 
 
-Am Ende dieses Abschnittes sollten Leser in der Lage sein quarto-Dokumente zu erstellen, ihre Auswertung in Code-chunks durchführen können und die Ergebnisse in pdf und word exportieren können.
+Am Ende dieses Abschnittes sollten  in der Lage sein quarto-Dokumente zu erstellen, ihre Auswertung in Code-chunks durchführen können und die Ergebnisse in pdf und word exportieren können.

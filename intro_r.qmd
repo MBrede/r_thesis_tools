@@ -1,4 +1,6 @@
-# Warum dieses Skript? {.unnumbered}
+# Thesis mit R
+
+Warum R für die Thesis benutzen?
 
 1. Weil händisches Kopieren doof ist.
 

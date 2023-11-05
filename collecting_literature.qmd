@@ -1,0 +1,147 @@
+---
+toc-title: '![](imgs/penguin_taking_stock.png){width=80%}<br> Literatur sammeln'
+execute:
+  echo: false
+  warning: false
+---
+
+# Literatur sammeln
+
+Nachdem ich eine Reihe von Papern gefunden habe, die mich interessieren, muss ich diese irgendwie organisieren um sie lesen zu können.
+
+Leider hat, wie Ihr bestimmt bereits gemerkt habt, unsere Uni nicht bei allen Publishern für alle Journals einen Zugang inne.
+
+## Volltext-Versionen finden
+
+Wie kann ich also vorgehen, um ein Paper zu organisieren?
+In der Umfrage wurden die in @fig-collectTools angegebenen Wege zur Organisation von Publikationen angegeben.
+
+```{r}
+#| label: fig-collectTools
+#| fig-cap: Wege, an Literatur zu kommen.
+
+library(ggplot2)
+library(dplyr)
+library(stringr)
+
+answers <- ('Google Scholar, Researchgate, Website der Publisher, "Andere"
+Google Scholar, Researchgate, Website der Publisher, "Andere"
+Google Scholar, Website der Publisher, Universitätsbibliothek
+Google Scholar, Researchgate, Website der Publisher, "Andere", Direkt Autor anschreiben
+Google Scholar, Researchgate, Website der Publisher
+"Andere"
+Google Scholar
+Google Scholar
+Google Scholar
+Google Scholar, Researchgate, Website der Publisher
+Google Scholar
+Google Scholar, Researchgate, Website der Publisher') |> 
+  str_split('\n') |> 
+  unlist() %>%
+  tibble(Quellen = .) |> 
+  mutate(Quellen = str_split(Quellen, ',\\s?'),
+         id = as.character(seq_along(Quellen))) |> 
+  tidyr::unnest_longer(Quellen) |> 
+  mutate(Quellen = forcats::fct_reorder(Quellen, id, .fun=length))
+
+
+answers |> 
+  ggplot() +
+    geom_bar(aes(x = Quellen, fill = Quellen)) +
+    MetBrewer::scale_fill_met_d(name = 'Veronese') +
+    KITra::theme_KITra() +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    labs(x = '', y = 'Nennungen')
+
+```
+
+Mit den Punkten sind die folgenden Vorgehensweisen gemeint:
+
+1. **Google Scholar**: Wenn ein Paper in Google Scholar gefunden ist, wird oft ein Link zu einem PDF angezeigt. Ein Beispiel ist in @fig-scholarLink zu sehen. Scholar nutzt übrigens auch oft Researchgate um Links zu PDF-Versionen anzubieten.
+
+2. **Website der Publisher**: Der Trend geht immer mehr zu Open Access Formaten und manche Journals werden auch über die UB bereitgestellt. Ein Besuch der Publisher Website (geht am schnellsten mit "https://doi.org/<doi>") kann also schon zum gewünschten Ergebnis führen. OA-Paper werden aber auch schon von Google gelistet
+
+3. **Researchgate**: Viele Autor:innen laden ihre Arbeiten auf Researchgate als Volltext hoch, auch wenn das Journal eigentlich nicht OA ist.
+
+4. **Direkt Autor anschreiben**: Zuletzt funktioniert es oft, dem Kontaktautoren eine Email zu schreiben. Mit der Veröffentlichung erhalten Autor:innen bei vielen Journals eine PDF, die sie oft gern weitergeben. Über Researchgate lässt sich eine derartige Anfrage übrigens auch stellen.
+
+
+![PDF auf Google Scholar](/imgs/Scholar_Link.png){#fig-scholarLink}
+
+Neben diesen Varianten sind noch die folgenden zwei Punkte zu nennen:
+
+1. **Unpaywall**: Ein Service, der offene Zugänge zu Publikationen sammelt und [hier](https://unpaywall.org/products/extension) Browser-Extensions zur Verfügung stellt, die anzeigen, wenn ein Paper kostenfrei zugänglich ist.
+
+2. **Literaturverwaltungsprogramme**: Viele Literaturverwaltungsprogramme nutzen Verzeichnisse von offen zugänglichen Publikationen, die einfach mit einer DOI zugägnlich gemacht sind. Bei Hinzufügen einer Publikation via DOI oder Browser-Extension wird bei Zotero zum Beispiel direkt versucht, eine PDF-Version der Arbeit herunterzuladen.
+
+Gerade der letzte Punkt löst noch ein zweites Problem und zwar die Frage, wie ich den Überblick über die gesammelten Studien behalte.
+
+
+## Den Überblick behalten
+
+Nachdem wir nun interessante Paper gefunden und uns vielleicht die Volltexte organisiert haben entsteht irgendwann die Frage: Wie behalte ich den Überblick?
+
+Die Lösung dieses Problem sind Literaturverwaltungsprogramme, zu deren Nutzung in der Umfrage ein Item präsentiert wurde - die Ergebnisse sind in @fig-refManagement zu sehen.
+
+```{r}
+#| label: fig-refManagement
+#| fig-cap: In der Umfrage als genutzt angegebene Referenzmanager.
+ggplot(tibble(n = c(1, 2, 4, 7),
+              "Genutztes Tool" = factor(c('Endnote','Citavi','Zotero', 'keins'), 
+                                 levels = c('Endnote','Citavi','Zotero', 'keins')))) +
+  geom_col(aes(x = `Genutztes Tool`, y = n, fill = `Genutztes Tool`)) +
+  MetBrewer::scale_fill_met_d(name = 'Veronese') +
+  KITra::theme_KITra() +
+  theme(legend.position = 'none') +
+  coord_flip() +
+  labs(x = '', y = 'Nennungen')
+```
+
+
+Viele von Euch haben sich also noch nicht zur Nutzung durchgerungen, deswegen hier die Vorteile:
+
+* Ihr behaltet den Überblick und könnt Referenzen organisieren
+* Ihr könnt das Tool beim Suchen mit Browser-Extensions die Referenz abspeichern lassen
+* Ihr könnt Euch im Verwaltungs-Tool Tags und Notizen zu machen
+
+Und der wichtigste:
+
+* Das Tool formatiert Literaturhinweise für Euch (!)
+
+An Tools aus dieser Familie gibt es eine ganze Reihe, in @tbl-refMan sind ein paar vorgestellt. Hier nutzen wird Zotero, da es auf allen Rechnern funktioniert, geteilte Bibliotheken erlaubt und Open Source ist.
+
+```{r}
+#| output: asis
+#| label: tbl-refMan
+#| tbl-cap: Übersicht über Referenzmanager.
+
+
+links = c(
+  "https://www.zotero.org/download/",
+  "https://www.mendeley.com/",
+  "https://www.rz.uni-kiel.de/de/angebote/software/citavi/citavi",
+  "https://endnote.com/?language=en"
+)
+tibble(Name = c("Zotero",
+                "Mendeley",
+                "Citavi",
+                "Endnote"),
+       Anbieter = c("Open Source Community",
+                    "Elsevier",
+                    "Swiss Academic Software",
+                    "Clarivate"),
+       "Läuft auf" = c("allem","Windows, macOS, Linux, Android, iOS", 'Windows', "Windows, macOS"),
+       "Lizenzmodell" =  c("Open Source","Freeware", "Bezahlmodell - von CAU gestellt", "Bezahlmodell")) |> 
+  mutate(Name = paste0('[', Name, '](', links, ')')) |> 
+  kableExtra::kbl(format = 'markdown')
+```
+
+### Aufgabe
+
+1. Installiert [Zotero](https://www.zotero.org/download/) und den auf der selben Seite angebotenen Connector, sofern Ihr das noch nicht habt
+
+2. Fügt [dieses Paper](https://doi.org/10.1017/S0954102098000352) zu Eurer Sammlung hinzu
+
+3. Erstellt ein Dokument im Textverarbeitungsprogramm Eures Vertrauens, in dem Ihr das Paper zitiert. Lasst Euch eine Reference-Liste mit APA-Formatierung erstellen.
+
