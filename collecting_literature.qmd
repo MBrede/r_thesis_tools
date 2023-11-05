@@ -7,7 +7,7 @@ execute:
 
 # Literatur sammeln
 
-Nachdem ich eine Reihe von Papern gefunden habe, die mich interessieren, muss ich diese irgendwie organisieren um sie lesen zu können.
+Nachdem ich eine Reihe von Papern gefunden habe, die mich interessieren, muss ich mir diese irgendwie organisieren, um sie lesen zu können.
 
 Leider hat, wie Ihr bestimmt bereits gemerkt habt, unsere Uni nicht bei allen Publishern für alle Journals einen Zugang inne.
 

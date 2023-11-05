@@ -11,7 +11,7 @@ execute:
 
 Manchmal muss Literatur gesucht werden, ohne dass es ein Paper, einen Autoren oder eine Arbeit gibt, die als Ursprungspunkt für die Suche genutzt werden kann.
 
-Zu dieser Art der Suche wurden in der Umfrage die in @fig-fstQuestion zusehenden groben Antwort-Kategorien angegeben.
+Zu dieser Art der Suche wurden in der Umfrage die in @fig-fstQuestion zu sehenden, groben Antwort-Kategorien angegeben.
 
 ```{r}
 #| label: fig-fstQuestion
@@ -30,13 +30,13 @@ ggplot(tibble(n = c(6, 2, 3, 2),
   labs(x = '', y = 'Nennungen')
 ```
 
-Mit den groben Kategorien sind die folgenden ungefähren Vorgehensweisen gemeint:
+Mit den groben Kategorien sind die folgenden, ungefähren Vorgehensweisen gemeint:
 
 1. **Google Scholar**: Die Suche des groben Themas in der [akademischen Version](https://scholar.google.com/) der beliebten Suchmaschine
 
 2. **Lehr-/Handbücher**: Wenn schon aus dem Studium o.ä. bekannt ist, in welchem groben Themenbereich das Objekt der Suche einzuordnen ist, schadet es nicht, in entsprechenden Lehrbüchern nachzuschlagen. Die Infos sind dann aber wahrscheinlich nicht die aktuellsten.
 
-3. **Datenbanken**: Hiermit sind die gängigen Datenbanken zur Suche von Literatur gemeint, in @tbl-dbs findet Ihr eine (nicht vollständige) Übersicht über Datenbanken und andere Quellen. Bei grober Themen-Suche muss aber darauf geachtet werden, dass je nach Datenbank nicht unbedingt Synonyme mit gesucht werden.
+3. **Datenbanken**: Hiermit sind die gängigen Datenbanken zur Suche von Literatur gemeint, in @tbl-dbs findet Ihr eine (nicht vollständige) Übersicht über Datenbanken und andere Quellen. Bei grober Themen-Suche muss aber darauf geachtet werden, dass je nach Datenbank nicht unbedingt Synonyme mitgesucht werden.
 
 4. **Übersichtsartikel**: Dieser Punkt ist nicht ohne 1 und 3 zu denken, beide Such-Möglichkeiten bieten aber die Möglichkeit, Übersichtsartikel als Suchkriterium einzustellen.
 
@@ -84,7 +84,7 @@ tibble(Name = c("APA PsycInfo",
 ```
 
 
-Das genaue Item in der Umfrage war hier "Wenn ich zu einem groben Thema recherchiere, wenn ich also zum Beispiel weiß, dass mich der Zusammenhang von Intelligenz und Schokolade interessiert, gehe ich wie folgt vor:".
+Das genaue Item in der Umfrage war hier: "Wenn ich zu einem groben Thema recherchiere, wenn ich also zum Beispiel weiß, dass mich der Zusammenhang von Intelligenz und Schokolade interessiert, gehe ich wie folgt vor:"
 
 Ein paar der Antworten zu den einzelnen Strategien waren über die allgemeine Beschreibung als Tipps sehr hilfreich, zum Beispiel die folgende zu Google Scholar:
 
@@ -94,7 +94,7 @@ Zu den Datenbanken ist folgendes Beispiel zum Einsatz von logischen Operatoren a
 
 > ich suche in verschiedenen Datenbanken nach: "Zusammenhang" AND "Intelligenz" AND "Schokolade". Bei zu wenigen Ergebnissen mache ich meine Suche offener, z.B. "Intelligenz" AND "Schokolade". 
 
-Je nach Datenbank wird eine Auswahl an logischen Operatoren zugelassen, für eine Anleitung zu effektiven Suchstrategien ist die [Anleitung zu Pubmed von der Johns Hopkins Universität](https://browse.welch.jhmi.edu/searching/pubmed-search-tips) ganz gut. Die Anleitung hat viele PubmMed-spezifische Punkte, die Teile 4,5 und 6 haben aber auch gute Hinweise, die sich auf andere Datenbanken generalisieren lassen.
+Je nach Datenbank wird eine Auswahl an logischen Operatoren zugelassen, für eine Anleitung zu effektiven Suchstrategien ist die [Anleitung zu Pubmed von der Johns Hopkins Universität](https://browse.welch.jhmi.edu/searching/pubmed-search-tips) ganz gut. Die Anleitung hat viele PubMed-spezifische Punkte, die Teile 4,5 und 6 haben aber auch gute Hinweise, die sich auf andere Datenbanken generalisieren lassen.
 
 Außerdem wurde in der Umfrage die etwas engere Frage gestellt, wie vorgegangen wird, wenn schon spezifische Schlagworte, die für das Thema relevant sind, bekannt sind.
 
@@ -102,7 +102,7 @@ Dazu waren die folgenden Hinweise ergänzend zu den bisher genannten Punkten noc
 
 > [...] Falls ich weiß, dass ein bestimmtes Journal häufiger Studien zu diesem Thema veröffentlicht, suche ich gezielt auf den Webseiten (z.B. JSTOR, PubMed, etc.) nach dem Journal und Keywords oder nutze die Wortsuche. Sollte ich auch noch eine Jahresgrenze habe, würde ich danach filtern. 
 
-Und ein Tool genannt, das ich zumindest nicht kannte:
+Und ein Tool genannt, das zumindest ich noch nicht kannte:
 
 >Ich suche nach den Autoren und Stichpunkten um das Paper zu finden. Zum Teil verwende ich connected papers.
 
@@ -160,10 +160,10 @@ Mit den Kategorien ist im Einzelnen das folgende gemeint:
 
 ![Pubmed](imgs/pubmed_citations_similar.png)
 
-Screenshots von den Schaltflächen zu Zitaten und Ähnlichen Artikeln in Web of Science, Google Scholar und Pubmed.
+Screenshots von den Schaltflächen zu Zitaten und ähnlichen Artikeln in Web of Science, Google Scholar und Pubmed.
 :::
 
-Zu dem Item in der Umfrage waren besonders die folgende Antwort sehr interessant:
+Zu dem Item in der Umfrage war insbesondere die folgende Antwort sehr interessant:
 
 > [...] Es gibt zudem Webseiten, auf denen direkt nach ähnlichen Artikeln gesucht werden kann und zusätzlich „verwandte“ Studien angezeigt werden, die sich mit einem ähnlichen Thema befasst haben.
 
@@ -177,9 +177,9 @@ Beispiele die Ihr ausprobieren könnt wären:
 
 ::: {style="background-color: #FECCA5;"}
 
-#### Ein Punkt zur Nutzung von KI-Werkzeugen
+#### Ein Punkt zur Nutzung von (KI-)Werkzeugen
 
-Für alle KI-Werkzeuge die Ihr beim Erstellen von Arbeiten nutzt gilt immer:
+Für alle (KI-)Werkzeuge die Ihr beim Erstellen von Arbeiten nutzt gilt immer:
 
 **Ihr seid haftbar für das Ergebnis!**
 
@@ -196,8 +196,9 @@ Der Service nutzt aus, dass sich Publikationen und deren Zitations-Beziehungen a
 
 ![Screenshot von connected papers.](imgs/connected_papers.png){#fig-connectedpapers}
 
+Mit [Inciteful](https://inciteful.xyz/) lässt sich ein ähnlicher Graph erstellt werden.
 
-Solltet Ihr daran Interesse haben, kann man Zitationsgraphen übrigens auch mit R generieren, dazu gibt es [hier](https://ropensci.org/blog/2019/09/17/citecorp/) ein Beispiel wie man mit openCitations Daten sammelt und [hier](https://igraph.org/r/doc/plot.common.html) ein Beispiel wie man mit igraph einen Graphen erstellt.
+Solltet Ihr daran Interesse haben, kann man Zitationsgraphen übrigens auch mit R generieren, dazu gibt es [hier](https://ropensci.org/blog/2019/09/17/citecorp/) ein Beispiel wie man mit OpenCitations Daten sammelt und [hier](https://igraph.org/r/doc/plot.common.html) ein Beispiel wie man mit igraph einen Graphen erstellt.
 
 
 ### Aufgabe

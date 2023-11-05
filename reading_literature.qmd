@@ -24,14 +24,14 @@ Und auch:
 Insgesamt hat aus den 12 Rückmeldungen nur eine Person angegeben, direkt das ganze Paper zu lesen.
 
 In Summe lässt sich aus den Rückmeldungen die in @fig-ReadingFlow dargestellte Strategie ableiten.
-Der wichtigste Punkt ist aber das wiederholte Einräumen von Breakpoints. Es ergibt keinen Sinn ein Paper komplett zu lesen wenn es nicht oder nur Teile für mich relevant sind.
+Der wichtigste Punkt ist aber das wiederholte Einräumen von Breakpoints. Es ergibt keinen Sinn ein Paper komplett zu lesen, wenn es nicht oder nur Teile für mich relevant sind.
 
 ![Flowchart zum Lesen von psychologischen Artikeln](imgs/reading_flow.png){#fig-ReadingFlow width=50%}
 
 
 # Notizen machen
 
-Eine zentrales Problem, das zumindest mir in meiner akademischen Arbeit untergekommen ist, ist dass ich ein Paper lese und wenn ich ans Schreiben gehe im besten Fall noch grob weiß, wo was stand.
+Eine zentrales Problem, das zumindest mir in meiner akademischen Arbeit untergekommen ist, ist dass ich ein Paper lese und wenn ich ans Schreiben gehe im besten Fall nur noch grob weiß, wo was stand.
 
 Deswegen versuche ich inzwischen, mir beim Lesen eines Papers Notizen zu machen, die ich später wiederfinden und mit dem Paper verknüpfen kann.
 
@@ -79,7 +79,7 @@ answers |>
 
 Dazu haben außerdem 75% der Abstimmenden angegeben, dass sie sich Textstellen farblich markieren.
 
-Alle diese Methoden sind gut und die letzten Ergebnisse die ich gesehen habe, deuten darauf hin dass für das Lernen Notizen und Markieren gleich effizient sind [z.B.: @leonardHighlightingTakingNotes2021]
+Alle diese Methoden sind gut und die letzten Ergebnisse die ich gesehen habe, deuten darauf hin, dass für das Lernen Notizen erstellen und Textstellen Markieren gleich effizient sind [z.B.: @leonardHighlightingTakingNotes2021]
 
 Für mich hat in letzter Zeit aber ganz gut funktioniert, Teile des Zettelkasten-Systems zu übernehmen.
 
