@@ -109,7 +109,7 @@ Und der wichtigste:
 
 * Das Tool formatiert Literaturhinweise für Euch (!)
 
-An Tools aus dieser Familie gibt es eine ganze Reihe, in @tbl-refMan sind ein paar vorgestellt. Hier nutzen wird Zotero, da es auf allen Rechnern funktioniert, geteilte Bibliotheken erlaubt und Open Source ist.
+An Tools aus dieser Familie gibt es eine ganze Reihe, in @tbl-refMan sind ein paar vorgestellt. Hier nutzen wird Zotero, da es auf allen Rechnern funktioniert, geteilte Bibliotheken erlaubt und Open Source ist. Eine Anleitung zur Nutzung mit den gebräuchlisten Word-Prozessoren findet Ihr [hier](https://www.zotero.org/support/word_processor_integration).
 
 ```{r}
 #| output: asis

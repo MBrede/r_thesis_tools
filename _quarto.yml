@@ -6,9 +6,9 @@ project:
 
 book:
   title: "Vorschläge zur Thesis-Bearbeitung"
-  subtitle: "(Zum Teil in R :tada:)"
+  subtitle: (Zum Teil in R <img src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f389.svg" alt="Google (Noto Color Emoji - Unicode 15.0)" width="25" height="25">)
   author: "Max Brede"
-  date: "2023/11/05"
+  date: "2023/11/06"
   sidebar:
     style: "docked"
     search: true
