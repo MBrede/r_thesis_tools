@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Vorschläge zur Thesis-Bearbeitung - Erstellung von APA-konformen Tabellen</title>
+<title>Vorschläge zur Thesis-Bearbeitung – Erstellung von APA-konformen Tabellen</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,6 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,17 +111,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_r.html">Thesis mit R</a></li><li class="breadcrumb-item"><a href="./tables.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_r.html">Thesis mit R</a></li><li class="breadcrumb-item"><a href="./tables.html"><span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -124,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./happy_cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -132,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Vorschläge zur Thesis-Bearbeitung</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/MBrede/r_thesis_tools" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/MBrede/r_thesis_tools" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -229,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="-1">
@@ -240,14 +246,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tabellen-mit-flextable" id="toc-tabellen-mit-flextable" class="nav-link" data-scroll-target="#tabellen-mit-flextable">Tabellen mit <code>flextable</code></a></li>
   <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe">Aufgabe</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MBrede/r_thesis_tools/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/MBrede/r_thesis_tools/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_r.html">Thesis mit R</a></li><li class="breadcrumb-item"><a href="./tables.html"><span class="chapter-title">Erstellung von APA-konformen Tabellen</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Erstellung von APA-konformen Tabellen</span></h1>
+<h1 class="title"><span id="sec-tables" class="quarto-section-identifier"><span class="chapter-title">Erstellung von APA-konformen Tabellen</span></span></h1>
 </div>
 
 
@@ -260,7 +266,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="export-mit-apatables" class="level2">
 <h2 class="anchored" data-anchor-id="export-mit-apatables">Export mit <code>apaTables</code></h2>
@@ -370,22 +378,30 @@ ges indicates generalized eta-squared.
 </div>
 </div>
 <p>Das <code>table_number</code>-Argument setzt dabei nur die Zahl in der Tabellen-Überschrift.</p>
-<p>Das Ergebnis ist in <a href="#fig-apaTable">Abbildung&nbsp;<span>9.1</span></a> zu sehen.</p>
-<div id="fig-apaTable" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/apaEZTable.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abb&nbsp;9.1: Output von <code>apa.ezANOVA.table</code></figcaption>
+<p>Das Ergebnis ist in <a href="#fig-apaTable" class="quarto-xref">Abbildung&nbsp;<span>9.1</span></a> zu sehen.</p>
+<div id="fig-apaTable" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-apaTable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/apaEZTable.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-apaTable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abb&nbsp;9.1: Output von <code>apa.ezANOVA.table</code>
+</figcaption>
 </figure>
 </div>
 <p>Das ist natürlich schon schön und praktisch wenn wir uns englische Tabellen für die implementierten Analysen ausgeben lassen wollen. Aber wie können wir eigene Tabellen nach APA-Richtlinien-konform exportieren?</p>
 </section>
 <section id="tabellen-mit-flextable" class="level2">
 <h2 class="anchored" data-anchor-id="tabellen-mit-flextable">Tabellen mit <code>flextable</code></h2>
-<p>Was sind die Anforderungen an Tabellen laut APA? Konsultieren wir nochmal Julias<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Folien (<a href="#fig-apaTableChecklist">Abbildung&nbsp;<span>9.2</span></a>).</p>
-<div id="fig-apaTableChecklist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/apa_tables.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abb&nbsp;9.2: Checklist für Tabellen aus Julias Folien</figcaption>
+<p>Was sind die Anforderungen an Tabellen laut APA? Konsultieren wir nochmal Julias<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Folien (<a href="#fig-apaTableChecklist" class="quarto-xref">Abbildung&nbsp;<span>9.2</span></a>).</p>
+<div id="fig-apaTableChecklist" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-apaTableChecklist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/apa_tables.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-apaTableChecklist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abb&nbsp;9.2: Checklist für Tabellen aus Julias Folien
+</figcaption>
 </figure>
 </div>
 <p>Unsere Tabellen müssen also die folgenden Anforderungen erfüllen:</p>
@@ -483,7 +499,6 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">round</span>(., <span class="dv">1</span>))) <span class="sc">%&gt;%</span> </span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div class="tabwid"><style>.cl-e0d6f7f8{}.cl-e0d1b806{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e0d3ee78{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e0d3ee82{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e0d3fca6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0d3fca7{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0d3fcb0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0d3fcb1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0d3fcb2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0d3fcba{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e0d6f7f8"><thead><tr style="overflow-wrap:break-word;"><th class="cl-e0d3fca6"><p class="cl-e0d3ee78"><span class="cl-e0d1b806">species</span></p></th><th class="cl-e0d3fca7"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">Biscoe_bill_length_mm_M</span></p></th><th class="cl-e0d3fca7"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">Biscoe_bill_length_mm_SD</span></p></th><th class="cl-e0d3fca7"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">Dream_bill_length_mm_M</span></p></th><th class="cl-e0d3fca7"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">Dream_bill_length_mm_SD</span></p></th><th class="cl-e0d3fca7"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">Torgersen_bill_length_mm_M</span></p></th><th class="cl-e0d3fca7"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">Torgersen_bill_length_mm_SD</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e0d3fcb0"><p class="cl-e0d3ee78"><span class="cl-e0d1b806">Adelie</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">39.0</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">2.5</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">38.5</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">2.5</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">39</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e0d3fcb0"><p class="cl-e0d3ee78"><span class="cl-e0d1b806">Chinstrap</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">48.8</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">3.3</span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td><td class="cl-e0d3fcb1"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e0d3fcb2"><p class="cl-e0d3ee78"><span class="cl-e0d1b806">Gentoo</span></p></td><td class="cl-e0d3fcba"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">47.5</span></p></td><td class="cl-e0d3fcba"><p class="cl-e0d3ee82"><span class="cl-e0d1b806">3.1</span></p></td><td class="cl-e0d3fcba"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td><td class="cl-e0d3fcba"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td><td class="cl-e0d3fcba"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td><td class="cl-e0d3fcba"><p class="cl-e0d3ee82"><span class="cl-e0d1b806"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
@@ -495,7 +510,6 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_header</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div class="tabwid"><style>.cl-e0f0fe32{}.cl-e0ebae0a{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e0edf2e6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e0edf2fa{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e0edf2fb{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e0edf2fc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e0ee013c{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee0146{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee0147{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee0150{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee0151{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee015a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee015b{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee015c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee0164{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee0165{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee0166{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e0ee016e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e0f0fe32"><thead><tr style="overflow-wrap:break-word;"><th rowspan="5" class="cl-e0ee013c"><p class="cl-e0edf2e6"><span class="cl-e0ebae0a">species</span></p></th><th colspan="2" class="cl-e0ee0146"><p class="cl-e0edf2fa"><span class="cl-e0ebae0a">Biscoe</span></p></th><th colspan="2" class="cl-e0ee0146"><p class="cl-e0edf2fa"><span class="cl-e0ebae0a">Dream</span></p></th><th colspan="2" class="cl-e0ee0146"><p class="cl-e0edf2fa"><span class="cl-e0ebae0a">Torgersen</span></p></th></tr><tr style="overflow-wrap:break-word;"><th colspan="6" class="cl-e0ee0151"><p class="cl-e0edf2fa"><span class="cl-e0ebae0a">bill</span></p></th></tr><tr style="overflow-wrap:break-word;"><th colspan="6" class="cl-e0ee0151"><p class="cl-e0edf2fa"><span class="cl-e0ebae0a">length</span></p></th></tr><tr style="overflow-wrap:break-word;"><th colspan="6" class="cl-e0ee0151"><p class="cl-e0edf2fa"><span class="cl-e0ebae0a">mm</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-e0ee015c"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">M</span></p></th><th class="cl-e0ee015c"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">SD</span></p></th><th class="cl-e0ee015c"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">M</span></p></th><th class="cl-e0ee015c"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">SD</span></p></th><th class="cl-e0ee015c"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">M</span></p></th><th class="cl-e0ee015c"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">SD</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e0ee0164"><p class="cl-e0edf2fc"><span class="cl-e0ebae0a">Adelie</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">39.0</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">2.5</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">38.5</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">2.5</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">39</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e0ee0164"><p class="cl-e0edf2fc"><span class="cl-e0ebae0a">Chinstrap</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">48.8</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">3.3</span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td><td class="cl-e0ee0165"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e0ee0166"><p class="cl-e0edf2fc"><span class="cl-e0ebae0a">Gentoo</span></p></td><td class="cl-e0ee016e"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">47.5</span></p></td><td class="cl-e0ee016e"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a">3.1</span></p></td><td class="cl-e0ee016e"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td><td class="cl-e0ee016e"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td><td class="cl-e0ee016e"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td><td class="cl-e0ee016e"><p class="cl-e0edf2fb"><span class="cl-e0ebae0a"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
@@ -508,7 +522,6 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_header</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div class="tabwid"><style>.cl-e106a3ea{}.cl-e1018bd0{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e103cbfc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e103cc10{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e103cc11{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e103cc1a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e103d9e4{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103d9e5{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103d9ee{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103d9ef{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103d9f8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103d9f9{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103d9fa{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103da02{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103da0c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103da0d{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e103da0e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e106a3ea"><thead><tr style="overflow-wrap:break-word;"><th rowspan="3" class="cl-e103d9e4"><p class="cl-e103cbfc"><span class="cl-e1018bd0">species</span></p></th><th colspan="2" class="cl-e103d9e5"><p class="cl-e103cc10"><span class="cl-e1018bd0">Biscoe</span></p></th><th colspan="2" class="cl-e103d9e5"><p class="cl-e103cc10"><span class="cl-e1018bd0">Dream</span></p></th><th colspan="2" class="cl-e103d9e5"><p class="cl-e103cc10"><span class="cl-e1018bd0">Torgersen</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-e103d9f8"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></th><th class="cl-e103d9f8"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></th><th class="cl-e103d9f8"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></th><th class="cl-e103d9f8"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></th><th class="cl-e103d9f8"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></th><th class="cl-e103d9f8"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-e103d9fa"><p class="cl-e103cc11"><span class="cl-e1018bd0">M</span></p></th><th class="cl-e103d9fa"><p class="cl-e103cc11"><span class="cl-e1018bd0">SD</span></p></th><th class="cl-e103d9fa"><p class="cl-e103cc11"><span class="cl-e1018bd0">M</span></p></th><th class="cl-e103d9fa"><p class="cl-e103cc11"><span class="cl-e1018bd0">SD</span></p></th><th class="cl-e103d9fa"><p class="cl-e103cc11"><span class="cl-e1018bd0">M</span></p></th><th class="cl-e103d9fa"><p class="cl-e103cc11"><span class="cl-e1018bd0">SD</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e103da02"><p class="cl-e103cc1a"><span class="cl-e1018bd0">Adelie</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">39.0</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">2.5</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">38.5</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">2.5</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">39</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e103da02"><p class="cl-e103cc1a"><span class="cl-e1018bd0">Chinstrap</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">48.8</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0">3.3</span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td><td class="cl-e103da0c"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e103da0d"><p class="cl-e103cc1a"><span class="cl-e1018bd0">Gentoo</span></p></td><td class="cl-e103da0e"><p class="cl-e103cc11"><span class="cl-e1018bd0">47.5</span></p></td><td class="cl-e103da0e"><p class="cl-e103cc11"><span class="cl-e1018bd0">3.1</span></p></td><td class="cl-e103da0e"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td><td class="cl-e103da0e"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td><td class="cl-e103da0e"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td><td class="cl-e103da0e"><p class="cl-e103cc11"><span class="cl-e1018bd0"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
@@ -521,7 +534,6 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_header</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div class="tabwid"><style>.cl-e11bb8fc{}.cl-e11636ca{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e1188e0c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e1188e16{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e1188e20{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e1188e21{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e1189db6{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189dc0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189dca{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189dcb{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189dd4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189dd5{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189dd6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189dde{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e1189ddf{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e11bb8fc"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-e1189db6"><p class="cl-e1188e0c"><span class="cl-e11636ca">Spezies</span></p></th><th colspan="2" class="cl-e1189dc0"><p class="cl-e1188e16"><span class="cl-e11636ca">Biscoe</span></p></th><th colspan="2" class="cl-e1189dc0"><p class="cl-e1188e16"><span class="cl-e11636ca">Dream</span></p></th><th colspan="2" class="cl-e1189dc0"><p class="cl-e1188e16"><span class="cl-e11636ca">Torgersen</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-e1189dd4"><p class="cl-e1188e20"><span class="cl-e11636ca">M</span></p></th><th class="cl-e1189dd4"><p class="cl-e1188e20"><span class="cl-e11636ca">SD</span></p></th><th class="cl-e1189dd4"><p class="cl-e1188e20"><span class="cl-e11636ca">M</span></p></th><th class="cl-e1189dd4"><p class="cl-e1188e20"><span class="cl-e11636ca">SD</span></p></th><th class="cl-e1189dd4"><p class="cl-e1188e20"><span class="cl-e11636ca">M</span></p></th><th class="cl-e1189dd4"><p class="cl-e1188e20"><span class="cl-e11636ca">SD</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e1189dd5"><p class="cl-e1188e21"><span class="cl-e11636ca">Adelie</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">39.0</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">2.5</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">38.5</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">2.5</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">39</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e1189dd5"><p class="cl-e1188e21"><span class="cl-e11636ca">Chinstrap</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">48.8</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca">3.3</span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td><td class="cl-e1189dd6"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e1189dde"><p class="cl-e1188e21"><span class="cl-e11636ca">Gentoo</span></p></td><td class="cl-e1189ddf"><p class="cl-e1188e20"><span class="cl-e11636ca">47.5</span></p></td><td class="cl-e1189ddf"><p class="cl-e1188e20"><span class="cl-e11636ca">3.1</span></p></td><td class="cl-e1189ddf"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td><td class="cl-e1189ddf"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td><td class="cl-e1189ddf"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td><td class="cl-e1189ddf"><p class="cl-e1188e20"><span class="cl-e11636ca"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
@@ -536,7 +548,6 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">style</span>(<span class="at">i =</span> <span class="dv">2</span>,<span class="at">part =</span> <span class="st">'header'</span>,</span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">pr_t =</span> <span class="fu">fp_text_default</span>(<span class="at">italic =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div class="tabwid"><style>.cl-e1321192{}.cl-e12b4af6{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e12b4b00{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e12de5f4{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e12de5fe{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e12de608{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e12de609{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e12df7e2{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df7e3{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df7ec{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df7f6{width:0.75in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df7f7{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df800{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df801{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df802{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e12df80a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e1321192"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-e12df7e2"><p class="cl-e12de5f4"><span class="cl-e12b4af6">Spezies</span></p></th><th colspan="2" class="cl-e12df7e3"><p class="cl-e12de5fe"><span class="cl-e12b4af6">Biscoe</span></p></th><th colspan="2" class="cl-e12df7e3"><p class="cl-e12de5fe"><span class="cl-e12b4af6">Dream</span></p></th><th colspan="2" class="cl-e12df7e3"><p class="cl-e12de5fe"><span class="cl-e12b4af6">Torgersen</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-e12df7f7"><p class="cl-e12de608"><span class="cl-e12b4b00">M</span></p></th><th class="cl-e12df7f7"><p class="cl-e12de608"><span class="cl-e12b4b00">SD</span></p></th><th class="cl-e12df7f7"><p class="cl-e12de608"><span class="cl-e12b4b00">M</span></p></th><th class="cl-e12df7f7"><p class="cl-e12de608"><span class="cl-e12b4b00">SD</span></p></th><th class="cl-e12df7f7"><p class="cl-e12de608"><span class="cl-e12b4b00">M</span></p></th><th class="cl-e12df7f7"><p class="cl-e12de608"><span class="cl-e12b4b00">SD</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e12df800"><p class="cl-e12de609"><span class="cl-e12b4af6">Adelie</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">39.0</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">2.5</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">38.5</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">2.5</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">39</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e12df800"><p class="cl-e12de609"><span class="cl-e12b4af6">Chinstrap</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">48.8</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6">3.3</span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td><td class="cl-e12df801"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e12df802"><p class="cl-e12de609"><span class="cl-e12b4af6">Gentoo</span></p></td><td class="cl-e12df80a"><p class="cl-e12de608"><span class="cl-e12b4af6">47.5</span></p></td><td class="cl-e12df80a"><p class="cl-e12de608"><span class="cl-e12b4af6">3.1</span></p></td><td class="cl-e12df80a"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td><td class="cl-e12df80a"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td><td class="cl-e12df80a"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td><td class="cl-e12df80a"><p class="cl-e12de608"><span class="cl-e12b4af6"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
@@ -551,7 +562,6 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">italic</span>(<span class="at">part =</span><span class="st">"header"</span>, <span class="at">i=</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div class="tabwid"><style>.cl-e1499dc6{}.cl-e1440be0{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e1440bea{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e14682da{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-e1469298{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(0, 0, 0, 1.00);border-top: 0.75pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e14692a2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e14692ac{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e14692ad{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e14692ae{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e1499dc6"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-e1469298"><p class="cl-e14682da"><span class="cl-e1440be0">Spezies</span></p></th><th colspan="2" class="cl-e14692a2"><p class="cl-e14682da"><span class="cl-e1440be0">Biscoe</span></p></th><th colspan="2" class="cl-e14692a2"><p class="cl-e14682da"><span class="cl-e1440be0">Dream</span></p></th><th colspan="2" class="cl-e14692a2"><p class="cl-e14682da"><span class="cl-e1440be0">Torgersen</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-e14692ac"><p class="cl-e14682da"><span class="cl-e1440bea">M</span></p></th><th class="cl-e14692ac"><p class="cl-e14682da"><span class="cl-e1440bea">SD</span></p></th><th class="cl-e14692ac"><p class="cl-e14682da"><span class="cl-e1440bea">M</span></p></th><th class="cl-e14692ac"><p class="cl-e14682da"><span class="cl-e1440bea">SD</span></p></th><th class="cl-e14692ac"><p class="cl-e14682da"><span class="cl-e1440bea">M</span></p></th><th class="cl-e14692ac"><p class="cl-e14682da"><span class="cl-e1440bea">SD</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">Adelie</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">39.00</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">2.50</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">38.50</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">2.50</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">39.00</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">3.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">Chinstrap</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">48.80</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0">3.30</span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td><td class="cl-e14692ad"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e14692ae"><p class="cl-e14682da"><span class="cl-e1440be0">Gentoo</span></p></td><td class="cl-e14692ae"><p class="cl-e14682da"><span class="cl-e1440be0">47.50</span></p></td><td class="cl-e14692ae"><p class="cl-e14682da"><span class="cl-e1440be0">3.10</span></p></td><td class="cl-e14692ae"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td><td class="cl-e14692ae"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td><td class="cl-e14692ae"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td><td class="cl-e14692ae"><p class="cl-e14682da"><span class="cl-e1440be0"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
@@ -568,7 +578,6 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hline</span>(<span class="at">i =</span> <span class="dv">1</span>, <span class="at">j =</span> <span class="sc">-</span><span class="dv">1</span>,<span class="at">part =</span> <span class="st">'header'</span>, </span>
 <span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">border=</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">style =</span> <span class="st">"solid"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div class="tabwid"><style>.cl-e161714e{}.cl-e15bcbf4{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e15bcc08{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e15e42f8{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-e15e5374{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(0, 0, 0, 1.00);border-top: 0.75pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e15e537e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.1pt solid rgba(0, 0, 0, 1.00);border-top: 0.75pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e15e5388{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e15e5389{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(0, 0, 0, 1.00);border-top: 0.1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e15e5392{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e15e5393{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-e161714e"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-e15e5374"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">Spezies</span></p></th><th colspan="2" class="cl-e15e537e"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">Biscoe</span></p></th><th colspan="2" class="cl-e15e537e"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">Dream</span></p></th><th colspan="2" class="cl-e15e537e"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">Torgersen</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-e15e5389"><p class="cl-e15e42f8"><span class="cl-e15bcc08">M</span></p></th><th class="cl-e15e5389"><p class="cl-e15e42f8"><span class="cl-e15bcc08">SD</span></p></th><th class="cl-e15e5389"><p class="cl-e15e42f8"><span class="cl-e15bcc08">M</span></p></th><th class="cl-e15e5389"><p class="cl-e15e42f8"><span class="cl-e15bcc08">SD</span></p></th><th class="cl-e15e5389"><p class="cl-e15e42f8"><span class="cl-e15bcc08">M</span></p></th><th class="cl-e15e5389"><p class="cl-e15e42f8"><span class="cl-e15bcc08">SD</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">Adelie</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">39.00</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">2.50</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">38.50</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">2.50</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">39.00</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">3.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">Chinstrap</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">48.80</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">3.30</span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td><td class="cl-e15e5392"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e15e5393"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">Gentoo</span></p></td><td class="cl-e15e5393"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">47.50</span></p></td><td class="cl-e15e5393"><p class="cl-e15e42f8"><span class="cl-e15bcbf4">3.10</span></p></td><td class="cl-e15e5393"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td><td class="cl-e15e5393"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td><td class="cl-e15e5393"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td><td class="cl-e15e5393"><p class="cl-e15e42f8"><span class="cl-e15bcbf4"></span></p></td></tr></tbody></table></div>
 </div>
 </div>
@@ -586,11 +595,15 @@ Attaching package: 'flextable'</code></pre>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">border=</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">style =</span> <span class="st">"solid"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_as_docx</span>(<span class="at">path =</span> <span class="st">'flextable_out.docx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Der Export ist in <a href="#fig-flextableOut">Abbildung&nbsp;<span>9.3</span></a> zu sehen.</p>
-<div id="fig-flextableOut" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="imgs/flextable_out.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abb&nbsp;9.3: Export des flextable-calls.</figcaption>
+<p>Der Export ist in <a href="#fig-flextableOut" class="quarto-xref">Abbildung&nbsp;<span>9.3</span></a> zu sehen.</p>
+<div id="fig-flextableOut" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flextableOut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imgs/flextable_out.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flextableOut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abb&nbsp;9.3: Export des flextable-calls.
+</figcaption>
 </figure>
 </div>
 <div class="columns">
@@ -657,18 +670,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -700,11 +702,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -714,8 +755,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -727,7 +777,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -771,6 +944,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -796,6 +970,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -857,12 +1057,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./graphics.html" class="pagination-link">
+      <a href="./graphics.html" class="pagination-link" aria-label="Die *Grammar of graphics* und `ggplot2`">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Die <em>Grammar of graphics</em> und <code>ggplot2</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./quarto.html" class="pagination-link">
+      <a href="./quarto.html" class="pagination-link" aria-label="Methodenteil in `quarto`{#sec-quarto}">
         <span class="nav-page-text"><span class="chapter-title">Methodenteil in <code id="sec-quarto">quarto</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -870,13 +1070,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-right: 10px;"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a></div>   
-    <div class="nav-footer-center">All images are generated using R, DALL·E or Midjourney if not indicated otherwise.</div>
+    <div class="nav-footer-left">
+<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-right: 10px;"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a></p>
+</div>   
+    <div class="nav-footer-center">
+<p>All images are generated using R, DALL·E or Midjourney if not indicated otherwise.</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/MBrede/r_thesis_tools/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
