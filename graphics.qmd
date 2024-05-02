@@ -421,7 +421,7 @@ Erstens können wir schonmal feststellen dass die Grafik ruhig schmaler werden k
 
 Zweitens ist die Legende ein bisschen kaputt gegangen.
 
-Dazu gibt es vier Möglichkeiten zur Anpassung:
+Dazu gibt es drei Möglichkeiten zur Anpassung:
 
 ::: {.panel-tabset}
 
