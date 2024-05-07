@@ -364,8 +364,7 @@ Abb&nbsp;10.7: Chunk-Optionen für Grafiken
 </figure>
 </div>
 <p>Im text können wir die Grafik dann mit @fig-scatter referenzieren. Das label für Grafiken muss dabei durch “fig-” eingeleitet und referenziert werden, sonst schlägt die Formatierung fehl.</p>
-<p>Ähnliche Parameter sind auch für Tabellen implementiert, hier ist der Prefix nur <code>tbl</code>. Leider funktioniert das Crossreferenzieren in den aktuellen Versionen von quarto und flextable noch nicht reibungslos, es gibt aber einen <a href="https://github.com/quarto-dev/quarto-cli/issues/1556">workaround</a>.</p>
-<p>Statt mit @tbl-table müssen wir die Tabelle mit einem Call an das <code>officer</code>-Paket im Text referenzieren. Sonst ist das Format aber ähnlich, wie in <a href="#fig-tabChunk" class="quarto-xref">Abbildung&nbsp;<span>10.8</span></a> zu sehen ist..</p>
+<p>Ähnliche Parameter sind auch für Tabellen implementiert, hier ist der Prefix nur <code>tbl</code>.</p>
 <div id="fig-tabChunk" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tabChunk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -383,11 +382,16 @@ Abb&nbsp;10.8: Chunk-Optionen für Tabellen
 <img src="imgs/forth_render.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forthRender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abb&nbsp;10.9: Ergebnis mit Corss-Referenzen
+Abb&nbsp;10.9: Ergebnis mit Cross-Referenzen
 </figcaption>
 </figure>
 </div>
-<p>Offensichtlich funktioniert auch der Workaround noch nicht perfekt - das Problem ist aber bekannt.</p>
+<p>Damit die Abbildungs- und Tabellen-Beschriftungen in Deutsch und nicht in englisch gesetzt werden, habe ich dem YAML-Header die folgenden paar <code>Crossref</code>-Spezifikationen hinzugefügt:</p>
+<pre><code>crossref:
+  fig-title: Abb
+  tbl-title: Tab
+  fig-prefix: Abbildung
+  tbl-prefix: Tabelle</code></pre>
 <p>In dem Beispiel haben wir aber einen weiteren Vorteil von Quarto gesehen: <a href="@sec-inline">Inline Code-Chunks</a></p>
 </section>
 <section id="sec-inline" class="level2">

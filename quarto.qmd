@@ -120,18 +120,24 @@ Um eine Grafik zu beschriften und im Text referenzierbar zu machen,müssen wir z
 
 Im text können wir die Grafik dann mit \@fig-scatter referenzieren. Das label für Grafiken muss dabei durch "fig-" eingeleitet und referenziert werden, sonst schlägt die Formatierung fehl.
 
-Ähnliche Parameter sind auch für Tabellen implementiert, hier ist der Prefix nur `tbl`. Leider funktioniert das Crossreferenzieren in den aktuellen Versionen von quarto und flextable noch nicht reibungslos, es gibt aber einen [workaround](https://github.com/quarto-dev/quarto-cli/issues/1556).
+Ähnliche Parameter sind auch für Tabellen implementiert, hier ist der Prefix nur `tbl`. 
 
-Statt mit \@tbl-table müssen wir die Tabelle mit einem Call an das `officer`-Paket im Text referenzieren. Sonst ist das Format aber ähnlich, wie in @fig-tabChunk zu sehen ist..
 
 ![Chunk-Optionen für Tabellen](imgs/reference_table.png){#fig-tabChunk}
 
 Der Output des so angepassten Skripts ist in @fig-forthRender zu sehen.
 
-![Ergebnis mit Corss-Referenzen](imgs/forth_render.png){#fig-forthRender}
+![Ergebnis mit Cross-Referenzen](imgs/forth_render.png){#fig-forthRender}
 
-Offensichtlich funktioniert auch der Workaround noch nicht perfekt - das Problem ist aber bekannt.
+Damit die Abbildungs- und Tabellen-Beschriftungen in Deutsch und nicht in englisch gesetzt werden, habe ich dem YAML-Header die folgenden paar `Crossref`-Spezifikationen hinzugefügt:
 
+```
+crossref:
+  fig-title: Abb
+  tbl-title: Tab
+  fig-prefix: Abbildung
+  tbl-prefix: Tabelle
+```
 
 In dem Beispiel haben wir aber einen weiteren Vorteil von Quarto gesehen: [Inline Code-Chunks](@sec-inline)
 
