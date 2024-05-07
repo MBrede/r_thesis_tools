@@ -443,7 +443,7 @@ ggsave(plot = p_linebreaks,
 
 ```{r}
 p_smaller_text <- p +
-  theme(legend.title = element_text(size = 10,
+  theme(legend.title = element_text(size = 8,
                                     colour = 'darkgrey'))
 
 ggsave(plot = p_smaller_text,
