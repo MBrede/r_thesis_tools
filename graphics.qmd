@@ -57,7 +57,7 @@ palmerpenguins::penguins %>%
 ::::
 
 
-:::{.panel-tabset}
+
 
 ### 1. Daten und Aesthetics - `ggplot()` + `aes()`
 
@@ -228,7 +228,6 @@ palmerpenguins::penguins %>%
   facet_wrap(~island)
 ```
 
-:::
 
 ## APA-Styling
 
