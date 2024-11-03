@@ -59,6 +59,7 @@ df %>%
                                     colour = 'darkgrey'))
 ```
 
+<<<<<<< HEAD
 ```{r}
 palmerpenguins::penguins %>% 
   ggplot(aes(x = bill_length_mm, 
@@ -83,6 +84,8 @@ palmerpenguins::penguins %>%
 
 
 
+=======
+>>>>>>> 7a98a09bedb257a250e06bcc136ce36d588c17ca
 Meine sehr sehr gute Tabelle ist die @tbl-summaries.
 
 ```{r tbl-summaries}
