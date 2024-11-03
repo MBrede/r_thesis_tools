@@ -1,6 +1,5 @@
 ---
 title: "Methoden"
-editor: visual
 format: docx
 fig-width: 6.56
 fig-dpi: 300
@@ -9,6 +8,11 @@ execute:
   warning: false
   message: false
   echo: false
+crossref:
+  fig-title: Abb
+  tbl-title: Tab
+  fig-prefix: Abbildung
+  tbl-prefix: Tabelle
 ---
 
 ```{r setup}
@@ -28,12 +32,11 @@ my_theme <-  theme_light(base_family = 'Helvetical',
 theme_set(my_theme)
 ```
 
-Meine beeindruckend schöne Grafik in in @fig-scatter zu sehen.
+Meine beeindruckend schöne Grafik ist in @fig-scatter zu sehen.
 
 ```{r fig-scatter}
 #| label: fig-scatter
 #| fig-cap: Verteilungen der Schnabellänge und Körpergewichte der beobachteten Pinguine, aufgeteilt nach der Insel auf der die Pinguine beobachtet wurden und der Spezies der Pinguine.
-#| tbl-cap: ''
 
 df %>% 
   ggplot(aes(x = bill_length_mm, 
@@ -56,7 +59,31 @@ df %>%
                                     colour = 'darkgrey'))
 ```
 
-Meine sehr sehr gute Tabelle ist die Tabelle `r officer::run_reference(id = "#tbl-summaries")`.
+```{r}
+palmerpenguins::penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g,
+             color = species)) + 
+  geom_point(aes(shape = 'Original'),
+             alpha = .5) +
+  geom_point(data=penguin_means, aes(shape = 'Mittelwerte'))+
+  MetBrewer::scale_color_met_d(name = 'Lakota') +
+  scale_shape_manual(values = c(Mittelwerte = 3, Original = 20))+
+  coord_fixed(ratio = 10/1000) +
+  facet_wrap(~island)+
+  labs(x = 'Schnabellänge (mm)',
+       y = 'Körpergewicht (g)',
+       color = 'Pinguin-Spezies',
+       shape = 'Aggregations-Niveau')+
+  theme(legend.position = 'bottom')+
+  guides(color = guide_legend(nrow = 3),
+         shape = guide_legend(nrow = 2))
+
+```
+
+
+
+Meine sehr sehr gute Tabelle ist die @tbl-summaries.
 
 ```{r tbl-summaries}
 #| label: tbl-summaries
@@ -86,9 +113,15 @@ df %>%
 
 In dem Datensatz wurden *N*=`r sum(!is.na(palmerpenguins::penguins$sex))` Pinguine untersucht, davon `r sum(palmerpenguins::penguins$sex == 'male', na.rm = T)` männliche und `r sum(palmerpenguins::penguins$sex == 'female', na.rm = T)` weibliche Exemplare.
 
+`r nrow(palmerpenguins::penguins)`
+
+
+$b = 161.34$, 95\\% CI $[150.86, 171.81]$, $t(929) = 30.22$, $p < .001$
+
+
 ## Meine schöne Überschrift
 
-Hier steht Text
+Hier steht Text 
 
 @brunstein2010
 

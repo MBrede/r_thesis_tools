@@ -5,6 +5,34 @@ execute:
   warning: false
 ---
 
+```{r, include=FALSE}
+double_cohort_plot <- function(df, x){
+  maximum <- max(abs(df$n))
+  df$n <- ifelse(df$Kohorte == min (df$Kohorte ), -1 * df$n, df$n)
+  df |> 
+    ggplot() +
+    geom_col(aes(x = {{x}}, y = n, fill = {{x}})) +
+    MetBrewer::scale_fill_met_d(name = 'Redon') +
+    KITra::theme_KITra() +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    labs(x = '', y = 'Nennungen') +
+    scale_y_continuous(labels = c(maximum:1,0,1:maximum), breaks = (-1 * maximum):maximum) +
+    facet_wrap(~Kohorte, scales = 'free_x')
+}
+
+parse_mentions_list <- function(mentions_list, cohort=2023){
+  mentions_list |> 
+    str_split('\n') |> 
+  unlist() %>%
+  tibble(Quellen = .) |> 
+  mutate(Quellen = str_split(Quellen, ',\\s?'),
+         id = as.character(seq_along(Quellen))) |> 
+  tidyr::unnest_longer(Quellen) |> 
+  mutate(Kohorte = cohort)
+}
+```
+
 # Literatur sammeln
 
 Nachdem ich eine Reihe von Papern gefunden habe, die mich interessieren, muss ich mir diese irgendwie organisieren, um sie lesen zu können.
@@ -24,7 +52,7 @@ library(ggplot2)
 library(dplyr)
 library(stringr)
 
-answers <- ('Google Scholar, Researchgate, Website der Publisher, "Andere"
+answers23 <- ('Google Scholar, Researchgate, Website der Publisher, "Andere"
 Google Scholar, Researchgate, Website der Publisher, "Andere"
 Google Scholar, Website der Publisher, Universitätsbibliothek
 Google Scholar, Researchgate, Website der Publisher, "Andere", Direkt Autor anschreiben
@@ -36,33 +64,33 @@ Google Scholar
 Google Scholar, Researchgate, Website der Publisher
 Google Scholar
 Google Scholar, Researchgate, Website der Publisher') |> 
-  str_split('\n') |> 
-  unlist() %>%
-  tibble(Quellen = .) |> 
-  mutate(Quellen = str_split(Quellen, ',\\s?'),
-         id = as.character(seq_along(Quellen))) |> 
-  tidyr::unnest_longer(Quellen) |> 
-  mutate(Quellen = forcats::fct_reorder(Quellen, id, .fun=length))
+  parse_mentions_list(2023)
+
+answers24 <- ('Google Scholar, Researchgate, "Andere"
+Google Scholar, Researchgate, Website der Publisher
+Google Scholar, Researchgate
+Google Scholar, Researchgate, Website der Publisher, "Andere"
+Google Scholar, Researchgate
+Researchgate, "Andere"
+Google Scholar, Researchgate, Universitätsbibliothek, Andere Datenbanken
+Google Scholar, Researchgate, Von Doz. vorgegebene Literatur') |> 
+  parse_mentions_list(2024)
 
 
-answers |> 
-  ggplot() +
-    geom_bar(aes(x = Quellen, fill = Quellen)) +
-    MetBrewer::scale_fill_met_d(name = 'Veronese') +
-    KITra::theme_KITra() +
-    theme(legend.position = 'none') +
-    coord_flip() +
-    labs(x = '', y = 'Nennungen')
-
+bind_rows(answers23, answers24) |> 
+  count(Quellen, Kohorte) |> 
+  mutate(Quellen = forcats::fct_reorder(Quellen, n)) |> 
+  double_cohort_plot(Quellen) +
+    labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Quellen bei der Suche nach Literatur") 
 ```
 
 Mit den Punkten sind die folgenden Vorgehensweisen gemeint:
 
 1. **Google Scholar**: Wenn ein Paper in Google Scholar gefunden ist, wird oft ein Link zu einem PDF angezeigt. Ein Beispiel ist in @fig-scholarLink zu sehen. Scholar nutzt übrigens auch oft Researchgate um Links zu PDF-Versionen anzubieten.
 
-2. **Website der Publisher**: Der Trend geht immer mehr zu Open Access Formaten und manche Journals werden auch über die UB bereitgestellt. Ein Besuch der Publisher Website (geht am schnellsten mit "https://doi.org/<doi>") kann also schon zum gewünschten Ergebnis führen. OA-Paper werden aber auch schon von Google gelistet
+2. **Researchgate**: Viele Autor:innen laden ihre Arbeiten auf Researchgate als Volltext hoch, auch wenn das Journal eigentlich nicht OA ist.
 
-3. **Researchgate**: Viele Autor:innen laden ihre Arbeiten auf Researchgate als Volltext hoch, auch wenn das Journal eigentlich nicht OA ist.
+3. **Website der Publisher**: Der Trend geht immer mehr zu Open Access Formaten und manche Journals werden auch über die UB bereitgestellt. Ein Besuch der Publisher Website (geht am schnellsten mit "https://doi.org/<doi>") kann also schon zum gewünschten Ergebnis führen. OA-Paper werden aber auch schon von Google gelistet
 
 4. **Direkt Autor anschreiben**: Zuletzt funktioniert es oft, dem Kontaktautoren eine Email zu schreiben. Mit der Veröffentlichung erhalten Autor:innen bei vielen Journals eine PDF, die sie oft gern weitergeben. Über Researchgate lässt sich eine derartige Anfrage übrigens auch stellen.
 
@@ -87,15 +115,17 @@ Die Lösung dieses Problem sind Literaturverwaltungsprogramme, zu deren Nutzung 
 ```{r}
 #| label: fig-refManagement
 #| fig-cap: In der Umfrage als genutzt angegebene Referenzmanager.
-ggplot(tibble(n = c(1, 2, 4, 7),
-              "Genutztes Tool" = factor(c('Endnote','Citavi','Zotero', 'keins'), 
-                                 levels = c('Endnote','Citavi','Zotero', 'keins')))) +
-  geom_col(aes(x = `Genutztes Tool`, y = n, fill = `Genutztes Tool`)) +
-  MetBrewer::scale_fill_met_d(name = 'Veronese') +
-  KITra::theme_KITra() +
-  theme(legend.position = 'none') +
-  coord_flip() +
-  labs(x = '', y = 'Nennungen')
+
+tibble(n = c(1, 2, 4, 7),
+              "Genutztes Tool" = c('Endnote','Citavi','Zotero', 'keins'),
+              Kohorte = 2023) |> 
+  bind_rows(
+    tibble(n = c(0,3,2,4),
+              "Genutztes Tool" = c('Endnote','Citavi','Zotero', 'keins'),
+              Kohorte = 2024)
+ )|> 
+  mutate(`Genutztes Tool` = factor(`Genutztes Tool`, levels = rev(c('Endnote','Citavi','Zotero', 'keins')))) |> 
+double_cohort_plot(`Genutztes Tool`)
 ```
 
 

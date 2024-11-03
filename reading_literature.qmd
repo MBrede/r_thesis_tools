@@ -5,6 +5,34 @@ execute:
   warning: false
 ---
 
+```{r, include=FALSE}
+double_cohort_plot <- function(df, x){
+  maximum <- max(abs(df$n))
+  df$n <- ifelse(df$Kohorte == min (df$Kohorte ), -1 * df$n, df$n)
+  df |> 
+    ggplot() +
+    geom_col(aes(x = {{x}}, y = n, fill = {{x}})) +
+    MetBrewer::scale_fill_met_d(name = 'Redon') +
+    KITra::theme_KITra() +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    labs(x = '', y = 'Nennungen') +
+    scale_y_continuous(labels = c(maximum:1,0,1:maximum), breaks = (-1 * maximum):maximum) +
+    facet_wrap(~Kohorte, scales = 'free_x')
+}
+
+parse_mentions_list <- function(mentions_list, cohort=2023){
+  mentions_list |> 
+    str_split('\n') |> 
+  unlist() %>%
+  tibble(Quellen = .) |> 
+  mutate(Quellen = str_split(Quellen, ',\\s?'),
+         id = as.character(seq_along(Quellen))) |> 
+  tidyr::unnest_longer(Quellen) |> 
+  mutate(Kohorte = cohort)
+}
+```
+
 # Literatur lesen
 
 Wir haben unsere Quellen jetzt gesucht, gefunden und organisiert. Bleibt nur noch das Eine oder Andere zum effizienten Lesen von Papern zu sagen.
@@ -21,7 +49,13 @@ Und auch:
 
 > Zuerst das Abstract, schauen, ob es passend ist, wenn ja, lese ich den für mich relevanten Teil bzw. das gesamte Paper, je nach Fragestellung
 
-Insgesamt hat aus den 12 Rückmeldungen nur eine Person angegeben, direkt das ganze Paper zu lesen.
+Interessanterweise in der 2024er Kohorte auch diese Antwort:
+
+> Abstract um zu schauen ob relevant. Zusammenfassung durch ChatGPT (manchmal fehlerhaft) 
+
+Aber auch die Nennung des (für mich noch neuen) Stichworts [SQ3R](https://de.wikipedia.org/wiki/SQ3R-Methode)
+
+Insgesamt hat aus den 21 Rückmeldungen nur eine Person (aus der 2023er Kohorte) angegeben, direkt das ganze Paper zu lesen.
 
 In Summe lässt sich aus den Rückmeldungen die in @fig-ReadingFlow dargestellte Strategie ableiten.
 Der wichtigste Punkt ist aber das wiederholte Einräumen von Breakpoints. Es ergibt keinen Sinn ein Paper komplett zu lesen, wenn es nicht oder nur Teile für mich relevant sind.
@@ -35,7 +69,7 @@ Eine zentrales Problem, das zumindest mir in meiner akademischen Arbeit untergek
 
 Deswegen versuche ich inzwischen, mir beim Lesen eines Papers Notizen zu machen, die ich später wiederfinden und mit dem Paper verknüpfen kann.
 
-In der Umfrage ergab sich, dass 83% der Antwortenden auch Notizen machen, das Ausmaß und der Inhalt unterscheiden sich aber sehr deutlich.
+In der Umfrage ergab sich, dass ~86% der Antwortenden auch Notizen machen, das Ausmaß und der Inhalt unterscheiden sich aber sehr deutlich.
 
 Dabei waren sich, wie in @fig-noteTools zu sehen ist, die meisten über das Tool für diesen Zweck aber einig.
 
@@ -47,7 +81,7 @@ library(ggplot2)
 library(dplyr)
 library(stringr)
 
-answers <- ('Word
+answers23 <- ('Word
 Word
 Word
 Word
@@ -56,30 +90,30 @@ Zettel und Stift
 Zettel und Stift, Goodnotes/Notizapp
 Excel, Word, Goodnotes/Notizapp
 Word
-Excel') |> 
-  str_split('\n') |> 
-  unlist() %>%
-  tibble(Tool = .) |> 
-  mutate(Tool = str_split(Tool, ',\\s?'),
-         id = as.character(seq_along(Tool))) |> 
-  tidyr::unnest_longer(Tool) |> 
-  mutate(Tool = forcats::fct_reorder(Tool, id, .fun=length))
+Excel')  |> 
+  parse_mentions_list(2023)
+
+answers24 <- ('Citavi, Word
+Word,Goodnotes/Notizapp, Zettel und Stift
+Excel
+Zettel und Stift
+Zettel und Stift, Word
+Zettel und Stift
+Excel, Word 
+PDF-Leser, Zettel und Stift, Word') |> 
+  parse_mentions_list(2024)
 
 
-answers |> 
-  ggplot() +
-    geom_bar(aes(x = Tool, fill = Tool)) +
-    MetBrewer::scale_fill_met_d(name = 'Veronese') +
-    KITra::theme_KITra() +
-    theme(legend.position = 'none') +
-    coord_flip() +
-    labs(x = '', y = 'Nennungen')
-
+bind_rows(answers23, answers24) |> 
+  count(Quellen, Kohorte) |> 
+  mutate(Quellen = forcats::fct_reorder(Quellen, n)) |> 
+  double_cohort_plot(Quellen) +
+    labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Notizmodalitäten") 
 ```
 
-Dazu haben außerdem 75% der Abstimmenden angegeben, dass sie sich Textstellen farblich markieren.
+Dazu haben außerdem ~75% der Abstimmenden angegeben, dass sie sich Textstellen farblich markieren.
 
-Alle diese Methoden sind gut und die letzten Ergebnisse die ich gesehen habe, deuten darauf hin, dass für das Lernen Notizen erstellen und Textstellen Markieren gleich effizient sind [z.B.: @leonardHighlightingTakingNotes2021]
+Alle diese Methoden sind gut und die letzten Ergebnisse die ich gesehen habe, deuten darauf hin, dass für das Lernen Notizen erstellen und Textstellen Markieren gleich effizient sind [z.B.: @leonardHighlightingTakingNotes2021].
 
 Für mich hat in letzter Zeit aber ganz gut funktioniert, Teile des Zettelkasten-Systems zu übernehmen.
 

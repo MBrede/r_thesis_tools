@@ -5,6 +5,35 @@ execute:
   warning: false
 ---
 
+```{r, include=FALSE}
+double_cohort_plot <- function(df, x){
+  maximum <- max(abs(df$n))
+  df$n <- ifelse(df$Kohorte == min (df$Kohorte ), -1 * df$n, df$n)
+  df |> 
+    ggplot() +
+    geom_col(aes(x = {{x}}, y = n, fill = {{x}})) +
+    MetBrewer::scale_fill_met_d(name = 'Redon') +
+    KITra::theme_KITra() +
+    theme(legend.position = 'none') +
+    coord_flip() +
+    labs(x = '', y = 'Nennungen') +
+    scale_y_continuous(labels = c(maximum:1,0,1:maximum), breaks = (-1 * maximum):maximum) +
+    facet_wrap(~Kohorte, scales = 'free_x')
+}
+
+parse_mentions_list <- function(mentions_list, cohort=2023){
+  mentions_list |> 
+    str_split('\n') |> 
+  unlist() %>%
+  tibble(Quellen = .) |> 
+  mutate(Quellen = str_split(Quellen, ',\\s?'),
+         id = as.character(seq_along(Quellen))) |> 
+  tidyr::unnest_longer(Quellen) |> 
+  mutate(Kohorte = cohort)
+}
+```
+
+
 # Literatur finden {#sec-finding}
 
 ## Ohne Startpunkt
@@ -19,26 +48,31 @@ Zu dieser Art der Suche wurden in der Umfrage die in @fig-fstQuestion zu sehende
 
 library(ggplot2)
 library(dplyr)
-ggplot(tibble(n = c(6, 2, 3, 2),
-              Strategie = factor(c('Google Scholar', 'Datenbanken', 'Lehr-/Handbücher', 'Übersichtsartikel'), 
-                                 levels = c('Google Scholar', 'Lehr-/Handbücher', 'Datenbanken', 'Übersichtsartikel')))) +
-  geom_col(aes(x = Strategie, y = n, fill = Strategie)) +
-  MetBrewer::scale_fill_met_d(name = 'Veronese') +
-  KITra::theme_KITra() +
-  theme(legend.position = 'none') +
-  coord_flip() +
-  labs(x = '', y = 'Nennungen')
+tibble(n = c(2,6, 2, 3, 2),
+              Strategie = c('"normale" Suchmaschinen', 'Google Scholar', 'Datenbanken', 'Lehr-/Handbücher', 'Übersichtsartikel'),
+              Kohorte = 2023) |> 
+  bind_rows(
+    tibble(n = c(4 ,1, 3, 0, 2, 1),
+              Strategie = c('"normale" Suchmaschinen', 'Google Scholar', 'Datenbanken', 'Lehr-/Handbücher', 'Übersichtsartikel', 'ChatGPT fragen'),
+              Kohorte = 2024)
+ )|> 
+  mutate(Strategie = factor(Strategie, levels = rev(c('"normale" Suchmaschinen', 'Google Scholar','Lehr-/Handbücher','Datenbanken','Übersichtsartikel', 'ChatGPT fragen')))) |> 
+double_cohort_plot(Strategie)
 ```
 
 Mit den groben Kategorien sind die folgenden, ungefähren Vorgehensweisen gemeint:
 
-1. **Google Scholar**: Die Suche des groben Themas in der [akademischen Version](https://scholar.google.com/) der beliebten Suchmaschine
+1. **"normale" Suchmaschinen**: Der Ansatz, in gängigen Web-Suchmaschinen für einen groben Überblick über ein Thema zu suchen.
 
-2. **Lehr-/Handbücher**: Wenn schon aus dem Studium o.ä. bekannt ist, in welchem groben Themenbereich das Objekt der Suche einzuordnen ist, schadet es nicht, in entsprechenden Lehrbüchern nachzuschlagen. Die Infos sind dann aber wahrscheinlich nicht die aktuellsten.
+2. **Google Scholar**: Die Suche des groben Themas in der [akademischen Version](https://scholar.google.com/) der beliebten Suchmaschine
 
-3. **Datenbanken**: Hiermit sind die gängigen Datenbanken zur Suche von Literatur gemeint, in @tbl-dbs findet Ihr eine (nicht vollständige) Übersicht über Datenbanken und andere Quellen. Bei grober Themen-Suche muss aber darauf geachtet werden, dass je nach Datenbank nicht unbedingt Synonyme mitgesucht werden.
+3. **Lehr-/Handbücher**: Wenn schon aus dem Studium o.ä. bekannt ist, in welchem groben Themenbereich das Objekt der Suche einzuordnen ist, schadet es nicht, in entsprechenden Lehrbüchern nachzuschlagen. Die Infos sind dann aber wahrscheinlich nicht die aktuellsten.
 
-4. **Übersichtsartikel**: Dieser Punkt ist nicht ohne 1 und 3 zu denken, beide Such-Möglichkeiten bieten aber die Möglichkeit, Übersichtsartikel als Suchkriterium einzustellen.
+4. **Datenbanken**: Hiermit sind die gängigen Datenbanken zur Suche von Literatur gemeint, in @tbl-dbs findet Ihr eine (nicht vollständige) Übersicht über Datenbanken und andere Quellen. Bei grober Themen-Suche muss aber darauf geachtet werden, dass je nach Datenbank nicht unbedingt Synonyme mitgesucht werden.
+
+5. **Übersichtsartikel**: Dieser Punkt ist nicht ohne 1 und 3 zu denken, beide Such-Möglichkeiten bieten aber die Möglichkeit, Übersichtsartikel als Suchkriterium einzustellen.
+
+6. **ChatGPT fragen**: Der etwas fragwürdige Ansatz, sich Literatur von einem Sprachmodell auflisten zu lassen.
 
 ```{r}
 #| output: asis
@@ -124,21 +158,28 @@ Dazu wurden in der Umfrage die Frage gestellt, wie beim Start mit einer Ausgangs
 #| label: fig-thrdQuestion
 #| fig-cap: Grobe Kategorisierung der Antworten auf die dritte Frage.
 
-ggplot(tibble(n = c(11, 3, 2, 2),
-              Strategie = factor(c('References durchgehen', 
+
+tibble(n = c(11, 3, 2, 2),
+              Strategie = c('References durchgehen', 
+                           'Andere Publikationen der Autor:innen durchgucken',
+                           'Publikationen durchgehen, die das Paper zitiert haben',
+                           '"Ähnliche Artikel"'),
+              Kohorte = 2023) |> 
+  bind_rows(
+    tibble(n = c(7,0,4,1),
+              Strategie =  c('References durchgehen', 
+                           'Andere Publikationen der Autor:innen durchgucken',
+                           'Publikationen durchgehen, die das Paper zitiert haben',
+                           '"Ähnliche Artikel"'),
+              Kohorte = 2024)
+ )|> 
+  mutate(Strategie = factor(Strategie,  
+                                 levels = rev(c('References durchgehen', 
                                    'Andere Publikationen der Autor:innen durchgucken',
                                    'Publikationen durchgehen, die das Paper zitiert haben',
-                                   '"Ähnliche Artikel"'), 
-                                 levels = c('References durchgehen', 
-                                   'Andere Publikationen der Autor:innen durchgucken',
-                                   'Publikationen durchgehen, die das Paper zitiert haben',
-                                   '"Ähnliche Artikel"')))) +
-  geom_col(aes(x = Strategie, y = n, fill = Strategie)) +
-  MetBrewer::scale_fill_met_d(name = 'Veronese') +
-  KITra::theme_KITra() +
-  theme(legend.position = 'none') +
-  coord_flip() +
-  labs(x = '', y = 'Nennungen')
+                                   '"Ähnliche Artikel"')))) |> 
+double_cohort_plot(Strategie)
+
 ```
 
 
@@ -169,11 +210,16 @@ Zu dem Item in der Umfrage war insbesondere die folgende Antwort sehr interessan
 
 Beispiele für solche Seiten sind Digital/AI Research Assistants, die mit Hilfe von Sprachmodellen und/oder anderer Algorithmik die Literaturrecherche unterstützen. [Bei der DGI](https://dgi-info.de/artificial-intelligence-ai-research-assistants-und-ihre-bedeutung-fuer-informationsinfrastrukturen/) gibt es einen Einführungsartikel der ganz interessant ist. Der Autorengruppe geschuldet ist er vor allem auf die Implikationen für Informationsinfrastrukturen (also Bibliotheken o.ä.) ausgelegt, die Einführung ist trotzdem ganz brauchbar.
 
-Beispiele die Ihr ausprobieren könnt wären:
+Beispiele für Digital Research Assistants, die Ihr ausprobieren könnt, wären:
 
 * [Researchrabbit](https://www.researchrabbit.ai/) (Anmeldung mit E-Mailadresse erforderlich; kostenlos)
-* [Elicit](https://elicit.org/) (Anmeldung mit E-Mailadresse erforderlich; kostenlos)
 * [Inciteful](https://inciteful.xyz/) (keine Anmeldung notwendig)
+
+Beispiele für AI-Assitants, die noch einen Schritt weitergehen, wären:
+
+* [Elicit](https://elicit.org/) (Anmeldung mit E-Mailadresse erforderlich; kostenlos)
+* [perplexity](https://www.perplexity.ai/) (Kostenloser Test möglich, dann Anmeldung und Premium-Plan nötig)
+* [typeset](https://typeset.io/) (Anmeldung nötig, freies Volumen, dann relativ kostspielig)
 
 ::: {style="background-color: #FECCA5;"}
 
@@ -196,7 +242,7 @@ Der Service nutzt aus, dass sich Publikationen und deren Zitations-Beziehungen a
 
 ![Screenshot von connected papers.](imgs/connected_papers.png){#fig-connectedpapers}
 
-Mit [Inciteful](https://inciteful.xyz/) lässt sich ein ähnlicher Graph erstellt werden.
+[Inciteful](https://inciteful.xyz/) und [Researchrabbit](https://www.researchrabbit.ai/) bauen auch auf diesem Umstand auf.
 
 Solltet Ihr daran Interesse haben, kann man Zitationsgraphen übrigens auch mit R generieren, dazu gibt es [hier](https://ropensci.org/blog/2019/09/17/citecorp/) ein Beispiel wie man mit OpenCitations Daten sammelt und [hier](https://igraph.org/r/doc/plot.common.html) ein Beispiel wie man mit igraph einen Graphen erstellt.
 
@@ -231,7 +277,7 @@ library(ggplot2)
 library(dplyr)
 library(stringr)
 
-answers <- ("PsychINFO, scopus, PubMed, Web of Science, Google Scholar, Researchgate
+answers23 <- ("PsychINFO, scopus, PubMed, Web of Science, Google Scholar, Researchgate
 PsychINFO, Web of Science, Google Scholar
 PsychINFO, Google Scholar
 PsychINFO, Google Scholar, Researchgate
@@ -243,33 +289,32 @@ Google Scholar
 Researchgate, Google Scholar
 Google Scholar, PubMed
 PsychINFO, Researchgate, PubMed, Web of Science, Google Scholar, Publisher-Websites") |> 
-  str_split('\n') |> 
-  unlist() %>%
-  tibble(Quellen = .) |> 
-  mutate(Quellen = str_split(Quellen, ',\\s?'),
-         id = as.character(seq_along(Quellen))) |> 
-  tidyr::unnest_longer(Quellen) |> 
-  mutate(Quellen = forcats::fct_reorder(Quellen, id, .fun=length))
+  parse_mentions_list(2023)
+
+answers24 <- ("Google Scholar, Connected Papers o.ä.
+Google Scholar, PsychINFO, PubMed
+Google Scholar, Researchgate, PsychINFO, PubMed
+Researchgate, Google Scholar, PubMed
+PubMed, Google Scholar, Researchgate
+PubMed, Google Scholar, PsychINFO, PubPsych, PsyPub
+PsychINFO, PubMed, Google Scholar, Researchgate, Cochrane Library 
+PubMed, Researchgate, PsychINFO, Google Scholar") |> 
+  parse_mentions_list(2024)
 
 
-p1 <- answers |> 
-  ggplot() +
-    geom_bar(aes(x = Quellen, fill = Quellen)) +
-    MetBrewer::scale_fill_met_d(name = 'Veronese') +
-    KITra::theme_KITra() +
-    theme(legend.position = 'none') +
-    coord_flip() +
-    labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Quellen bei der Suche nach Literatur")
+p1 <- bind_rows(answers23, answers24) |> 
+  count(Quellen, Kohorte) |> 
+  mutate(Quellen = forcats::fct_reorder(Quellen, n)) |> 
+  double_cohort_plot(Quellen) +
+    labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Quellen bei der Suche nach Literatur") 
 
-p2 <- answers |> 
-  count(id) |> 
-  ggplot() +
-    geom_bar(aes(x = n, fill = n, group = n)) +
-    MetBrewer::scale_fill_met_c(name = 'Veronese') +
-    KITra::theme_KITra() +
-    theme(legend.position = 'none') +
-    coord_flip() +
-    labs(x = 'Anzahl Quellen', y = 'Nennungen', caption="Anzahl an Nennungen")
+p2 <- bind_rows(answers23, answers24) |> 
+  count(id, Kohorte) |> 
+  mutate('Anzahl genutzter Quellen' = n) |> 
+  count(`Anzahl genutzter Quellen`, Kohorte) |> 
+  mutate(`Anzahl genutzter Quellen` = as.character(`Anzahl genutzter Quellen`)) |> 
+  double_cohort_plot(`Anzahl genutzter Quellen`) +
+  labs(x = 'Anzahl genutzter Quellen', y = 'Nennungen')
 
 ggpubr::ggarrange(p1,p2, nrow=2)
 ```
