@@ -48,7 +48,7 @@ jobs:
             candidates = list.files(recursive = T, pattern = ".(qmd|R|r|Rmd|rmd)$", full.names = T)
             extract_packages <- function(file_name){
                 readLines(file_name) |>
-                    paste0(collapse = ' ') |>
+                    paste0(collapse = "\n") |>
                     stringr::str_extract_all("([[:alnum:]_]+(?=::))|((?<=library\\()[[:alnum:]_]+)") |>
                     unlist()
             }
@@ -58,7 +58,7 @@ jobs:
             desc <- read.dcf("DESCRIPTION")
             pkgs <- c(pkgs, unlist(strsplit(desc[1, "Imports"], "\n")))
             pkgs <- trimws(pkgs) |>
-            unique()
+                unique()
 
             for (pkg in pkgs) {
                 if (!requireNamespace(pkg, quietly = TRUE)) {
