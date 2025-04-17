@@ -47,6 +47,7 @@ jobs:
       - name: Install R packages
         run:  |
           Rscript -e '
+            install.packages("stringr")
             candidates = list.files(recursive = T, pattern = ".(qmd|R|r|Rmd|rmd)$", full.names = T)
             extract_packages <- function(file_name){
                 readLines(file_name) |>
