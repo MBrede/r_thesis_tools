@@ -48,6 +48,16 @@ jobs:
         run:  |
           Rscript -e '
             install.packages("stringr")
+            candidates = list.files(recursive = T, pattern = ".(qmd|R|r|Rmd|rmd)$", full.names = T)
+            extract_packages <- function(file_name){
+                readLines(file_name) |>
+                    paste0(collapse = '\n') |>
+                    stringr::str_extract_all("([[:alnum:]_]+(?=::))|((?<=library\\()[[:alnum:]_]+)") |>
+                    unlist()
+            }
+            pkgs <- lapply(candidates, extract_packages) |>
+                unlist()
+
           '
 
       - name: Render and Publish
