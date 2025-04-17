@@ -10,3 +10,4 @@ Imports:
     ezANOVA
     ggpubr
     openxlsx
+    palmerpenguins
