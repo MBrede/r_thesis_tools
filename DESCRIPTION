@@ -4,3 +4,7 @@ Imports:
     knitr
     png
     MetBrewer
+    kableExtra
+    apaTables
+    flextable
+    ezANOVA
