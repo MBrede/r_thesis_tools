@@ -23,9 +23,6 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: setup imagemagick
-        uses: mfinelli/setup-imagemagick@v5
-
       - name: Install Python and Dependencies
         uses: actions/setup-python@v5
         with:
@@ -51,13 +48,23 @@ jobs:
             candidates = list.files(recursive = T, pattern = ".(qmd|R|r|Rmd|rmd)$", full.names = T)
             extract_packages <- function(file_name){
                 readLines(file_name) |>
-                    paste0(collapse = '\n') |>
+                    paste0(collapse = ' ') |>
                     stringr::str_extract_all("([[:alnum:]_]+(?=::))|((?<=library\\()[[:alnum:]_]+)") |>
                     unlist()
             }
             pkgs <- lapply(candidates, extract_packages) |>
                 unlist()
 
+            desc <- read.dcf("DESCRIPTION")
+            pkgs <- c(pkgs, unlist(strsplit(desc[1, "Imports"], "\n")))
+            pkgs <- trimws(pkgs) |>
+            unique()
+
+            for (pkg in pkgs) {
+                if (!requireNamespace(pkg, quietly = TRUE)) {
+                    install.packages(pkg, Ncpus = 6)
+                }
+            }
           '
 
       - name: Render and Publish
