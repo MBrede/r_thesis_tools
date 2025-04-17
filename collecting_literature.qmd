@@ -13,7 +13,7 @@ double_cohort_plot <- function(df, x){
     ggplot() +
     geom_col(aes(x = {{x}}, y = n, fill = {{x}})) +
     MetBrewer::scale_fill_met_d(name = 'Redon') +
-    KITra::theme_KITra() +
+    theme_minimal() +
     theme(legend.position = 'none') +
     coord_flip() +
     labs(x = '', y = 'Nennungen') +
