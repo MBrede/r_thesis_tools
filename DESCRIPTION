@@ -7,7 +7,6 @@ Imports:
     kableExtra
     apaTables
     flextable
-    ezANOVA
     ggpubr
     openxlsx
     palmerpenguins
