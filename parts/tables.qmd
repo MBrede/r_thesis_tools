@@ -1,5 +1,5 @@
 ---
-toc-title: '![](imgs/penguin_drawing_table.png){width=80%}<br> Tabellen'
+toc-title: '![](../imgs/penguin_drawing_table.png){width=80%}<br> Tabellen'
 ---
 
 # Erstellung von APA-konformen Tabellen {#sec-tables}
@@ -78,7 +78,7 @@ Das `table_number`-Argument setzt dabei nur die Zahl in der Tabellen-Überschrif
 Das Ergebnis ist in @fig-apaTable zu sehen.
 
 
-![Output von `apa.ezANOVA.table`](imgs/apaEZTable.png){#fig-apaTable}
+![Output von `apa.ezANOVA.table`](../imgs/apaEZTable.png){#fig-apaTable}
 
 Das ist natürlich schon schön und praktisch wenn wir uns englische Tabellen für die implementierten Analysen ausgeben lassen wollen. Aber wie können wir eigene Tabellen nach APA-Richtlinien-konform exportieren?
 
@@ -88,7 +88,7 @@ Das ist natürlich schon schön und praktisch wenn wir uns englische Tabellen f�
 Was sind die Anforderungen an Tabellen laut APA?
 Konsultieren wir nochmal Julias^[Nochmal Danke, [Julia](https://www.methoden.psychologie.uni-kiel.de/de/team/julia-liss)!] Folien (@fig-apaTableChecklist).
 
-![Checklist für Tabellen aus Julias Folien](imgs/apa_tables.png){#fig-apaTableChecklist}
+![Checklist für Tabellen aus Julias Folien](../imgs/apa_tables.png){#fig-apaTableChecklist}
 
 Unsere Tabellen müssen also die folgenden Anforderungen erfüllen:
 
@@ -250,7 +250,7 @@ Der Export ist in @fig-flextableOut zu sehen.
 
 :::: {.columns}
 :::{.column width="20%"}
-![](imgs/frustrated_penguin.png){width=80%}
+![](../imgs/frustrated_penguin.png){width=80%}
 :::
 :::{.column width="80%"}
 > Aber da muss ich ja die Beschreibung doch noch nachträglich einfügen! Und was soll ich mit 15 einzelnen docs, dann muss ich ja doch alles rüberkopieren!

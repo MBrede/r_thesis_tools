@@ -22,20 +22,20 @@ book:
   chapters:
     - part: index.qmd
       chapters: 
-        - prep_lit.qmd
-        - prep.qmd
-    - part: intro_lit.qmd
+        - parts/prep_lit.qmd
+        - parts/prep.qmd
+    - part: parts/intro_lit.qmd
       chapters: 
-        - finding_literature.qmd
-        - collecting_literature.qmd
-        - reading_literature.qmd
+        - parts/finding_literature.qmd
+        - parts/collecting_literature.qmd
+        - parts/reading_literature.qmd
     - part: "Thesis mit R"
       chapters:
-        - intro_r.qmd
-        - wrangling.qmd
-        - graphics.qmd
-        - tables.qmd
-        - quarto.qmd
+        - parts/intro_r.qmd
+        - parts/wrangling.qmd
+        - parts/graphics.qmd
+        - parts/tables.qmd
+        - parts/quarto.qmd
     
 crossref:
   fig-title: Abb

@@ -1,5 +1,5 @@
 ---
-toc-title: '![](imgs/penguin_taking_stock.png){width=80%}<br> Literatur sammeln'
+toc-title: '![](../imgs/penguin_taking_stock.png){width=80%}<br> Literatur sammeln'
 execute:
   echo: false
   warning: false

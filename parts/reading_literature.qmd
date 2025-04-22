@@ -1,5 +1,5 @@
 ---
-toc-title: '![](imgs/realistic_laptop_penguin.png){width=80%}<br> Literatur lesen'
+toc-title: '![](../imgs/realistic_laptop_penguin.png){width=80%}<br> Literatur lesen'
 execute:
   echo: false
   warning: false
@@ -60,7 +60,7 @@ Insgesamt hat aus den 21 Rückmeldungen nur eine Person (aus der 2023er Kohorte)
 In Summe lässt sich aus den Rückmeldungen die in @fig-ReadingFlow dargestellte Strategie ableiten.
 Der wichtigste Punkt ist aber das wiederholte Einräumen von Breakpoints. Es ergibt keinen Sinn ein Paper komplett zu lesen, wenn es nicht oder nur Teile für mich relevant sind.
 
-![Flowchart zum Lesen von psychologischen Artikeln](imgs/reading_flow.png){#fig-ReadingFlow width=50%}
+![Flowchart zum Lesen von psychologischen Artikeln](../imgs/reading_flow.png){#fig-ReadingFlow width=50%}
 
 
 # Notizen machen
