@@ -484,7 +484,7 @@ ggsave(plot = p_legend_in_plot,
 
 * Im Paket [ggpubr](https://rpkgs.datanovia.com/ggpubr/) wird `ggplot2` genutzt um eine Reihe von "publication ready plots" zu erstelllen
 
-* Unter [diesem Link](https://shiny.gmw.rug.nl/ggplotgui/) ist eine shiny-App zur interaktiven Erstellung von ggplot-Graphen zu finden
+* Unter [diesem Link](https://cardiomoon.shinyapps.io/ggplot2new/) ist eine shiny-App zur interaktiven Erstellung von ggplot-Graphen zu finden
 
 * Unter [diesem Link](http://www.cookbook-r.com/Graphs/) findet sich eine Sammlung von Farben, Formen, usw., die mit ggplot nutzbar sind.
 
