@@ -195,11 +195,11 @@ Mit den Kategorien ist im Einzelnen das folgende gemeint:
 
 ::: {#fig-related layout-nrow=2}
 
-![WOS](imgs/wos_citations_similar.png)
+![WOS](../imgs/wos_citations_similar.png)
 
-![Google Scholar](imgs/scholar_citations_similar.png)
+![Google Scholar](../imgs/scholar_citations_similar.png)
 
-![Pubmed](imgs/pubmed_citations_similar.png)
+![Pubmed](../imgs/pubmed_citations_similar.png)
 
 Screenshots von den Schaltflächen zu Zitaten und ähnlichen Artikeln in Web of Science, Google Scholar und Pubmed.
 :::
@@ -240,7 +240,7 @@ Der in einem der Kommentare genannte Service [connected papers](https://www.conn
 
 Der Service nutzt aus, dass sich Publikationen und deren Zitations-Beziehungen als mathematischer Graph darstellen lassen. Das eröffnet die Möglichkeit, zentrale Publikationen für einen Forschungsbereich über ihre Vernetzung mit den restlichen Arbeiten zu entdecken. In @fig-connectedpapers ist ein solcher Graph abgebildet.
 
-![Screenshot von connected papers.](imgs/connected_papers.png){#fig-connectedpapers}
+![Screenshot von connected papers.](../imgs/connected_papers.png){#fig-connectedpapers}
 
 [Inciteful](https://inciteful.xyz/) und [Researchrabbit](https://www.researchrabbit.ai/) bauen auch auf diesem Umstand auf.
 
@@ -262,7 +262,7 @@ Solltet Ihr daran Interesse haben, kann man Zitationsgraphen übrigens auch mit 
 
 Es gibt einen Haufen an Datenquellen, die alle etwas andere Ausrichtungen und deutlich andere Pflege- und Listungs-Strategien aufweisen (in @fig-openalexComparison ist eine Übersicht zu sehen). Mit anderen Worten wird man je nach Quelle zu anderen Ergebnissen kommen. Das gilt sowohl für die *Quantität*, als auch für die *Qualität* der Ergebnisse.
 
-![Screenshot vom Datenquellenvergleich auf [https://openalex.org](https://openalex.org).](imgs/open_alex_comparison.png){#fig-openalexComparison}
+![Screenshot vom Datenquellenvergleich auf [https://openalex.org](https://openalex.org).](../imgs/open_alex_comparison.png){#fig-openalexComparison}
 
 
 Die Assistenz-Werkzeuge kranken auch an diesem Problem, da sie ihre Daten aus einer der Quellen beziehen müssen. Verlasst Euch also nicht ausschließlich auf eine Anlaufstelle.
