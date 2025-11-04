@@ -7,18 +7,14 @@ execute:
 
 ```{r, include=FALSE}
 double_cohort_plot <- function(df, x){
-  maximum <- max(abs(df$n))
-  df$n <- ifelse(df$Kohorte == min (df$Kohorte ), -1 * df$n, df$n)
   df |> 
     ggplot() +
     geom_col(aes(x = {{x}}, y = n, fill = {{x}})) +
     MetBrewer::scale_fill_met_d(name = 'Redon') +
     theme_minimal() +
     theme(legend.position = 'none') +
-    coord_flip() +
     labs(x = '', y = 'Nennungen') +
-    scale_y_continuous(labels = c(maximum:1,0,1:maximum), breaks = (-1 * maximum):maximum) +
-    facet_wrap(~Kohorte, scales = 'free_x')
+    facet_wrap(~Kohorte, scales = 'free_y', ncol=1)
 }
 
 parse_mentions_list <- function(mentions_list, cohort=2023){
@@ -103,19 +99,32 @@ Excel, Word
 PDF-Leser, Zettel und Stift, Word') |> 
   parse_mentions_list(2024)
 
+answers25 <- ('Goodnotes/Notizapp
+Excel 
+Goodnotes/Notizapp, Papier
+Goodnotes/Notizapp, Papier
+Excel
+Word, Pages
+Excel
+Goodnotes/Notizapp') |> 
+  parse_mentions_list(2025)
 
-bind_rows(answers23, answers24) |> 
+bind_rows(answers23, answers24, answers25) |> 
   count(Quellen, Kohorte) |> 
   mutate(Quellen = forcats::fct_reorder(Quellen, n)) |> 
   double_cohort_plot(Quellen) +
     labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Notizmodalitäten") 
 ```
 
-Dazu haben außerdem ~75% der Abstimmenden angegeben, dass sie sich Textstellen farblich markieren.
+Dazu haben außerdem alle Abstimmenden in der 2025er Kohorte angegeben, dass sie sich Textstellen farblich markieren.
 
 Alle diese Methoden sind gut und die letzten Ergebnisse die ich gesehen habe, deuten darauf hin, dass für das Lernen Notizen erstellen und Textstellen Markieren gleich effizient sind [z.B.: @leonardHighlightingTakingNotes2021].
 
-Für mich hat in letzter Zeit aber ganz gut funktioniert, Teile des Zettelkasten-Systems zu übernehmen.
+Um das zu unterstützen, möchte ich hier nochmal die Zotero-Erweiterung [Better Notes](https://github.com/windingwind/zotero-better-notes) erwähnen.
+
+
+
+<!-- Für mich hat in letzter Zeit aber ganz gut funktioniert, Teile des Zettelkasten-Systems zu übernehmen.
 
 Beim Zettelkasten-System werden (je nach Quelle ist die Beschreibung etwas unterschiedlich) "atomare" Notizen, also maximal ein-zwei Sätze lange Zusammenfassungen erstellt. Dabei ist 1. wichtig, dass eine Referenz auf den Originaltext enthalten ist, 2. dass die Zusammenfassung in eigenen Worten geschieht.
 
@@ -123,7 +132,9 @@ Im eigentlichen Zettelkasten-Prinzip gibt es dann noch Vereinfachungsschritte un
 
 Der Vorteil beim Schreiben ist dann aber, dass ich meine Notizen direkt durchsuchen kann und mit dem Link zur Publikation die Referenz für das Argument zur Hand habe.
 
-Für dieses System bietet es sich an entweder direkt Notizen in Zotero anzulegen, die dann auch in Zotero durchsuchbar sind. Alternativ bieten sich Notiz-Apps wie [Joplin](https://joplinapp.org/) und [Obsidian](https://obsidian.md/) an, die auch eine fetzige Graph-Repräsentation der Notizen ermöglichen.
+Für dieses System bietet es sich an entweder direkt Notizen in Zotero anzulegen, die dann auch in Zotero durchsuchbar sind. Alternativ bieten sich Notiz-Apps wie [Joplin](https://joplinapp.org/) und [Obsidian](https://obsidian.md/) an, die auch eine fetzige Graph-Repräsentation der Notizen ermöglichen. -->
+
+
 
 
 ::: {style="background-color: #dfe0df;"}
