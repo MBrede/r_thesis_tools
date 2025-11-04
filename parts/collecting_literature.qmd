@@ -14,7 +14,8 @@ double_cohort_plot <- function(df, x){
     theme_minimal() +
     theme(legend.position = 'none') +
     labs(x = '', y = 'Nennungen') +
-    facet_wrap(~Kohorte, scales = 'free_y', ncol=1)
+    facet_wrap(~Kohorte, scales = 'free_y', ncol=1)+
+    theme(axis.text.x = element_text(angle = 90))
 }
 
 parse_mentions_list <- function(mentions_list, cohort=2023){
@@ -88,8 +89,7 @@ bind_rows(answers23, answers24, answers25) |>
   count(Quellen, Kohorte) |> 
   mutate(Quellen = forcats::fct_reorder(Quellen, n)) |> 
   double_cohort_plot(Quellen) +
-    labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Quellen bei der Suche nach Literatur") +
-    theme(axis.text.x = element_text(angle = 90))
+    labs(x = '', y = 'Nennungen', caption = "Verteilung der genutzten Quellen bei der Suche nach Literatur") 
 ```
 
 Mit den Punkten sind die folgenden Vorgehensweisen gemeint:

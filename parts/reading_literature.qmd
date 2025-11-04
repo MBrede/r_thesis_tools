@@ -14,7 +14,8 @@ double_cohort_plot <- function(df, x){
     theme_minimal() +
     theme(legend.position = 'none') +
     labs(x = '', y = 'Nennungen') +
-    facet_wrap(~Kohorte, scales = 'free_y', ncol=1)
+    facet_wrap(~Kohorte, scales = 'free_y', ncol=1)+
+    theme(axis.text.x = element_text(angle = 90))
 }
 
 parse_mentions_list <- function(mentions_list, cohort=2023){
